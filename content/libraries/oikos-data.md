@@ -1,13 +1,11 @@
 !!! info "Notice"
 		Imported from https://github.com/oikos-cash/oikos-data
 
-# synthetix-data
+# oikos-data
 
-[![npm version](https://badge.fury.io/js/synthetix-data.svg)](https://badge.fury.io/js/synthetix-data)
-[![Discord](https://img.shields.io/discord/413890591840272394.svg?color=768AD4&label=discord&logo=https%3A%2F%2Fdiscordapp.com%2Fassets%2F8c9701b98ad4372b58f13fd9f65f966e.svg)](https://discordapp.com/channels/413890591840272394/)
-[![Twitter Follow](https://img.shields.io/twitter/follow/oikos.cash.svg?label=oikos.cash&style=social)](https://twitter.com/oikos.cash)
+[![npm version](https://badge.fury.io/js/oikos-data.svg)](https://badge.fury.io/js/oikos-data)
 
-This is a collection of utilities to query Synthetix data from Ethereum. This data has been indexed by The Graph via the various subgraphs the Synthetix team maintains ([the subgraph code repo](https://github.com/Synthetixio/synthetix-subgraph)).
+This is a collection of utilities to query Oikos data from Ethereum. This data has been indexed by The Graph via the various subgraphs the Oikos team maintains ([the subgraph code repo](https://github.com/oikos-cash/oikos-subgraph)).
 
 ## Supported queries
 
@@ -57,16 +55,16 @@ The below all return an [Observable](https://github.com/tc39/proposal-observable
 ## Use this as a node or webpack dependency
 
 ```javascript
-const snxData = require('synthetix-data'); // common js
+const snxData = require('oikos-data'); // common js
 // or
-import snxData from 'synthetix-data'; // es modules
+import snxData from 'oikos-data'; // es modules
 
 // query and log resolved results
 snxData.exchanges
 	.since({
 		minTimestamp: Math.floor(Date.now() / 1e3) - 3600 * 24, // one day ago
 	})
-	.then(exchanges => console.log(exchanges));
+	.then((exchanges) => console.log(exchanges));
 
 // subscribe and log streaming results
 snxData.exchanges.observe().subscribe({
@@ -83,7 +81,7 @@ snxData.exchanges.observe().subscribe({
 ### Use in a browser
 
 ```html
-<script src="//cdn.jsdelivr.net/npm/synthetix-data/browser.js"></script>
+<script src="//cdn.jsdelivr.net/npm/oikos-data/browser.js"></script>
 <script>
 	window.snxData.exchanges
 		.since({
@@ -99,8 +97,8 @@ snxData.exchanges.observe().subscribe({
 
 ```bash
 # get last 24 hours of exchange activity, ordered from latest to earliest
-npx synthetix-data exchanges.since
+npx oikos-data exchanges.since
 
-# get exchanges on synthetix as they occur in real time (replays the last exchange first)
-npx synthetix-data exchanges.subscribe
+# get exchanges on oikos as they occur in real time (replays the last exchange first)
+npx oikos-data exchanges.subscribe
 ```
