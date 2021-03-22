@@ -1,5 +1,5 @@
 !!! info "Notice"
-		Imported from https://github.com/oikos-cash/oikos-bsc-js
+Imported from https://github.com/oikos-cash/oikos-bsc-js
 
 # SynthetixJs library
 
@@ -21,15 +21,15 @@ Under the hood, SynthetixJs uses [ethers.js](https://github.com/ethers-io/ethers
 
 [developer.synthetix.io](https://developer.synthetix.io)
 
-## Example for getting the total sUSD stablecoin in circulation
+## Example for getting the total oUSD stablecoin in circulation
 
 ```javascript
-const { SynthetixJs } = require('synthetix-js');
+const { SynthetixJs } = require('@oikos/oikos-js-bsc');
 const snxjs = new SynthetixJs(); //uses default ContractSettings - ethers.js default provider, mainnet
 (async function() {
-  const totalSUSD = await snxjs.sUSD.totalSupply();
-  const totalSUSDSupply = snxjs.utils.formatEther(totalSUSD);
-  console.log('sUSDTotalSupply', totalSUSDSupply);
+	const totaloUSD = await snxjs.oUSD.totalSupply();
+	const totaloUSD = snxjs.utils.formatEther(totaloUSD);
+	console.log('oUSDTotalSupply', totaloUSDSupply);
 })();
 ```
 
@@ -42,35 +42,35 @@ Custom ethers.js compatible signers can be used too.
 ## Example using a metamask signer
 
 ```javascript
-const { SynthetixJs } = require('synthetix-js');
+const { SynthetixJs } = require('@oikos/oikos-js-bsc');
 const metaMaskSigner = new SynthetixJs.signers.Metamask();
 const snxjs = new SynthetixJs({ signer: metaMaskSigner }); //uses Metamask signer and default infura.io provider on mainnet
 ```
 
-## Example of minting stablecoin(sUSD) with private key signer
+## Example of minting stablecoin(oUSD) with private key signer
 
 ```javascript
-const { SynthetixJs } = require('synthetix-js');
+const { SynthetixJs } = require('@oikos/oikos-js-bsc');
 //parameters: default provider, default networkId, private key as a string
 const signer = new SynthetixJs.signers.PrivateKey(
-  null,
-  0,
-  '0x0123456789012345678901234567890123456789012345678901234567890123'
+	null,
+	0,
+	'0x0123456789012345678901234567890123456789012345678901234567890123',
 );
 const snxjs = new SynthetixJs({ signer });
 
 async function run() {
-  const totalSupply = await snxjs.Synthetix.totalSupply();
-  const snxTotalSupply = snxjs.utils.formatEther(totalSupply);
-  console.log('snxTotalSupply', snxTotalSupply);
+	const totalSupply = await snxjs.Synthetix.totalSupply();
+	const snxTotalSupply = snxjs.utils.formatEther(totalSupply);
+	console.log('snxTotalSupply', snxTotalSupply);
 
-  //issue 100 synths (will throw if insufficient funds for gas)
-  try {
-    const txObj = await snxjs.Synthetix.issueSynths(snxjs.util.parseEther('100')); //execute transaction (requires gas)
-    console.log('transaction hash', txObj.hash);
-  } catch (e) {
-    console.log(e);
-  }
+	//issue 100 synths (will throw if insufficient funds for gas)
+	try {
+		const txObj = await snxjs.Synthetix.issueSynths(snxjs.util.parseEther('100')); //execute transaction (requires gas)
+		console.log('transaction hash', txObj.hash);
+	} catch (e) {
+		console.log(e);
+	}
 }
 
 run();

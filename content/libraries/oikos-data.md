@@ -1,5 +1,5 @@
 !!! info "Notice"
-		Imported from https://github.com/oikos-cash/oikos-data
+Imported from https://github.com/oikos-cash/oikos-data
 
 # synthetix-data
 
@@ -57,7 +57,7 @@ The below all return an [Observable](https://github.com/tc39/proposal-observable
 ## Use this as a node or webpack dependency
 
 ```javascript
-const snxData = require('synthetix-data'); // common js
+const snxData = require('@oikos/oikos-data-bsc'); // common js
 // or
 import snxData from 'synthetix-data'; // es modules
 
