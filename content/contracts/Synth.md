@@ -1,7 +1,7 @@
 # Synth
 
 This contract is the basis of all Synth flavours.
-It exposes sufficient functionality for the [`Synthetix`](Synthetix.md) and [`FeePool`](FeePool.md) contracts to manage its supply. Otherwise Synths are fairly vanilla ERC20 tokens; the [`PurgeableSynth`](PurgeableSynth.md) contract extends this basic functionality to allow the owner to liquidate a Synth if its total value is low enough.
+It exposes sufficient functionality for the [`Oikos`](Oikos.md) and [`FeePool`](FeePool.md) contracts to manage its supply. Otherwise Synths are fairly vanilla ERC20 tokens; the [`PurgeableSynth`](PurgeableSynth.md) contract extends this basic functionality to allow the owner to liquidate a Synth if its total value is low enough.
 
 See the [main synth notes](../../synths) for more information about how Synths function in practice.
 
@@ -9,7 +9,7 @@ See the [main synth notes](../../synths) for more information about how Synths f
 
     Since transfer conversion is not operating, the following is recorded only to be kept in mind in case it is ever reactivated. At present there is no way for users to set a preferred currency.
 
-    The Synthetix system has implements both [exchange](FeePool.md#exchangefeerate) and [transfer](FeePool.md#transferfeerate) fees on Synths. Although they should be distinct, the preferred currency auto conversion on transfer only charges the transfer fee, and not the exchange fee.
+    The Oikos system has implements both [exchange](FeePool.md#exchangefeerate) and [transfer](FeePool.md#transferfeerate) fees on Synths. Although they should be distinct, the preferred currency auto conversion on transfer only charges the transfer fee, and not the exchange fee.
     As a result, it is possible to convert Synths more cheaply whenever the transfer fee is less than the conversion fee.
 
     Given that the transfer fee is currently nil, if a user was able to set a preferred currency for themselves, it would be possible by this means to perform free Synth conversions. This would
@@ -37,7 +37,7 @@ See the [main synth notes](../../synths) for more information about how Synths f
 
     That is, the relative profit is simply $(\phi_\kappa - \phi_\tau)$. With no transfer fee, this is $\phi_\kappa$, as expected.
 
-**Source:** [Synth.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/Synth.sol)
+**Source:** [Synth.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Synth.sol)
 
 ## Architecture
 
@@ -63,9 +63,9 @@ The address of the [`FeePool`](FeePool.md) contract.
 
 ---
 
-### `synthetix`
+### `oikos`
 
-The address of the [`Synthetix`](Synthetix.md) contract.
+The address of the [`Oikos`](Oikos.md) contract.
 
 **Type:** `FeePool public`
 
@@ -73,7 +73,7 @@ The address of the [`Synthetix`](Synthetix.md) contract.
 
 ### `currencyKey`
 
-The [identifier](Synthetix.md#synths) of this Synth within the Synthetix ecosystem. The currency key could in principle be distinct from this token's [ERC20 symbol](ExternStateToken.md#symbol).
+The [identifier](Oikos.md#synths) of this Synth within the Oikos ecosystem. The currency key could in principle be distinct from this token's [ERC20 symbol](ExternStateToken.md#symbol).
 
 **Type:** `bytes32`
 
@@ -95,15 +95,15 @@ The number of decimal places this token uses. Fixed at $18$.
 
 ### `constructor`
 
-Initialises the [`feePool`](#feepool) and [`synthetix`](#synthetix) addresses, this Synth's [`currencyKey`](#currencyKey), and the inherited [`ExternStateToken`](ExternStateToken.md) instance.
+Initialises the [`feePool`](#feepool) and [`oikos`](#oikos) addresses, this Synth's [`currencyKey`](#currencyKey), and the inherited [`ExternStateToken`](ExternStateToken.md) instance.
 
-The precision in every Synth's fixed point representation is fixed at 18 so they are all conveniently [interconvertible](ExchangeRates.md#effectivevalue). The total supply of all new Synths is initialised to 0 since they must be created by the [`Synthetix`](Synthetix.md) contract when [issuing](Synthetix.md#issuesynths) or [converting between](Synthetix.md#exchange) Synths, or by the [`FeePool`](FeePool.md) when users [claim fees](FeePool.md#claimfees).
+The precision in every Synth's fixed point representation is fixed at 18 so they are all conveniently [interconvertible](ExchangeRates.md#effectivevalue). The total supply of all new Synths is initialised to 0 since they must be created by the [`Oikos`](Oikos.md) contract when [issuing](Oikos.md#issuesynths) or [converting between](Oikos.md#exchange) Synths, or by the [`FeePool`](FeePool.md) when users [claim fees](FeePool.md#claimfees).
 
 ??? example "Details"
 
     **Signature**
 
-    `constructor(address _proxy, TokenState _tokenState, Synthetix _synthetix, IFeePool _feePool, string _tokenName, string _tokenSymbol, address _owner, bytes32 _currencyKey) public`
+    `constructor(address _proxy, TokenState _tokenState, Oikos _oikos, IFeePool _feePool, string _tokenName, string _tokenSymbol, address _owner, bytes32 _currencyKey) public`
 
     **Superconstructors**
 
@@ -111,20 +111,20 @@ The precision in every Synth's fixed point representation is fixed at 18 so they
 
     **Preconditions**
 
-    * The provided proxy, synthetix, fee pool, and owner addresses must not be zero.
-    * The provided currency key must not already be [registered on synthetix](Synthetix.md#synths).
+    * The provided proxy, oikos, fee pool, and owner addresses must not be zero.
+    * The provided currency key must not already be [registered on oikos](Oikos.md#synths).
 
 ---
 
-### `setSynthetix`
+### `setOikos`
 
-Allows the owner to set the address of the [`synthetix`](Synthetix.md) contract.
+Allows the owner to set the address of the [`oikos`](Oikos.md) contract.
 
 ??? example "Details"
 
     **Signature**
 
-    `setSynthetix(Synthetix _synthetix) external`
+    `setOikos(Oikos _oikos) external`
 
     **Modifiers**
 
@@ -132,7 +132,7 @@ Allows the owner to set the address of the [`synthetix`](Synthetix.md) contract.
 
     **Emits**
 
-    * [`SynthetixUpdated(_synthetix)`](#synthetixupdated)
+    * [`OikosUpdated(_oikos)`](#oikosupdated)
 
 ---
 
@@ -164,7 +164,7 @@ Implemented based on [`ExternStateToken._transfer_byProxy`](ExternStateToken#_tr
 
 !!! Warning "Warning"
 
-    Due to [SIP-37 Fee Reclamation](https://sips.synthetix.io/sips/sip-37), this will always fail if there are any exchanges awaiting settlement for this synth. To prevent failues, please use [`transferAndSettle()`](#transferandsettle) below or invoke [`Exchanger.settle()`](/contracts/exchanger/#settle) prior to `transfer()`.
+    This will always fail if there are any exchanges awaiting settlement for this synth. To prevent failues, please use [`transferAndSettle()`](#transferandsettle) below or invoke [`Exchanger.settle()`](/contracts/exchanger/#settle) prior to `transfer()`.
 
 ??? example "Details"
 
@@ -180,7 +180,7 @@ Implemented based on [`ExternStateToken._transfer_byProxy`](ExternStateToken#_tr
 
 ### `transferAndSettle`
 
-Settles any outstanding fee reclaims and rebates from [SIP-37](https://sips.synthetix.io/sips/sip-37) and then performs the `transfer` functionality. If there is insufficient balance to transfer `value` after any reclaims, the `amount` will be reduced to the remaining balance of the sender.
+Settles any outstanding fee reclaims and rebates and then performs the `transfer` functionality. If there is insufficient balance to transfer `value` after any reclaims, the `amount` will be reduced to the remaining balance of the sender.
 
 Implemented based on [`ExternStateToken._transfer_byProxy`](ExternStateToken#_transfer_byproxy).
 
@@ -204,7 +204,7 @@ Implemented based on [`ExternStateToken._transferFrom_byProxy`](ExternStateToken
 
 !!! Warning "Warning"
 
-    Due to [SIP-37 Fee Reclamation](https://sips.synthetix.io/sips/sip-37), this will always fail if there are any exchanges awaiting settlement for this synth. To prevent failues, please use [`transferFromAndSettle()`](#transferfromandsettle) below or invoke [`Exchanger.settle()`](/contracts/exchanger/#settle) prior to `transferFrom()`.
+    This will always fail if there are any exchanges awaiting settlement for this synth. To prevent failues, please use [`transferFromAndSettle()`](#transferfromandsettle) below or invoke [`Exchanger.settle()`](/contracts/exchanger/#settle) prior to `transferFrom()`.
 
 ??? example "Details"
 
@@ -220,13 +220,13 @@ Implemented based on [`ExternStateToken._transferFrom_byProxy`](ExternStateToken
 
 ### `transferFromAndSettle`
 
-Settles any outstanding fee reclaims and rebates from [SIP-37](https://sips.synthetix.io/sips/sip-37) and then performs the `transferFrom` functionality. If there is insufficient balance to transfer `value` after any reclaims, the `amount` will be reduced to the remaining balance of the `from` address.
+Settles any outstanding fee reclaims and rebates and then performs the `transferFrom` functionality. If there is insufficient balance to transfer `value` after any reclaims, the `amount` will be reduced to the remaining balance of the `from` address.
 
 Implemented based on [`ExternStateToken._transferFrom_byProxy`](ExternStateToken#_transferfrom_byproxy).
 
 !!! Warning "Warning"
 
-    Due to [SIP-37 Fee Reclamation](https://sips.synthetix.io/sips/sip-37), this will always fail if there are any exchanges awaiting settlement for this synth. To prevent failues, please use [`transferFromAndSettle()`](#transferfromandsettle) below or invoke [`Exchanger.settle()`](/contracts/exchanger/#settle) prior to `transferFrom()`.
+    This will always fail if there are any exchanges awaiting settlement for this synth. To prevent failues, please use [`transferFromAndSettle()`](#transferfromandsettle) below or invoke [`Exchanger.settle()`](/contracts/exchanger/#settle) prior to `transferFrom()`.
 
 ??? example "Details"
 
@@ -246,7 +246,7 @@ This function implements all of the other ERC20 transfer functions supported by 
 
 !!! danger "Dormant Preferred Currency Conversion"
 
-    If [`SynthetixState.preferredCurrency(to)`](SynthetixState.md#preferredcurrency) is nonzero, this function automatically performs an exchange into the preferred Synth flavour using [`Synthetix.synthInitiatedExchange`](Synthetix.md#synthinitiatedexchange). However, there is currently no way for accounts to set their preferred currency, so this feature has effectively been deactivated.
+    If [`OikosState.preferredCurrency(to)`](OikosState.md#preferredcurrency) is nonzero, this function automatically performs an exchange into the preferred Synth flavour using [`Oikos.synthInitiatedExchange`](Oikos.md#synthinitiatedexchange). However, there is currently no way for accounts to set their preferred currency, so this feature has effectively been deactivated.
 
 ??? example "Details"
 
@@ -262,7 +262,7 @@ This function implements all of the other ERC20 transfer functions supported by 
 
 ### `issue`
 
-Allows the [`Synthetix`](Synthetix.md) contract to issue new Synths of this flavour. This is used whenever Synths are [exchanged](Synthetix.md#_internalexchange) or [issued directly](Synthetix.md#issuesynths). This is also used by the [`FeePool`](FeePool.md) to [pay fees out](FeePool.md#_payfees).
+Allows the [`Oikos`](Oikos.md) contract to issue new Synths of this flavour. This is used whenever Synths are [exchanged](Oikos.md#_internalexchange) or [issued directly](Oikos.md#issuesynths). This is also used by the [`FeePool`](FeePool.md) to [pay fees out](FeePool.md#_payfees).
 
 ??? example "Details"
 
@@ -272,7 +272,7 @@ Allows the [`Synthetix`](Synthetix.md) contract to issue new Synths of this flav
 
     **Modifiers**
 
-    * [`onlySynthetixOrFeePool`](#onlysynthetixorfeepool)
+    * [`onlyOikosOrFeePool`](#onlyoikosorfeepool)
 
     **Emits**
 
@@ -283,7 +283,7 @@ Allows the [`Synthetix`](Synthetix.md) contract to issue new Synths of this flav
 
 ### `burn`
 
-Allows the [`Synthetix`](Synthetix.md) contract to burn existing Synths of this flavour. This is used whenever Synths are [exchanged](Synthetix.md#_internalexchange) or [burnt directly](Synthetix.md#burnSynths). This is also used to burn Synths involved in oracle frontrunning as part of the [protection circuit](Synthetix.md#protectioncircuit). This is also used by the [`FeePool`](FeePool.md) to [burn sUSD when fees are paid out](FeePool.md#_payfees).
+Allows the [`Oikos`](Oikos.md) contract to burn existing Synths of this flavour. This is used whenever Synths are [exchanged](Oikos.md#_internalexchange) or [burnt directly](Oikos.md#burnSynths). This is also used to burn Synths involved in oracle frontrunning as part of the [protection circuit](Oikos.md#protectioncircuit). This is also used by the [`FeePool`](FeePool.md) to [burn oUSD when fees are paid out](FeePool.md#_payfees).
 
 ??? example "Details"
 
@@ -293,7 +293,7 @@ Allows the [`Synthetix`](Synthetix.md) contract to burn existing Synths of this 
 
     **Modifiers**
 
-    * [`onlySynthetixOrFeePool`](#onlysynthetixorfeepool)
+    * [`onlyOikosOrFeePool`](#onlyoikosorfeepool)
 
     **Emits**
 
@@ -306,7 +306,7 @@ Allows the [`Synthetix`](Synthetix.md) contract to burn existing Synths of this 
 
 This allows the owner to set the total supply directly for upgrades, where the [`tokenState`](ExternStateToken.md#tokenstate) is retained, but the total supply figure must be migrated.
 
-For example, just such a migration is performed by [this script](https://github.com/Synthetixio/synthetix/blob/master/publish/src/commands/replace-synths.js).
+For example, just such a migration is performed by [this script](https://github.com/oikos-cash/oikos-bsc/blob/master/publish/src/commands/replace-synths.js).
 
 ??? example "Details"
 
@@ -324,9 +324,9 @@ For example, just such a migration is performed by [this script](https://github.
 
 ---
 
-### `onlySynthetixOrFeePool`
+### `onlyOikosOrFeePool`
 
-Reverts the transaction if the `msg.sender` is neither [`synthetix`](#synthetix) nor [`feePool`](#feepool).
+Reverts the transaction if the `msg.sender` is neither [`oikos`](#oikos) nor [`feePool`](#feepool).
 
 ---
 
@@ -338,13 +338,13 @@ Reverts the transaction if the `msg.sender` is neither [`synthetix`](#synthetix)
 
 ---
 
-### `SynthetixUpdated`
+### `OikosUpdated`
 
-Records that the [`synthetix`](#synthetix) address was [updated](#setsynthetix).
+Records that the [`oikos`](#oikos) address was [updated](#setoikos).
 
-This event is emitted from the Synths's [proxy](Proxy.md#_emit) with the `emitSynthetixUpdated` function.
+This event is emitted from the Synths's [proxy](Proxy.md#_emit) with the `emitOikosUpdated` function.
 
-**Signature:** `SynthetixUpdated(address newSynthetix)`
+**Signature:** `OikosUpdated(address newOikos)`
 
 ---
 
