@@ -24,17 +24,17 @@
 
 ??? example "Details"
 
-    - [`Depot`](Depot.md): The depot trades SNX and therefore knows the Oikos address. \* [`ArbRewarder`](ArbRewarder.md): The ArbRewarder knows the Synthetix address because it exchanges SNX.
+    - [`Depot`](Depot.md): The depot trades OKS and therefore knows the Oikos address. \* [`ArbRewarder`](ArbRewarder.md): The ArbRewarder knows the Synthetix address because it exchanges OKS.
     - [`Exchanger`](Exchanger.md) The helper contract that performs the heavy lifting for `exchange()` and `settle()`.
     - [`ExchangeRates`](ExchangeRates.md): The Oikos contract fetches prices from the exchange rates contract to facilitate synth exchange and to determine the value of various quantities of synths.
     - [`FeePool`](FeePool.md): The Oikos contract remits exchange fees as sUSD to the fee pool, and also uses it to keep track of historical issuance records for each issuer.
     - [`Issuer`](Issuer.md) The helper contract that performs the heavy lifting for `issueSynths()`, `issueMaxSynths()` and `burnSynths()`.
     - [`Proxy`](Proxy.md): The Oikos contract, which is [`Proxyable`](Proxyable.md), exists behind a `CALL`-style proxy for upgradeability.
-    - [`RewardEscrow`](RewardEscrow.md): This is similar to the OikosEscrow contract, but it is where the SNX inflationary supply is kept before it is released to Synth issuers.
+    - [`RewardEscrow`](RewardEscrow.md): This is similar to the OikosEscrow contract, but it is where the OKS inflationary supply is kept before it is released to Synth issuers.
     - [`RewardsDistribution`](RewardsDistribution): This contract works closely with RewardEscrow to release portions of the inflationary supply to different recipients.
-    - [`SupplySchedule`](SupplySchedule.md): The supply schedule determines the rate at which SNX are released from the inflationary supply.
+    - [`SupplySchedule`](SupplySchedule.md): The supply schedule determines the rate at which OKS are released from the inflationary supply.
     - [`Synth`](Synth.md): Oikos manages the supply of synths. It keeps track of which ones exist, and they are all issued and burnt from the Synthetix contract. The Synthetix contract is also responsible for exchange between different synth flavours.
-    - [`OikosEscrow`](SynthetixEscrow.md): The escrow contract keeps track of SNX owed to participants in the initial token sale, and releases them according to specified vesting schedules.
+    - [`OikosEscrow`](SynthetixEscrow.md): The escrow contract keeps track of OKS owed to participants in the initial token sale, and releases them according to specified vesting schedules.
     - [`OikosState`](SynthetixState.md): This state contract stores the debt ledger and the current issuance information for synth issuers.
 
 ---
@@ -59,7 +59,7 @@ A constant used to initialise the ERC20 [`ExternStateToken.symbol`](ExternStateT
 
 **Type:** `string constant`
 
-**Value:** `"SNX"`
+**Value:** `"OKS"`
 
 ---
 
@@ -150,7 +150,7 @@ Returns the number of synths in the system, that is [`availableSynths.length`](#
 
 ### `collateral`
 
-Returns the total SNX owned by the given account, locked and unlocked, escrowed and unescrowed. This is the quantity of SNX synths can be issued against.
+Returns the total OKS owned by the given account, locked and unlocked, escrowed and unescrowed. This is the quantity of OKS synths can be issued against.
 
 This is computed as the sum of [`Oikos.balanceOf(account)`](TokenState.md#balanceof), [`SynthetixEscrow.balanceOf(account)`](SynthetixEscrow.md#balanceof), and [`RewardEscrow.balanceOf(account)`](RewardEscrow.md#balanceof); so an account may issue synths against both its active balance and its unclaimed escrow funds.
 
@@ -164,7 +164,7 @@ This is computed as the sum of [`Oikos.balanceOf(account)`](TokenState.md#balanc
 
 ### `collateralisationRatio`
 
-The ratio between value of synths that an account has issued and the value of the collateral they control. That is, this is just [`debtBalanceOf(issuer, "SNX") /`](#debtbalanceof) [`collateral(issuer)`](#collateral).
+The ratio between value of synths that an account has issued and the value of the collateral they control. That is, this is just [`debtBalanceOf(issuer, "OKS") /`](#debtbalanceof) [`collateral(issuer)`](#collateral).
 
 Ideally, issuers should maintain their collateralisation ratio at a level less than the [global issuance ratio](OikosState.md#issuanceratio), and they are incentivised to do this by the [fees they can claim](FeePool.md#claim) if they do so.
 
@@ -178,9 +178,9 @@ Ideally, issuers should maintain their collateralisation ratio at a level less t
 
 ### `debtBalanceOf`
 
-Reports the quantity of a given currency required to free up all SNX locked in given account.
+Reports the quantity of a given currency required to free up all OKS locked in given account.
 
-If $\mathrm{X}$ is the [total value of all issued synths](#totalissuedsynths), and $\check{\omega}$ is fraction of that value currently accounted for by this account's locked SNX, then the result is simply:
+If $\mathrm{X}$ is the [total value of all issued synths](#totalissuedsynths), and $\check{\omega}$ is fraction of that value currently accounted for by this account's locked OKS, then the result is simply:
 
 $$
 \check{\omega} \ \mathrm{X}
@@ -272,9 +272,9 @@ Where $\sigma_s$ and $\pi_s$ are the total supply and price of synth $s$, and $\
 
 ### `transferableOikos`
 
-The quantity of SNX this account can transfer given that a portion of it may be locked due to issuance.
+The quantity of OKS this account can transfer given that a portion of it may be locked due to issuance.
 
-If $\text{balance}$ is [`balanceOf(account)`](TokenState.md#balanceof), and $\text{lockedSnx}$ is [`debtBalanceOf(account, "SNX") / OikosState.issuanceRatio`](#debtbalanceof), the function returns $max(0, \text{balance} - \text{lockedSnx})$. Escrowed tokens are not taken into account in this computation, so unescrowed tokens are locked immediately.
+If $\text{balance}$ is [`balanceOf(account)`](TokenState.md#balanceof), and $\text{lockedSnx}$ is [`debtBalanceOf(account, "OKS") / OikosState.issuanceRatio`](#debtbalanceof), the function returns $max(0, \text{balance} - \text{lockedSnx})$. Escrowed tokens are not taken into account in this computation, so unescrowed tokens are locked immediately.
 
 ???+ info "A Note on Price Motion"
 
@@ -282,25 +282,25 @@ If $\text{balance}$ is [`balanceOf(account)`](TokenState.md#balanceof), and $\te
 
     If we consider a situation where the synth supply has not changed in the time period under consideration, then ownership fractions do not change even if prices do. Further assuming that there is only a single synth circulating, debt balances correspond to the same number of synths, although perhaps not the same value.
 
-    In such a situation, we can think of each user having issued a particular quantity of synths. This quantity depends on the prices of synths and SNX at the time of issuance.
+    In such a situation, we can think of each user having issued a particular quantity of synths. This quantity depends on the prices of synths and OKS at the time of issuance.
 
     $$
     Q_s = \rho \ \frac{\pi'_c}{\pi'_s} \ Q_c
     $$
 
-    Whose value at the present time priced [in terms of SNX](#effectivevalue), which is what [`debtBalanceOf(account, "SNX")`](#debtbalanceof) returns, is:
+    Whose value at the present time priced [in terms of OKS](#effectivevalue), which is what [`debtBalanceOf(account, "OKS")`](#debtbalanceof) returns, is:
 
     $$
     {V_s}^{c} = \rho \ \frac{\pi'_c}{\pi'_s} \ \pi_c \ Q_c
     $$
 
-    Note that this computation has a factor of $\rho$ in it, and this must be divided out in order to ascertain the quantity of SNX which are presently locked.
+    Note that this computation has a factor of $\rho$ in it, and this must be divided out in order to ascertain the quantity of OKS which are presently locked.
 
     $$
     \text{lockedSnx} = \frac{{V_s}^{c}}{\rho} = \frac{\pi'_c}{\pi'_s} \ \pi_c \ Q_c
     $$
 
-    Which is to say that the quantity of SNX locked in this situation depends on the price.
+    Which is to say that the quantity of OKS locked in this situation depends on the price.
 
     !!! todo "Extend this to the multicurrency case"
 
@@ -314,7 +314,7 @@ If $\text{balance}$ is [`balanceOf(account)`](TokenState.md#balanceof), and $\te
 
     **Modifiers**
 
-    * [`rateNotStale("SNX")`](#ratenotstale)
+    * [`rateNotStale("OKS")`](#ratenotstale)
 
 ---
 
@@ -336,9 +336,9 @@ Whether or not the waiting period is ongoing for the given synth. If so, no exch
 
 ### `burnSynths`
 
-[Burns](Synth.md#burn) a quantity of `sUSD` in the calling address, in order to free up its locked SNX supply.
+[Burns](Synth.md#burn) a quantity of `sUSD` in the calling address, in order to free up its locked OKS supply.
 
-If the caller attempts to burn more synths than their SNX debt is worth, this function will only burn sufficiently many tokens to cover the debt and leave the rest untouched.
+If the caller attempts to burn more synths than their OKS debt is worth, this function will only burn sufficiently many tokens to cover the debt and leave the rest untouched.
 
 The new debt position of the caller is recorded with [`_appendAccountIssuanceRecord`](#appendaccountissuancerecord), and the adjustment to global debt recorded with [`_removeFromDebtRegister`](#_removefromdebtregister).
 
@@ -447,9 +447,9 @@ See [`Issuer`](Issuer.md#issueSynths) for further details.
 
 ### `mint`
 
-This function is responsible for creating the inflationary SNX supply. It is a public function, so any address can ensure new tokens are released on schedule. When a new quantity is minted, the calling address is rewarded with a small incentive of SNX tokens, defined by [`SupplySchedule.minterReward`](SupplySchedule.md#minterreward).
+This function is responsible for creating the inflationary OKS supply. It is a public function, so any address can ensure new tokens are released on schedule. When a new quantity is minted, the calling address is rewarded with a small incentive of OKS tokens, defined by [`SupplySchedule.minterReward`](SupplySchedule.md#minterreward).
 
-The supply is released according to the schedule defined in [`SupplySchedule.schedules`](SupplySchedule.md#schedules), being sent to the [`RewardsDistribution`](RewardsDistribution.md#distributerewards) contract for distribution and escrow. The total supply SNX supply is thus increased by the quantity specified by the schedule.
+The supply is released according to the schedule defined in [`SupplySchedule.schedules`](SupplySchedule.md#schedules), being sent to the [`RewardsDistribution`](RewardsDistribution.md#distributerewards) contract for distribution and escrow. The total supply OKS supply is thus increased by the quantity specified by the schedule.
 
 This function always returns true if the transaction did not revert.
 
@@ -475,7 +475,7 @@ This function always returns true if the transaction did not revert.
 
 This is a ERC20 transfer functions.
 
-A successful transfer requires the message sender to have sufficient balance, accounting for [locked SNX](#transferableoikos).
+A successful transfer requires the message sender to have sufficient balance, accounting for [locked OKS](#transferableoikos).
 
 Implemented based on [`ExternStateToken._transfer_byProxy`](ExternStateToken#_transfer_byproxy).
 
@@ -501,7 +501,7 @@ Implemented based on [`ExternStateToken._transfer_byProxy`](ExternStateToken#_tr
 
 This is a ERC20 transferFrom functions.
 
-A successful transfer requires the token owner to have sufficient balance, accounting for [locked SNX](#transferableoikos).
+A successful transfer requires the token owner to have sufficient balance, accounting for [locked OKS](#transferableoikos).
 
 Implemented based on [`ExternStateToken._transferFrom_byProxy`](ExternStateToken#_transferfrom_byproxy).
 

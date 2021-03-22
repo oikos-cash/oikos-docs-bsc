@@ -2,7 +2,7 @@
 
 ## Description
 
-This contract distributes the inflationary supply rewards after they have been minted. The primary recipient remains the population of SNX stakers, but new ones can be added to receive an allocation of tokens first. These entries can then be modified or removed.
+This contract distributes the inflationary supply rewards after they have been minted. The primary recipient remains the population of OKS stakers, but new ones can be added to receive an allocation of tokens first. These entries can then be modified or removed.
 
 The actual quantity of tokens to inject into the supply each week is passed into [`distributeRewards`](#distributerewards) by [`Oikos.mint`](Synthetix.md#mint); how much the quantity is on any given week is determined by the [`SupplySchedule`](SupplySchedule.md) contract.
 
@@ -66,7 +66,7 @@ The address authorised to call [`distributeRewards`](#distributerewards), which 
 
 ### `oikosProxy`
 
-The address of the Oikos [`ProxyERC20`](ProxyERC20.md) for transferring SNX to distribution recipients and the [`RewardEscrow`](RewardEscrow.md) contract.
+The address of the Oikos [`ProxyERC20`](ProxyERC20.md) for transferring OKS to distribution recipients and the [`RewardEscrow`](RewardEscrow.md) contract.
 
 **Type:** `address public`
 
@@ -90,7 +90,7 @@ The address of the [`FeePool`](FeePool.md) [`Proxy`](Proxy.md), which has to be 
 
 ### `distributions`
 
-An array of distribution recipients and the amount of SNX each will receive from the weekly inflationary supply.
+An array of distribution recipients and the amount of OKS each will receive from the weekly inflationary supply.
 
 **Type:** `DistributionData[] public`
 
@@ -251,15 +251,15 @@ This function always returns true if it does not revert.
 
 ### `distributeRewards`
 
-Distributes a quantity of new SNX among stakers and other reward recipients as part of supply inflation.
+Distributes a quantity of new OKS among stakers and other reward recipients as part of supply inflation.
 
-First, for each element `d` in the [`distributions`](#distributions) list, `d.amount` SNX is sent to `d.destination`. The remaining tokens are then transferred to the [`RewardEscrow`](RewardEscrow.md) contract to be claimed by stakers, and the [`FeePool`](FeePool.md#setrewardstodistribute) is notified of the updated claimable supply.
+First, for each element `d` in the [`distributions`](#distributions) list, `d.amount` OKS is sent to `d.destination`. The remaining tokens are then transferred to the [`RewardEscrow`](RewardEscrow.md) contract to be claimed by stakers, and the [`FeePool`](FeePool.md#setrewardstodistribute) is notified of the updated claimable supply.
 
 This function always returns true if it does not revert.
 
-!!! info "Sufficient SNX Balance"
+!!! info "Sufficient OKS Balance"
 
-    There will always be sufficient SNX in the RewardsDistribution contract to support this operation, since its SNX balance is directly credited the correct number of tokens by [`Oikos.mint`](Synthetix.md#mint) immediately before the only call to this function. Only the Synthetix contract is authorised to execute rewards distribution, and this is the only place new SNX finds its way into the system.
+    There will always be sufficient OKS in the RewardsDistribution contract to support this operation, since its OKS balance is directly credited the correct number of tokens by [`Oikos.mint`](Synthetix.md#mint) immediately before the only call to this function. Only the Synthetix contract is authorised to execute rewards distribution, and this is the only place new OKS finds its way into the system.
 
 ??? example "Details"
 
@@ -272,7 +272,7 @@ This function always returns true if it does not revert.
     * `msg.sender` must be the [`authority`](#authority); i.e. the Oikos contract.
     * The [`rewardEscrow`](#rewardescrow), [`oikosProxy`](#oikosproxy), and [feePoolProxy](#feepoolproxy) addresses must all be initialised.
     * The amount to distribute must be nonzero.
-    * The SNX balance in RewardsDistribution must not be less than the amount to distribute.
+    * The OKS balance in RewardsDistribution must not be less than the amount to distribute.
 
     **Emits**
 

@@ -6,7 +6,7 @@
 
 ## Description
 
-**Old:** Depot.sol: Allows users to exchange BNB for sUSD and SNX (has not yet been updated for multicurrency).
+**Old:** Depot.sol: Allows users to exchange BNB for sUSD and OKS (has not yet been updated for multicurrency).
 
 Throughout, the contract assumes that sUSD is always worth exactly US\$1. So: a) this will only work with `sUSD`. b) there's a profit opportunity if the `sUSD` is off its peg.
 
@@ -68,7 +68,7 @@ Stores an individual Synth deposit on sale.
 
 ### `oikos`
 
-The address of the main [`Oikos`](Synthetix.md) contract; the depot contains SNX.
+The address of the main [`Oikos`](Synthetix.md) contract; the depot contains OKS.
 
 **Type:** `Oikos public`
 
@@ -92,7 +92,7 @@ The address of the [`FeePool`](FeePool.md) contract. Since transfer fees were el
 
 ### `fundsWallet`
 
-The address where ether and synths raised by selling SNX are sent.
+The address where ether and synths raised by selling OKS are sent.
 
 It is also where ether is sent if the proceeds of a sale of synths could not be transferred because the recipient is a non-payable contract.
 
@@ -102,7 +102,7 @@ It is also where ether is sent if the proceeds of a sale of synths could not be 
 
 ### `oracle`
 
-The address which provides the usd prices of SNX and ether. This is not the same oracle address as in [`ExchangeRates`](ExchangeRates.md#oracle).
+The address which provides the usd prices of OKS and ether. This is not the same oracle address as in [`ExchangeRates`](ExchangeRates.md#oracle).
 
 **Type:** `address public`
 
@@ -136,7 +136,7 @@ The last time [`usdToSnxPrice`](#usdtosnxprice) and [`usdToEthPrice`](#usdtoethp
 
 ### `usdToSnxPrice`
 
-The price of SNX in USD.
+The price of OKS in USD.
 
 **Type:** `uint public` ([18 decimals](SafeDecimalMath.md))
 
@@ -349,7 +349,7 @@ Allows the owner to set the [minimum deposit amount](#minimumdepositamount).
 
 ### `updatePrices`
 
-Allows the oracle address to update the USD [BNB](#usdToEthPrice) and [SNX](#usdToSnxPrice) prices known to the depot.
+Allows the oracle address to update the USD [BNB](#usdToEthPrice) and [OKS](#usdToSnxPrice) prices known to the depot.
 
 The prices are accompanied by the time they were sent. The oracle will not accept updates that are not the most recent, otherwise which protects from accepting stale prices during network congestion.
 
@@ -411,7 +411,7 @@ Returns the number of sUSD exchanged. Converts any ether sent to the contract to
 
 ### `exchangeEtherForOikos`
 
-- `exchangeEtherForOikos() returns (uint)`: Requires that the contract is not paused, and that the prices are not stale. Converts the received ether to a quantity of SNX with `oikosReceivedForEther`. Sends the ether to `fundsWallet`, sends the converted quantity of SNX to the message sender from the contract's own reserves. Returns the SNX quantity sent. If the contract has insufficient SNX, then the transfer will fail and the transaction will revert.
+- `exchangeEtherForOikos() returns (uint)`: Requires that the contract is not paused, and that the prices are not stale. Converts the received ether to a quantity of OKS with `oikosReceivedForEther`. Sends the ether to `fundsWallet`, sends the converted quantity of OKS to the message sender from the contract's own reserves. Returns the OKS quantity sent. If the contract has insufficient OKS, then the transfer will fail and the transaction will revert.
 
 ---
 
@@ -435,7 +435,7 @@ Returns the number of sUSD exchanged. Converts any ether sent to the contract to
 
 ### `withdrawOikos`
 
-- `withdrawOikos(uint amount)`: Only callable by the contract owner. Allows the owner to transfer SNX out of the Depot to themselves.
+- `withdrawOikos(uint amount)`: Only callable by the contract owner. Allows the owner to transfer OKS out of the Depot to themselves.
 
 ---
 
@@ -475,10 +475,10 @@ If prices are stale, then the depot's exchange functionality is disabled. This i
 
 ### `oikosReceivedForSynths`
 
-Computes the quantity of SNX received in exchange for a given quantity of sUSD at current prices, assuming sUSD are worth \$1. This is equivalent to:
+Computes the quantity of OKS received in exchange for a given quantity of sUSD at current prices, assuming sUSD are worth \$1. This is equivalent to:
 
 $$
-Q_\text{SNX} = Q_\text{sUSD} \times \frac{1}{\pi_\text{SNX}}
+Q_\text{OKS} = Q_\text{sUSD} \times \frac{1}{\pi_\text{OKS}}
 $$
 
 ??? example "Details"
@@ -491,10 +491,10 @@ $$
 
 ### `oikosReceivedForEther`
 
-Computes the quantity of SNX received in exchange for a given quantity of Ether at current prices. This is equivalent to:
+Computes the quantity of OKS received in exchange for a given quantity of Ether at current prices. This is equivalent to:
 
 $$
-Q_\text{SNX} = Q_\text{BNB} \times \frac{\pi_\text{ETH}}{\pi_\text{SNX}}
+Q_\text{OKS} = Q_\text{BNB} \times \frac{\pi_\text{ETH}}{\pi_\text{OKS}}
 $$
 
 ??? example "Details"
@@ -510,7 +510,7 @@ $$
 Computes the quantity of sUSD received in exchange for a given quantity of BNB at current prices. This is equivalent to:
 
 $$
-Q_\text{sUSD} = Q_\text{BNB} \times \pi_\text{SNX}
+Q_\text{sUSD} = Q_\text{BNB} \times \pi_\text{OKS}
 $$
 
 ??? example "Details"

@@ -4,7 +4,7 @@ This is a wrapper around [`Proxy`](Proxy.md) which explicitly implements the [ER
 
 As a result this proxy can verifiably support token functionality in its ABI if it sits in front of an ERC20-compliant smart contract. Apart from these functions, ProxyERC20 operates identically to the [proxy it inherits](Proxy.md).
 
-In the Oikos system, an ERC20 proxy operates in front of the main [SNX token contract](Synthetix.md), alongside the pre-existing standard proxy. Thus clients can choose to use either of these two proxies to interact with the system.
+In the Oikos system, an ERC20 proxy operates in front of the main [OKS token contract](Synthetix.md), alongside the pre-existing standard proxy. Thus clients can choose to use either of these two proxies to interact with the system.
 
 **Source:** [ProxyERC20.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/ProxyERC20.sol)
 

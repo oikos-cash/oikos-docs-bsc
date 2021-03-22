@@ -2,7 +2,7 @@
 
 ## Description
 
-A small utility contract that augments the SNX escrow contract to allow extracting a user's schedule as an array rather than as individual entries.
+A small utility contract that augments the OKS escrow contract to allow extracting a user's schedule as an array rather than as individual entries.
 
 **Source:** [EscrowChecker.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/EscrowChecker.sol)
 
@@ -30,7 +30,7 @@ A small utility contract that augments the SNX escrow contract to allow extracti
 
 ### `oikos_escrow`
 
-The [SNX escrow contract](OikosEscrow.md).
+The [OKS escrow contract](OikosEscrow.md).
 
 **Type:** `OikosEscrow public`
 

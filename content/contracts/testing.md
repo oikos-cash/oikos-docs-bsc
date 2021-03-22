@@ -27,4 +27,4 @@ Every time we deploy updates to Oikos, we mutate our `deployment.json` files und
 
 ## Testnet E2E Tests
 
-Finally, under the `test/testnet` folder is a script that when run, will execute a basic PVT of our system. Because it's live testnet BNB and SNX, the script uses tiny amounts of the tokens in its execution.Tthis script is used after each deployment to a testnet to ensure health of the system.
+Finally, under the `test/testnet` folder is a script that when run, will execute a basic PVT of our system. Because it's live testnet BNB and OKS, the script uses tiny amounts of the tokens in its execution.Tthis script is used after each deployment to a testnet to ensure health of the system.

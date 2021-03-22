@@ -1,6 +1,6 @@
 # RewardEscrow
 
-This is the mechanism for distributing SNX rewards from the inflationary supply. When an SNX staker claims fees, the inflationary reward component is escrowed in this contract and an entry is added to an escrow schedule for that staker for them to claim after a year. These vesting schedules can only be appended to by the [FeePool](FeePool.md) contract.
+This is the mechanism for distributing OKS rewards from the inflationary supply. When an OKS staker claims fees, the inflationary reward component is escrowed in this contract and an entry is added to an escrow schedule for that staker for them to claim after a year. These vesting schedules can only be appended to by the [FeePool](FeePool.md) contract.
 
 The logic of RewardEscrow is derived from the [OikosEscrow](SynthetixEscrow.md) contract.
 
@@ -77,7 +77,7 @@ The quantity of tokens that have already been vested for each account.
 
 ### `totalEscrowedBalance`
 
-A record of the total remaining vested balance in this contract, which should be equal to the actual SNX balance.
+A record of the total remaining vested balance in this contract, which should be equal to the actual OKS balance.
 
 **Type:** `uint public`
 
@@ -135,7 +135,7 @@ Initialises the [`Oikos`](Synthetix.md) and [`FeePool`](FeePool.md) contract add
 
 ### `setOikos`
 
-Sets the address of the [`Oikos`](Synthetix.md) contract, so that escrowed SNX can be transferred to accounts claiming them.
+Sets the address of the [`Oikos`](Synthetix.md) contract, so that escrowed OKS can be transferred to accounts claiming them.
 
 ??? example "Details"
 
@@ -199,7 +199,7 @@ The number of entries in an account's vesting schedule, including those already 
 
 ### `getVestingScheduleEntry`
 
-Returns a particular schedule entry for an account, which is a pair of uints: `(vesting timestamp, SNX quantity)`.
+Returns a particular schedule entry for an account, which is a pair of uints: `(vesting timestamp, OKS quantity)`.
 
 This is here because the public function generated for [`vestingSchedules`](#vestingschedules) awkwardly requires the index into the pair as its third argument.
 
@@ -225,7 +225,7 @@ Returns the time at which a given schedule entry will vest.
 
 ### `getVestingQuantity`
 
-Returns the quantity of SNX a given schedule entry will yield.
+Returns the quantity of OKS a given schedule entry will yield.
 
 ??? example "Details"
 
@@ -275,7 +275,7 @@ Returns the timestamp of the next vesting entry. Returns `0` if there is no such
 
 ### `getNextVestingQuantity`
 
-Returns the SNX quantity of the next vesting entry. Returns `0` if there is no such entry.
+Returns the OKS quantity of the next vesting entry. Returns `0` if there is no such entry.
 
 ??? example "Details"
 
@@ -314,7 +314,7 @@ This function allows the [`FeePool`](FeePool.md) contract to add a new entry to 
     **Preconditions**
 
     * `quantity` must be nonzero.
-    * The balance of SNX in the escrow contract must be sufficient to supply the new vesting entry.
+    * The balance of OKS in the escrow contract must be sufficient to supply the new vesting entry.
     * The given account's existing schedule length must be less than [`MAX_VESTING_ENTRIES`](#max_vesting_entries).
 
     **Emits**
@@ -357,7 +357,7 @@ Reverts the transaction if the `msg.sender` is not the [`FeePool`](FeePool.md).
 
 ### `OikosUpdated`
 
-Records that the SNX contract address was altered.
+Records that the OKS contract address was altered.
 
 **Signature:** `OikosUpdated(address newSynthetix)`
 

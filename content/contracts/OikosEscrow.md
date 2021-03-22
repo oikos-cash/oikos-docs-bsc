@@ -2,7 +2,7 @@
 
 ## Description
 
-This contract holds the SNX which were escrowed at the time of the original token sale, releasing them according to a defined schedule.
+This contract holds the OKS which were escrowed at the time of the original token sale, releasing them according to a defined schedule.
 
 The contract was subject to an eight week setup period during which the vesting schedules were set up.
 
@@ -116,7 +116,7 @@ Initialises the [`Oikos`](Synthetix.md) contract address, and the inherited [`Ow
 
 ### `setOikos`
 
-Sets the address of the [`Oikos`](Synthetix.md) contract, so that escrowed SNX can be transferred to accounts claiming them.
+Sets the address of the [`Oikos`](Synthetix.md) contract, so that escrowed OKS can be transferred to accounts claiming them.
 
 ??? example "Details"
 
@@ -160,7 +160,7 @@ The number of entries in an account's vesting schedule, including those already 
 
 ### `getVestingScheduleEntry`
 
-Returns a particular schedule entry for an account, which is a pair of uints: `(vesting timestamp, SNX quantity)`.
+Returns a particular schedule entry for an account, which is a pair of uints: `(vesting timestamp, OKS quantity)`.
 
 This is here because the public function generated for [`vestingSchedules`](#vestingschedules) awkwardly requires the index into the pair as its third argument.
 
@@ -186,7 +186,7 @@ Returns the time at which a given schedule entry will vest.
 
 ### `getVestingQuantity`
 
-Returns the quantity of SNX a given schedule entry will yield.
+Returns the quantity of OKS a given schedule entry will yield.
 
 ??? example "Details"
 
@@ -236,7 +236,7 @@ Returns the timestamp of the next vesting entry. Returns `0` if there is no such
 
 ### `getNextVestingQuantity`
 
-Returns the SNX quantity of the next vesting entry. Returns `0` if there is no such entry.
+Returns the OKS quantity of the next vesting entry. Returns `0` if there is no such entry.
 
 ??? example "Details"
 
@@ -248,9 +248,9 @@ Returns the SNX quantity of the next vesting entry. Returns `0` if there is no s
 
 ### `withdrawOikos`
 
-Transfers a quantity of SNX back to the Oikos contract.
+Transfers a quantity of OKS back to the Oikos contract.
 
-This was callable by the owner during the setup period in case too much SNX was deposited into the escrow contract.
+This was callable by the owner during the setup period in case too much OKS was deposited into the escrow contract.
 
 ??? example "Details"
 
@@ -301,7 +301,7 @@ Allows new entry to be added to the given account's vesting schedule by the owne
 
     * `time` must be in the future.
     * `quantity` must be nonzero.
-    * The balance of SNX in the escrow contract must be sufficient to supply the new vesting entry.
+    * The balance of OKS in the escrow contract must be sufficient to supply the new vesting entry.
     * The given account's existing schedule length must be less than [`MAX_VESTING_ENTRIES`](#max_vesting_entries).
     * `time` must be after the last vesting entry's timestamp, if such an entry exists.
 
@@ -357,7 +357,7 @@ Finds all vesting schedule entries that have come due for the caller and transfe
 
 ### `OikosUpdated`
 
-Records that the SNX contract address was altered.
+Records that the OKS contract address was altered.
 
 **Signature:** `OikosUpdated(address newSynthetix)`
 

@@ -93,11 +93,11 @@ The XDR-equivalent debt of `sUSD` imported which was outstanding immediately bef
 
 ### `issuanceRatio`
 
-The current global issuance ratio, which is the conversion factor between a value of SNX and the value of synths issued against them. As a result this determines the maximum ratio between the total value of Synths and SNX in the system.
+The current global issuance ratio, which is the conversion factor between a value of OKS and the value of synths issued against them. As a result this determines the maximum ratio between the total value of Synths and OKS in the system.
 
-It is also the target ratio for SNX stakers. As per the logic in [`FeePool.feesClaimable`](FeePool.md#feesclaimable), stakers can only claim any fee rewards if they are within ten percent of the issuance ratio. Therefore altering it will also alter the maximum total supply of Synths, as suppliers of Synths are strongly incentivised to track the issuance ratio closely.
+It is also the target ratio for OKS stakers. As per the logic in [`FeePool.feesClaimable`](FeePool.md#feesclaimable), stakers can only claim any fee rewards if they are within ten percent of the issuance ratio. Therefore altering it will also alter the maximum total supply of Synths, as suppliers of Synths are strongly incentivised to track the issuance ratio closely.
 
-If the issuance ratio is $\rho$, then the [maximum value](Oikos.md#maxissuablesynths) $V_s$ of a synth $s$ [issuable](Synthetix.md#issuesynths) against a value $V_c$ of SNX collateral is just:
+If the issuance ratio is $\rho$, then the [maximum value](Oikos.md#maxissuablesynths) $V_s$ of a synth $s$ [issuable](Synthetix.md#issuesynths) against a value $V_c$ of OKS collateral is just:
 
 $$
 V_s = \rho \ V_c
@@ -115,7 +115,7 @@ $$
 Q_s = \rho \ \frac{\pi_c}{\pi_s} \ Q_c
 $$
 
-As a result of this calculation, the number of synths that can be issued increases as the SNX price increases, but decreases as the synth price increases. Since neither market prices nor synth supply can be controlled directly, the remaining parameter, the issuance ratio, is an important way of affecting these quantities.
+As a result of this calculation, the number of synths that can be issued increases as the OKS price increases, but decreases as the synth price increases. Since neither market prices nor synth supply can be controlled directly, the remaining parameter, the issuance ratio, is an important way of affecting these quantities.
 
 ???+ info "The Issuance Ratio as a Macro-Economic Lever"
 
@@ -285,7 +285,7 @@ Sets the preferred currency for a particular account. Pass in null to unset this
 
 ### `setIssuanceRatio`
 
-Allows the owner to set the Synth [issuance ratio](#issuanceratio), but disallows setting it higher than $1.0$, which prevents more than one dollar worth of Synths being issued against each dollar of SNX backing them.
+Allows the owner to set the Synth [issuance ratio](#issuanceratio), but disallows setting it higher than $1.0$, which prevents more than one dollar worth of Synths being issued against each dollar of OKS backing them.
 
 ??? example "Details"
 

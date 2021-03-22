@@ -31,9 +31,9 @@
     - [`FeePoolState`](FeePoolState.md): The fee pool state contract holds the details of each user's most recent issuance events: when they issued and burnt synths, and their value.
     - [`FeePoolEternalStorage`](FeePoolEternalStorage): A storage contact that holds the last fee withdrawal time for each account.
     - [`DelegateApprovals`](DelegateApprovals): A storage contract containing addresses to which the right to withdraw fees has been delegated by another account, for example to allow hot wallets to withdraw fees.
-    - [`RewardEscrow`](RewardEscrow.md): The contract into which inflationary SNX rewards are paid by the fee pool so that they can be escrowed for a year after being claimed.
+    - [`RewardEscrow`](RewardEscrow.md): The contract into which inflationary OKS rewards are paid by the fee pool so that they can be escrowed for a year after being claimed.
     - [`RewardsDistribution`](RewardsDistribution.md): This contract, in the guise of the [`rewardsAuthority`](#rewardsauthority), distributes allocations from the inflationary supply to various recipients.
-    - [`Depot`](Depot.md): Allows users to exchange between Synths, SNX, and Ether. The Depot uses the fee pool to know what transfer fees were being incurred on its transfers, although the transfer fee has been nil since before [SIP-19](https://sips.oikos.cash/sips/sip-19).
+    - [`Depot`](Depot.md): Allows users to exchange between Synths, OKS, and Ether. The Depot uses the fee pool to know what transfer fees were being incurred on its transfers, although the transfer fee has been nil since before [SIP-19](https://sips.oikos.cash/sips/sip-19).
 
 ---
 
@@ -59,7 +59,7 @@ A record for a fee period, when it was opened, and the fees and rewards accrued 
 | startTime           | `uint`                                     | The current timestamp when this fee period began.                                                                                                                                                                                                                                                                                 |
 | feesToDistribute    | `uint` ([18 decimals](SafeDecimalMath.md)) | The total of fees to be distributed in this period, in sUSD. This increases when fees are collected in the current period or when unclaimed fees roll over from the oldest period to the second oldest. See [`feePaid`](#feepaid) and [`closeCurrentPeriod`](#closecurrentperiod).                                                |
 | feesClaimed         | `uint` ([18 decimals](SafeDecimalMath.md)) | The number of fees that have already been claimed during this period.                                                                                                                                                                                                                                                             |
-| rewardsToDistribute | `uint` ([18 decimals](SafeDecimalMath.md)) | The total of inflationary rewards to be distributed in this period, in SNX. This increases when new rewards are minted by [`Oikos.mint`](Synthetix.md#mint)/[`rewardsMinted`](#rewardsminted), or when unclaimed rewards roll over from the oldest period to the second oldest ([`closeCurrentPeriod`](#closecurrentperiod)). |
+| rewardsToDistribute | `uint` ([18 decimals](SafeDecimalMath.md)) | The total of inflationary rewards to be distributed in this period, in OKS. This increases when new rewards are minted by [`Oikos.mint`](Synthetix.md#mint)/[`rewardsMinted`](#rewardsminted), or when unclaimed rewards roll over from the oldest period to the second oldest ([`closeCurrentPeriod`](#closecurrentperiod)). |
 | rewardsClaimed      | `uint` ([18 decimals](SafeDecimalMath.md)) | The quantity of inflationary rewards that have already been claimed during this period.                                                                                                                                                                                                                                           |
 
 ---
@@ -323,7 +323,7 @@ Returns the fee charged on an exchange of a certain quantity of Synths into anot
 
 ### `feesAvailable`
 
-Return the total of fees and rewards available to be withdrawn by this account. The result is reported as a `[fees, rewards]` pair denominated in the requested Synth flavour and SNX, respectively.
+Return the total of fees and rewards available to be withdrawn by this account. The result is reported as a `[fees, rewards]` pair denominated in the requested Synth flavour and OKS, respectively.
 
 This is the total of fees accrued in completed periods, so is simply the the sum over an account's [`feesByPeriod`](#feesbyperiod) not including the current period.
 
@@ -337,7 +337,7 @@ This is the total of fees accrued in completed periods, so is simply the the sum
 
 ### `feesByPeriod`
 
-Returns an array of [`FEE_PERIOD_LENGTH`](#fee_period_length) `[fees, rewards]` pairs owed to an account for each [recent fee period](#recentfeeperiods) (including the current one). Fees are denominated in sUSD and rewards in SNX.
+Returns an array of [`FEE_PERIOD_LENGTH`](#fee_period_length) `[fees, rewards]` pairs owed to an account for each [recent fee period](#recentfeeperiods) (including the current one). Fees are denominated in sUSD and rewards in OKS.
 
 To compute this, for each period from oldest to newest, find the [latest issuance event this account performed before the close of this period](FeePoolState.md#applicableissuancedata), and use it to derive the owed [fees and rewards](#_feesandrewardsfromperiod) for that period.
 
@@ -405,7 +405,7 @@ Computes the total fees available to be withdrawn, valued in terms of `currencyK
 
 ### `totalRewardsAvailable`
 
-Computes the total SNX rewards available to be withdrawn. This simply sums the unclaimed rewards over [`recentFeePeriods`](#recentfeeperiods) except those from the current period, because they cannot yet be claimed.
+Computes the total OKS rewards available to be withdrawn. This simply sums the unclaimed rewards over [`recentFeePeriods`](#recentfeeperiods) except those from the current period, because they cannot yet be claimed.
 
 ??? example "Details"
 
@@ -530,9 +530,9 @@ Disapproves an account as a fee claimant for the sender in the [`DelegateApprova
 
 ### `appendVestingEntry`
 
-Allows the contract owner to escrow SNX rewards for particular accounts. The rewards are escrowed for one year.
+Allows the contract owner to escrow OKS rewards for particular accounts. The rewards are escrowed for one year.
 
-The SNX is deposited into the [`RewardEscrow`](RewardEscrow.md) contract from the sender using the ERC20 transferFrom function. The tokens are then escrowed on behalf of the targeted account with [`RewardEscrow.appendVestingEntry`](RewardEscrow.md#appendvestingentry).
+The OKS is deposited into the [`RewardEscrow`](RewardEscrow.md) contract from the sender using the ERC20 transferFrom function. The tokens are then escrowed on behalf of the targeted account with [`RewardEscrow.appendVestingEntry`](RewardEscrow.md#appendvestingentry).
 
 ??? example "Details"
 
@@ -738,7 +738,7 @@ Adds the value in sUSD to the current fee period's pool of fees to be distribute
 
 ### `setRewardsToDistribute`
 
-Adds a quantity of SNX to the current fee period's total of rewards to be distributed.
+Adds a quantity of OKS to the current fee period's total of rewards to be distributed.
 
 ??? example "Details"
 
@@ -780,7 +780,7 @@ The return value is always true if the transaction was not reverted.
 
     **Emits**
 
-    * [`FeesClaimed(claimingAddress, feesPaid, rewardsPaid)`](#feesclaimed) (`feesPaid` is denominated in sUSD, `rewardsPaid` in SNX)
+    * [`FeesClaimed(claimingAddress, feesPaid, rewardsPaid)`](#feesclaimed) (`feesPaid` is denominated in sUSD, `rewardsPaid` in OKS)
 
 ---
 
@@ -806,7 +806,7 @@ See [`Oikos._addToDebtRegister`](Synthetix.md#_addToDebtRegister) for details of
 
 ### `_feesAndRewardsFromPeriod`
 
-Computes the fees (in sUSD) and rewards (in SNX) owed at the end of a recent fee period given an entry index and the percentage of total system debt owned.
+Computes the fees (in sUSD) and rewards (in OKS) owed at the end of a recent fee period given an entry index and the percentage of total system debt owned.
 
 - `period` is an index into the [`recentFeePeriods`](#recentfeeperiods) array, thus 0 corresponds with the current period.
 - `debtEntryIndex` should be an index into the debt ledger which was added before the close of the specified fee period.
@@ -914,9 +914,9 @@ return paid
 
 ### `_recordRewardPayment`
 
-Claims a quantity of SNX rewards from the [recent fee periods](#recentfeeperiods). This is only called in `_claimFees`.
+Claims a quantity of OKS rewards from the [recent fee periods](#recentfeeperiods). This is only called in `_claimFees`.
 
-Its logic is identical to [`_recordFeePayment`](#_recordfeepayment), except that the relevant quantities are in `SNX`, and are claimed from [`rewardsClaimed`](#feeperiod).
+Its logic is identical to [`_recordFeePayment`](#_recordfeepayment), except that the relevant quantities are in `OKS`, and are claimed from [`rewardsClaimed`](#feeperiod).
 
 ??? example "Details"
 

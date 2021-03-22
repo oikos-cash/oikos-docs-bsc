@@ -14,7 +14,7 @@ supplyForWeek = Initial Weekly Supply \* (1 - rate of decay) ^ number of weeks
 
 To the initial 100 million tokens, 75 million / 52 weeks tokens were added for 39 weeks in 2019. Supply decay was implemented in week 40 whereby the weekly inflationary supply follows an exponential decay of 1.25% per week for a total of 195 weeks at Week 234.
 
-After Week 235 the SNX supply will grow at 2.5% APR based on the total Supply of SNX each week. Compounded weekly the supply growth APY is 2.53% for the terminal supply growth.
+After Week 235 the OKS supply will grow at 2.5% APR based on the total Supply of OKS each week. Compounded weekly the supply growth APY is 2.53% for the terminal supply growth.
 
 **Source:** [SupplySchedule.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/SupplySchedule.sol)
 
@@ -76,7 +76,7 @@ The address of the main [`OikosProxy`](Proxy.md) contract.
 
 ### `INFLATION_START_DATE`
 
-The timestamp at which the inflationary SNX supply began to be minted.
+The timestamp at which the inflationary OKS supply began to be minted.
 
 **Type:** `uint public constant`
 
@@ -106,7 +106,7 @@ A buffer added to the lastMintEvent to ensure that oikos rewards are issued afte
 
 ### `minterReward`
 
-Used as the quantity of SNX to reward the caller of [`Oikos.mint`](Synthetix.md#mint), which incentivises users to continue minting the inflationary supply over time. Initialised to 200 SNX.
+Used as the quantity of OKS to reward the caller of [`Oikos.mint`](Synthetix.md#mint), which incentivises users to continue minting the inflationary supply over time. Initialised to 200 OKS.
 
 **Type:** `uint public`
 
