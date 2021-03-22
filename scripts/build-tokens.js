@@ -103,7 +103,7 @@ const addInverseParameters = ({ inverted, asset, name }) => {
 	if (!inverted) return '';
 
 	return (
-		`**Inverse of**: [s${asset}](#${getLinkToAsset({ name, asset })})\n\n` +
+		`**Inverse of**: [o${asset}](#${getLinkToAsset({ name, asset })})\n\n` +
 		'| Entry Point | Upper Limit | Lower Limit |\n' +
 		'| - | - | - |\n' +
 		`| $${format(inverted.entryPoint)} | $${format(inverted.upperLimit)} | $${format(inverted.lowerLimit)}|\n\n`
