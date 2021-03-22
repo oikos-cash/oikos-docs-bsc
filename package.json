@@ -1,7 +1,7 @@
 {
-	"name": "synthetix-docs",
+	"name": "oikos-docs",
 	"version": "2.20.1",
-	"description": "Synthetix docs builder",
+	"description": "Oikos docs builder",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
@@ -11,19 +11,19 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+ssh://git@github.com/Synthetixio/synthetix-docs.git"
+		"url": "git+ssh://git@github.com/oikos-cash/oikos-docs-bsc.git"
 	},
-	"author": "Synthetix",
+	"author": "Oikos",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/Synthetixio/synthetix-docs/issues"
+		"url": "https://github.com/oikos-cash/oikos-docs-bsc/issues"
 	},
-	"homepage": "https://github.com/Synthetixio/synthetix-docs#readme",
+	"homepage": "https://github.com/oikos-cash/oikos-docs-bsc#readme",
 	"dependencies": {
+		"@oikos/oikos-bsc": "^0.2.11",
 		"axios": "~0.19.2",
 		"moment": "~2.24.0",
-		"numbro": "2.1.2",
-		"synthetix": "2.20.1"
+		"numbro": "2.1.2"
 	},
 	"devDependencies": {
 		"eslint": "~6.8.0",

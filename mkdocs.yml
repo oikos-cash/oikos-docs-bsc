@@ -1,12 +1,12 @@
 # Basic project details.
-site_name: 'Synthetix System Documentation'
+site_name: 'Oikos System Documentation'
 site_description: 'Decentralised Synthetic Assets'
-site_author: 'Synthetix Team'
+site_author: 'Oikos Team'
 site_url: ''
 
-# Links to the core Synthetix smart contract repository.
-repo_name: 'synthetixio/synthetix'
-repo_url: 'https://github.com/synthetixio/synthetix'
+# Links to the core Oikos smart contract repository.
+repo_name: 'oikos-cash/oikos-bsc'
+repo_url: 'https://github.com/oikos-cash/oikos-bsc'
 
 # Setting `edit_uri` to an empty string disables the edit button, which points to the wrong page.
 # If at some point this documentation is moved into the core synthetix repository, then this can be
@@ -16,7 +16,7 @@ edit_uri: ''
 docs_dir: 'content'
 
 # This copyright notice will be rendered in the footer.
-copyright: '<a href=https://github.com/Synthetixio/synthetix/blob/master/LICENSE>Copyright &copy Synthetix 2018 - 2020</a>'
+copyright: '<a href=https://github.com/oikos-cash/oikos-bsc/blob/master/LICENSE>Copyright &copy Oikos 2018 - 2020</a>'
 
 # Top level headings become tabs at the top due to `tabs: true` in the theme.
 nav:
@@ -37,9 +37,9 @@ nav:
       - Home: libraries/index.md
       - Versioning: libraries/versioning.md
       - Examples: libraries/examples.md
-      - synthetix: libraries/synthetix.md
-      - synthetix-js: libraries/synthetix-js.md
-      - synthetix-data: libraries/synthetix-data.md
+      - oikos: libraries/oikos.md
+      - oikos-js: libraries/oikos-js.md
+      - oikos-data: libraries/oikos-data.md
   - Smart Contracts:
       - Architecture: contracts/index.md
       - Integration Guide: contracts/integration.md
@@ -49,8 +49,8 @@ nav:
           - ExternStateToken: contracts/ExternStateToken.md
           - PurgeableSynth: contracts/PurgeableSynth.md
           - Synth: contracts/Synth.md
-          - Synthetix: contracts/Synthetix.md
-          - SynthetixState: contracts/SynthetixState.md
+          - Oikos: contracts/Oikos.md
+          - OikosState: contracts/OikosState.md
           - TokenState: contracts/TokenState.md
       - Fee Pool:
           - DelegateApprovals: contracts/DelegateApprovals.md
@@ -62,7 +62,7 @@ nav:
           - RewardEscrow: contracts/RewardEscrow.md
           - RewardsDistribution: contracts/RewardsDistribution.md
           - SupplySchedule: contracts/SupplySchedule.md
-          - SynthetixEscrow: contracts/SynthetixEscrow.md
+          - OikosEscrow: contracts/OikosEscrow.md
       - Helpers:
           - Exchanger: contracts/Exchanger.md
           - ExchangeState: contracts/ExchangeState.md

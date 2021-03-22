@@ -9,11 +9,11 @@ console.log('Building library pages');
 
 (async () => {
 	const readmes = await Promise.all(
-		['synthetix', 'synthetix-data', 'synthetix-js'].map(repo =>
+		['oikos-bsc', 'oikos-data', 'oikos-js-bsc'].map(repo =>
 			axios
-				.get(`https://raw.githubusercontent.com/Synthetixio/${repo}/master/README.md`)
+				.get(`https://raw.githubusercontent.com/oikos-cash/${repo}/master/README.md`)
 				.then(({ data }) => [
-					`https://github.com/Synthetixio/${repo}`,
+					`https://github.com/oikos-cash/${repo}`,
 					path.join(__dirname, '..', 'content', 'libraries', `${repo}.md`),
 					data,
 				]),
@@ -24,14 +24,14 @@ console.log('Building library pages');
 		fs.writeFileSync(path, `!!! info "Notice"\n\t\tImported from ${repo}\n\n${content}`),
 	);
 
-	// now do synthetix publish script
+	// now do oikos publish script
 	await axios
-		.get('https://raw.githubusercontent.com/Synthetixio/synthetix/master/publish/README.md')
+		.get('https://raw.githubusercontent.com/oikos-cash/oikos-bsc/master/publish/README.md')
 		.then(({ data }) =>
 			fs.writeFileSync(
 				path.join(__dirname, '..', 'content', 'contracts', 'publisher.md'),
-				'!!! info "Notice"\n\t\tThis details the `publish` script in the synthetix repository for building, deploying and verifying contracts.\n\n' +
-					'\t\tImported from https://github.com/Synthetixio/synthetix/tree/master/publish\n\n' +
+				'!!! info "Notice"\n\t\tThis details the `publish` script in the oikos repository for building, deploying and verifying contracts.\n\n' +
+					'\t\tImported from https://github.com/oikos-cash/oikos-bsc/tree/master/publish\n\n' +
 					data,
 			),
 		);

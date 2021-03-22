@@ -3,7 +3,7 @@
 const path = require('path');
 const fs = require('fs');
 const numbro = require('numbro');
-const snx = require('synthetix');
+const snx = require('@oikos/oikos-bsc');
 
 const network = 'mainnet';
 const targets = snx.getTarget({ network });
@@ -146,10 +146,10 @@ const content = `
 		This change is coming with [SIP-36](https://sips.synthetix.io/sips/sip-36).
 
 ${tokens
-		.sort((a, b) => (a.name > b.name ? 1 : -1))
-		.map(
-			({ name, asset, symbol, address, decimals, description, index, inverted, aggregator }) =>
-				`## ${name} (${symbol})\n\n` +
+	.sort((a, b) => (a.name > b.name ? 1 : -1))
+	.map(
+		({ name, asset, symbol, address, decimals, description, index, inverted, aggregator }) =>
+			`## ${name} (${symbol})\n\n` +
 			// Note: Manual addition of SIP-34 check of MKR
 			(asset === 'MKR'
 				? '!!! warning "Suspended"\n\t\tMKR has been suspended due to [SIP-34](https://sips.synthetix.io/sips/sip-34)\n\n'
@@ -160,8 +160,8 @@ ${tokens
 			addInverseParameters({ name, asset, inverted }) +
 			addIndexParameters({ name, asset, index, inverted }) +
 			`>${description}`,
-		)
-		.join('\n\n')}
+	)
+	.join('\n\n')}
 
 `;
 fs.writeFileSync(path.join(__dirname, '..', 'content', 'tokens.md'), content);

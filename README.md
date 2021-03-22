@@ -1,4 +1,4 @@
-# Synthetix System Documentation
+# Oikos System Documentation
 
 These pages are built with MkDocs; for full documentation visit [mkdocs.org](https://mkdocs.org).
 
