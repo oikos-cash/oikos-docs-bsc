@@ -8,7 +8,7 @@ The SIP format describes protocol standards and proposed updates. They provide a
 
 Historically, SIPs have been used to modify the fee/reward structure, allow the liquidation of unused synths, introduce new synths, and implement various exchange rate front-running protections. They are an appropriate mechanism for a broad range of fundamental alterations to the Oikos platform and as such require an organised process for community consultation and iteration.
 
-SIPs live in their own [GitHub repository](https://github.com/oikos-cash/SIPs), where the SIP format is [documented](https://github.com/Oikosio/SIPs/blob/master/SIPS/sip-1.md) and community members may participate in the acceptance process. Anyone may propose SIPs, though not all SIPs are necessarily accepted.
+SIPs live in their own [GitHub repository](https://github.com/oikos-cash/SIPs), where the SIP format is [documented](https://github.com/oikos-cash/SIPs/blob/master/SIPS/sip-1.md) and community members may participate in the acceptance process. Anyone may propose SIPs, though not all SIPs are necessarily accepted.
 
 ## Oikos Configuration Change Proposal (SCCPs)
 
@@ -22,7 +22,7 @@ The Oikos GrantsDAO was set up to fund community grant proposals for such purpos
 
 ## Community Governance Calls
 
-Community governance calls are a venue for the Oikos team to consult with the community. These calls occur on a semi-regular basis and typically have a pre-set agenda of issues to be discussed and resolved. This complements Discord as a central component of the team's commitment to transparency and community engagement on the path to full decentralisation. Upcoming community governance calls are announced on the [Synthetix blog](https://blog.oikos.cash/); [here](https://www.youtube.com/channel/UCxsxeKabeNtozsolSM_1nuw) you can view every governance call in full. 
+Community governance calls are a venue for the Oikos team to consult with the community. These calls occur on a semi-regular basis and typically have a pre-set agenda of issues to be discussed and resolved. This complements Discord as a central component of the team's commitment to transparency and community engagement on the path to full decentralisation. Upcoming community governance calls are announced on the [Synthetix blog](https://blog.oikos.cash/); [here](https://www.youtube.com/channel/UCxsxeKabeNtozsolSM_1nuw) you can view every governance call in full.
 
 ## Development Bounties
 

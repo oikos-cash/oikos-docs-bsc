@@ -3,18 +3,15 @@ Imported from https://github.com/oikos-cash/oikos-bsc
 
 # Oikos
 
-[![Build Status](https://travis-ci.org/oikos-cash/oikos-bsc.svg?branch=master)](https://travis-ci.org/Oikosio/oikos)
-[![CircleCI](https://circleci.com/gh/oikos-cash/oikos-bsc.svg?style=svg)](https://circleci.com/gh/Oikosio/oikos)
-[![npm version](https://badge.fury.io/js/oikos.svg)](https://badge.fury.io/js/oikos)
-[![Discord](https://img.shields.io/discord/413890591840272394.svg?color=768AD4&label=discord&logo=https%3A%2F%2Fdiscordapp.com%2Fassets%2F8c9701b98ad4372b58f13fd9f65f966e.svg)](https://discordapp.com/channels/413890591840272394/)
-[![Twitter Follow](https://img.shields.io/twitter/follow/oikos.cash.svg?label=oikos.cash&style=social)](https://twitter.com/oikos.cash)
+[![npm version](https://badge.fury.io/js/@oikos-cash/oikos-bsc.svg)](https://badge.fury.io/js/@oikos-cash/oikos-bsc)
+[![Twitter Follow](https://img.shields.io/twitter/follow/oikos_cash.svg?label=oikos_cash&style=social)](https://twitter.com/oikos_cash)
 
 Oikos is a crypto-backed synthetic asset platform.
 
-It is a multitoken system, powered by OKS, the Oikos Network Token. OKS holders can stake OKS to issue Synths, on-chain synthetic assets via the [Mintr Dapp](https://mintr.oikos.cash) The network currently supports an ever growing [list of synthetic assets](https://www.oikos.cash/tokens/). Please see the [list of the deployed contracts on MAIN and TESTNETS](https://developer.oikos.cash/api/docs/deployed-contracts.html)
+It is a multitoken system, powered by OKS, the Oikos Network Token. OKS holders can stake OKS to issue Synths, on-chain synthetic assets via the [Minter Dapp](https://minter.oikos.cash) The network currently supports an ever growing [list of synthetic assets](https://www.oikos.cash/tokens/). Please see the [list of the deployed contracts on MAIN and TESTNETS](https://developer.oikos.cash/api/docs/deployed-contracts.html)
 Synths can be traded using (https://oikos.exchange)
 
-Oikos uses a proxy system so that upgrades will not be disruptive to the functionality of the contract. This smooths user interaction, since new functionality will become available without any interruption in their experience. It is also transparent to the community at large, since each upgrade is accompanied by events announcing those upgrades. New releases are managed via the [Synthetix Improvement Proposal (SIP)](https://sips.oikos.cash/all-sip) system similar to the [EF's EIPs](https://eips.ethereum.org/all)
+Oikos uses a proxy system so that upgrades will not be disruptive to the functionality of the contract. This smooths user interaction, since new functionality will become available without any interruption in their experience. It is also transparent to the community at large, since each upgrade is accompanied by events announcing those upgrades.
 
 Prices are commited on chain by a trusted oracle. Moving to a decentralised oracle is phased in with the first phase completed for all forex prices using Chainlink. (https://landing-feeds.surge.sh).
 
@@ -24,7 +21,7 @@ The code here will be under continual audit and improvement as the project progr
 
 ## DApps
 
-- https://mintr.oikos.cash
+- https://minter.oikos.cash
 - https://oikos.exchange
 - https://dashboard.oikos.cash
 
