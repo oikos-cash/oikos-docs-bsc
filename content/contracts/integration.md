@@ -49,7 +49,7 @@ You can use [`Exchanger.maxSecsLeftInWaitingPeriod()`](/contracts/exchanger/#max
 
 ## Address Resolver
 
-In our Achernar release, we introduced a new feature called the `AddressResolver` contract ([contracts.oikos.cash/AddressResolver](https://contracts.synthetix.io/AddressResolver)).
+In our Achernar release, we introduced a new feature called the `AddressResolver` contract ([contracts.oikos.cash/AddressResolver](https://contracts.oikos.cash/AddressResolver)).
 
 In short, the `AddressResolver` allows any referencing contract to have access to a number of key contract - in particular the underlying `Oikos`, `FeePool`, `SynthsUSD` and `SynthsBNB` contracts. There are plans in the near future to add our proxies as well.
 

@@ -6,7 +6,7 @@ Prices which have not been updated recently enough are considered stale; Oikos f
 The ExchangeRates contract is also responsible for computing the prices of various derived synths.
 In particular, the behaviour of [inverse synths](#rateorinverted) is defined here. These are derivative synths whose price varies inversely with the price of an underlying asset.
 
-This contract interacts with the oracle's frontrunning protection, which is partially described in [SIP-6](https://sips.oikos.cash/sips/sip-6) and [SIP-7](https://sips.synthetix.io/sips/sip-7).
+This contract interacts with the oracle's frontrunning protection, which is partially described in [SIP-6](https://sips.oikos.cash/sips/sip-6) and [SIP-7](https://sips.oikos.cash/sips/sip-7).
 
 This does not turn off any functionality in the exchange rate contract, but is used by [`Oikos`](Synthetix.md) to disable [currency exchanges](Synthetix.md#_internalexchange) while prices are being updated to protect against oracle front running. The lock is released when [rate updates have completed](#internalupdaterates).
 

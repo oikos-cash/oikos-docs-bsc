@@ -7,11 +7,11 @@ Imported from https://github.com/oikos-cash/oikos-bsc
 [![CircleCI](https://circleci.com/gh/oikos-cash/oikos-bsc.svg?style=svg)](https://circleci.com/gh/Oikosio/synthetix)
 [![npm version](https://badge.fury.io/js/synthetix.svg)](https://badge.fury.io/js/synthetix)
 [![Discord](https://img.shields.io/discord/413890591840272394.svg?color=768AD4&label=discord&logo=https%3A%2F%2Fdiscordapp.com%2Fassets%2F8c9701b98ad4372b58f13fd9f65f966e.svg)](https://discordapp.com/channels/413890591840272394/)
-[![Twitter Follow](https://img.shields.io/twitter/follow/synthetix_io.svg?label=synthetix_io&style=social)](https://twitter.com/synthetix_io)
+[![Twitter Follow](https://img.shields.io/twitter/follow/oikos.cash.svg?label=oikos.cash&style=social)](https://twitter.com/oikos.cash)
 
 Oikos is a crypto-backed synthetic asset platform.
 
-It is a multitoken system, powered by OKS, the Oikos Network Token. OKS holders can stake OKS to issue Synths, on-chain synthetic assets via the [Mintr Dapp](https://mintr.oikos.cash) The network currently supports an ever growing [list of synthetic assets](https://www.synthetix.io/tokens/). Please see the [list of the deployed contracts on MAIN and TESTNETS](https://developer.synthetix.io/api/docs/deployed-contracts.html)
+It is a multitoken system, powered by OKS, the Oikos Network Token. OKS holders can stake OKS to issue Synths, on-chain synthetic assets via the [Mintr Dapp](https://mintr.oikos.cash) The network currently supports an ever growing [list of synthetic assets](https://www.oikos.cash/tokens/). Please see the [list of the deployed contracts on MAIN and TESTNETS](https://developer.oikos.cash/api/docs/deployed-contracts.html)
 Synths can be traded using (https://synthetix.exchange)
 
 Oikos uses a proxy system so that upgrades will not be disruptive to the functionality of the contract. This smooths user interaction, since new functionality will become available without any interruption in their experience. It is also transparent to the community at large, since each upgrade is accompanied by events announcing those upgrades. New releases are managed via the [Synthetix Improvement Proposal (SIP)](https://sips.oikos.cash/all-sip) system similar to the [EF's EIPs](https://eips.ethereum.org/all)

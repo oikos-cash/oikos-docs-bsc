@@ -40,4 +40,4 @@ The primary opportunity for arbitrage in Oikos is taking advantage of underprice
 
 ## Additional Crypto-economic Discussions
 
-For more information and discussions on incentives, please see the lateset entries in our blog: [blog.oikos.cash](https://blog.synthetix.io).
+For more information and discussions on incentives, please see the lateset entries in our blog: [blog.oikos.cash](https://blog.oikos.cash).
