@@ -1,5 +1,5 @@
 !!! info "Notice"
-Imported from https://github.com/oikos-cash/oikos-data
+		Imported from https://github.com/oikos-cash/oikos-data
 
 # synthetix-data
 
@@ -7,15 +7,15 @@ Imported from https://github.com/oikos-cash/oikos-data
 [![Discord](https://img.shields.io/discord/413890591840272394.svg?color=768AD4&label=discord&logo=https%3A%2F%2Fdiscordapp.com%2Fassets%2F8c9701b98ad4372b58f13fd9f65f966e.svg)](https://discordapp.com/channels/413890591840272394/)
 [![Twitter Follow](https://img.shields.io/twitter/follow/synthetix_io.svg?label=synthetix_io&style=social)](https://twitter.com/synthetix_io)
 
-This is a collection of utilities to query Synthetix data from Ethereum. This data has been indexed by The Graph via the various subgraphs the Synthetix team maintains ([the subgraph code repo](https://github.com/oikos-cash/oikos-bsc-subgraph)).
+This is a collection of utilities to query Synthetix data from Ethereum. This data has been indexed by The Graph via the various subgraphs the Synthetix team maintains ([the subgraph code repo](https://github.com/Synthetixio/synthetix-subgraph)).
 
 ## Supported queries
 
 The below all return a Promise that resolves with the requested results.
 
 1. `depot.userActions({ user })` Get all depot deposit (`sUSD`) actions for the given user - `deposit`, `withdrawl`, `unaccepted`, `removed`.
-2. `depot.clearedDeposits({ fromAddress, toAddress })` Get all cleared synth deposits (payments of `BNB` for `sUSD`) either from a given `fromAddress` or (and as well as) to a given `toAddress`
-3. `depot.exchanges({ from })` Get all depot exchanges (buying sUSD with BNB) for a given `from` address.
+2. `depot.clearedDeposits({ fromAddress, toAddress })` Get all cleared synth deposits (payments of `ETH` for `sUSD`) either from a given `fromAddress` or (and as well as) to a given `toAddress`
+3. `depot.exchanges({ from })` Get all depot exchanges (buying sUSD with ETH) for a given `from` address.
 4. `exchanges.total()` Get the total exchange volume, total fees and total number of unique exchange addresses.
 5. `exchanges.rebates({ minTimestamp = 1 day ago })` Get the last `N` exchange rebates since the given `minTimestamp` in seconds. Ordered in reverse chronological order.
 6. `exchanges.reclaims({ minTimestamp = 1 day ago })` Get the last `N` exchange reclaims since the given `minTimestamp` in seconds. Ordered in reverse chronological order.
@@ -57,7 +57,7 @@ The below all return an [Observable](https://github.com/tc39/proposal-observable
 ## Use this as a node or webpack dependency
 
 ```javascript
-const snxData = require('@oikos/oikos-data-bsc'); // common js
+const snxData = require('synthetix-data'); // common js
 // or
 import snxData from 'synthetix-data'; // es modules
 
