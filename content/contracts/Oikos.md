@@ -466,8 +466,8 @@ This function always returns true if the transaction did not revert.
 
     **Emits**
 
-    * [`Transfer(synthetix, rewardDistribution, newSupply - minterReward)`](ExternStateToken.md#transfer)
-    * [`Transfer(synthetix, msg.sender, minterReward)`](ExternStateToken.md#transfer)
+    * [`Transfer(oikos, rewardDistribution, newSupply - minterReward)`](ExternStateToken.md#transfer)
+    * [`Transfer(oikos, msg.sender, minterReward)`](ExternStateToken.md#transfer)
 
 ---
 
@@ -475,7 +475,7 @@ This function always returns true if the transaction did not revert.
 
 This is a ERC20 transfer functions.
 
-A successful transfer requires the message sender to have sufficient balance, accounting for [locked SNX](#transferablesynthetix).
+A successful transfer requires the message sender to have sufficient balance, accounting for [locked SNX](#transferableoikos).
 
 Implemented based on [`ExternStateToken._transfer_byProxy`](ExternStateToken#_transfer_byproxy).
 
@@ -491,7 +491,7 @@ Implemented based on [`ExternStateToken._transfer_byProxy`](ExternStateToken#_tr
 
     **Preconditions and Events**
 
-    * `value` must not exceed [`transferableOikos(messageSender)`](#transferablesynthetix)
+    * `value` must not exceed [`transferableOikos(messageSender)`](#transferableoikos)
 
     Otherwise, function behaves as per [`ExternStateToken._internalTransfer`](ExternStateToken.md#_internaltransfer).
 
@@ -501,7 +501,7 @@ Implemented based on [`ExternStateToken._transfer_byProxy`](ExternStateToken#_tr
 
 This is a ERC20 transferFrom functions.
 
-A successful transfer requires the token owner to have sufficient balance, accounting for [locked SNX](#transferablesynthetix).
+A successful transfer requires the token owner to have sufficient balance, accounting for [locked SNX](#transferableoikos).
 
 Implemented based on [`ExternStateToken._transferFrom_byProxy`](ExternStateToken#_transferfrom_byproxy).
 
@@ -518,7 +518,7 @@ Implemented based on [`ExternStateToken._transferFrom_byProxy`](ExternStateToken
 
     **Preconditions and Events**
 
-    * `value` must not exceed [`transferableOikos(from)`](#transferablesynthetix)
+    * `value` must not exceed [`transferableOikos(from)`](#transferableoikos)
 
     Otherwise, the these functions behave as per [`ExternStateToken._internalTransfer`](ExternStateToken.md#_internaltransfer).
 

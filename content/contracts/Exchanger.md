@@ -77,7 +77,7 @@ The constructor initialises the various addresses that this contract knows about
 
     **Signature**
 
-    `constructor(address _proxy, TokenState _tokenState, OikosState _synthetixState, address _owner, ExchangeRates _exchangeRates, FeePool _feePool, SupplySchedule _supplySchedule, SynthetixEscrow _rewardEscrow, SynthetixEscrow _escrow, RewardsDistribution _rewardsDistribution, uint _totalSupply) public`
+    `constructor(address _proxy, TokenState _tokenState, OikosState _oikosState, address _owner, ExchangeRates _exchangeRates, FeePool _feePool, SupplySchedule _supplySchedule, SynthetixEscrow _rewardEscrow, SynthetixEscrow _escrow, RewardsDistribution _rewardsDistribution, uint _totalSupply) public`
 
     **Superconstructors**
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-Defines the Oikos inflationary supply schedule, according to which the synthetix inflationary supply is released.
+Defines the Oikos inflationary supply schedule, according to which the oikos inflationary supply is released.
 
 Minting is performed in increments of a week whenever [`recordMintEvent`](#recordMintEvent) is called from [`Oikos.mint`](Synthetix.md#mint). Minting can be called weekly after the time elapses for more than 7 days. These accrue so that no tokens are lost even if minting is not performed for several periods; the accrued total is minted at the next invocation. These computations are covered in more detail in the [`mintableSupply`](#mintablesupply) description.
 
@@ -66,7 +66,7 @@ The timestamp when new supply was last minted - Is set to the number of weeks si
 
 ---
 
-### `synthetixProxy`
+### `oikosProxy`
 
 The address of the main [`OikosProxy`](Proxy.md) contract.
 
@@ -96,7 +96,7 @@ The amount of tokens being issued weekly before exponential decay started. Used 
 
 ### `MINT_BUFFER`
 
-A buffer added to the lastMintEvent to ensure that synthetix rewards are issued after a feePeriod closes.
+A buffer added to the lastMintEvent to ensure that oikos rewards are issued after a feePeriod closes.
 
 **Type:** `uint public constant`
 
@@ -164,13 +164,13 @@ Sets up the minting schedule and the inherited [`Owned`](Owned.md) instance.
 
 ### `setOikosProxy`
 
-Allows the owner to set the [`synthetix`](#synthetix) address.
+Allows the owner to set the [`oikos`](#oikos) address.
 
 ??? example "Details"
 
     **Signature**
 
-    `setOikos(ISynthetix _synthetixProxy) external`
+    `setOikos(ISynthetix _oikosProxy) external`
 
     **Modifiers**
 
@@ -236,7 +236,7 @@ The function always returns `true` if the transaction was not reverted.
 
     **Modifiers**
 
-    * [`onlyOikos`](#onlysynthetix)
+    * [`onlyOikos`](#onlyoikos)
 
     **Emits**
 
@@ -270,7 +270,7 @@ Allows the owner to set the current [minter reward](#minterreward).
 
 ### `onlyOikos`
 
-Reverts the transaction if `msg.sender` is not the [`synthetix`](#synthetix) address. Oikos address is found by lookup to the proxy.target().
+Reverts the transaction if `msg.sender` is not the [`oikos`](#oikos) address. Oikos address is found by lookup to the proxy.target().
 
 ---
 

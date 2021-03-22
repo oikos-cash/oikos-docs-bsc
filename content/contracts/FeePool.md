@@ -216,7 +216,7 @@ Stores [fee period information](#feeperiod) for the last three weeks, from newes
 
 ---
 
-### `synthetix`
+### `oikos`
 
 The main [`Oikos`](Synthetix.md) contract.
 
@@ -224,7 +224,7 @@ The main [`Oikos`](Synthetix.md) contract.
 
 ---
 
-### `synthetixState`
+### `oikosState`
 
 The associated [`OikosState`](SynthetixState.md) contract.
 
@@ -244,7 +244,7 @@ This constructor also begins the first fee period, as it initialises the first f
 
     **Signature**
 
-    `constructor(address _proxy, address _owner, Oikos _synthetix, FeePoolState _feePoolState, FeePoolEternalStorage _feePoolEternalStorage, ISynthetixState _synthetixState, ISynthetixEscrow _rewardEscrow, address _rewardsAuthority, uint _exchangeFeeRate) public`
+    `constructor(address _proxy, address _owner, Oikos _oikos, FeePoolState _feePoolState, FeePoolEternalStorage _feePoolEternalStorage, ISynthetixState _oikosState, ISynthetixEscrow _rewardEscrow, address _rewardsAuthority, uint _exchangeFeeRate) public`
 
     **Superconstructors**
 
@@ -650,13 +650,13 @@ Allows the contract owner to set the [rewards authority](#rewardsauthority).
 
 ### `setOikos`
 
-Allows the contract owner to set the [`Oikos` contract address](#synthetix).
+Allows the contract owner to set the [`Oikos` contract address](#oikos).
 
 ??? example "Details"
 
     **Signature**
 
-    `setOikos(Synthetix _synthetix) external`
+    `setOikos(Synthetix _oikos) external`
 
     **Modifiers**
 
@@ -664,7 +664,7 @@ Allows the contract owner to set the [`Oikos` contract address](#synthetix).
 
     **Preconditions**
 
-    * `_synthetix` must not be the zero address.
+    * `_oikos` must not be the zero address.
 
 ---
 
@@ -710,7 +710,7 @@ The `debtRatio` argument is a [27-decimal fixed point number](SafeDecimalMath.md
 
     **Modifiers**
 
-    * [`onlyOikos`](#onlysynthetix)
+    * [`onlyOikos`](#onlyoikos)
 
     **Emits**
 
@@ -732,7 +732,7 @@ Adds the value in sUSD to the current fee period's pool of fees to be distribute
 
     **Modifiers**
 
-    * [`onlyOikos`](#onlysynthetix)
+    * [`onlyOikos`](#onlyoikos)
 
 ---
 
@@ -952,7 +952,7 @@ Reverts the transaction if `account` is the [fee address](#fee_address).
 
 ### `onlyOikos`
 
-Reverts the transaction if `msg.sender` is not the [`synthetix`](#synthetix) address.
+Reverts the transaction if `msg.sender` is not the [`oikos`](#oikos) address.
 
 ---
 

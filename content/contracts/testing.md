@@ -1,8 +1,8 @@
 # Testing
 
-[![Travis Build Status](https://travis-ci.org/oikos-cash/oikos-bsc.svg?branch=master)](https://travis-ci.org/Oikosio/synthetix)
-[![CircleCI](https://circleci.com/gh/oikos-cash/oikos-bsc.svg?style=svg)](https://circleci.com/gh/Oikosio/synthetix)
-[![codecov](https://codecov.io/gh/oikos-cash/oikos-bsc/branch/develop/graph/badge.svg)](https://codecov.io/gh/Oikosio/synthetix)
+[![Travis Build Status](https://travis-ci.org/oikos-cash/oikos-bsc.svg?branch=master)](https://travis-ci.org/Oikosio/oikos)
+[![CircleCI](https://circleci.com/gh/oikos-cash/oikos-bsc.svg?style=svg)](https://circleci.com/gh/Oikosio/oikos)
+[![codecov](https://codecov.io/gh/oikos-cash/oikos-bsc/branch/develop/graph/badge.svg)](https://codecov.io/gh/Oikosio/oikos)
 
 The Oikos ecosystem relies on automated testing as much as possible to enable a high-frequency of updates while maintaining security and reliability.
 

@@ -66,11 +66,11 @@ Initialises the [`exchangeRates`](#exchangerates) address, and the inherited [`S
 
     **Signature**
 
-    `constructor(address _proxy, TokenState _tokenState, Oikos _synthetix, IFeePool _feePool, string _tokenName, string _tokenSymbol, address _owner, bytes32 _currencyKey, ExchangeRates _exchangeRates) public`
+    `constructor(address _proxy, TokenState _tokenState, Oikos _oikos, IFeePool _feePool, string _tokenName, string _tokenSymbol, address _owner, bytes32 _currencyKey, ExchangeRates _exchangeRates) public`
 
     **Superconstructors**
 
-    * [`Synth(_proxy, _tokenState, _synthetix, _feePool, _tokenName, _tokenSymbol, _owner, _currencyKey)`](Synth.md#constructor)
+    * [`Synth(_proxy, _tokenState, _oikos, _feePool, _tokenName, _tokenSymbol, _owner, _currencyKey)`](Synth.md#constructor)
 
 ---
 

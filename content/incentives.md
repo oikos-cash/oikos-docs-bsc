@@ -6,7 +6,7 @@ Here is an overview of the incentives and token flow in the Oikos system. It is 
 
 ### Exchange Fees
 
-Exchange fees are generated whenever a user exchanges one synthetic asset (Synth) for another through [Oikos.Exchange](https://synthetix.exchange). Fees are typically between 10-100 bps (0.1%-1%), though usually 30 bps, and when generated are sent to the fee pool, where it is available to be claimed proportionally by SNX stakers each week.
+Exchange fees are generated whenever a user exchanges one synthetic asset (Synth) for another through [Oikos.Exchange](https://oikos.exchange). Fees are typically between 10-100 bps (0.1%-1%), though usually 30 bps, and when generated are sent to the fee pool, where it is available to be claimed proportionally by SNX stakers each week.
 
 ### SNX Staking Rewards
 

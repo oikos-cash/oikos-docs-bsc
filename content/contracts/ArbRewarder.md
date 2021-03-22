@@ -74,7 +74,7 @@ Announcement Post: https://blog.oikos.cash/our-new-sbnb-snx-arb-contract-is-now-
 
 ---
 
-### `synthetix_rates`
+### `oikos_rates`
 
 ---
 

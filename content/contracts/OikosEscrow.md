@@ -32,7 +32,7 @@ This contract is augmented by the [`EscrowChecker`](EscrowChecker.md) contract, 
 
 ---
 
-### `synthetix`
+### `oikos`
 
 The address of the main [`Oikos`](Synthetix.md) contract.
 
@@ -106,7 +106,7 @@ Initialises the [`Oikos`](Synthetix.md) contract address, and the inherited [`Ow
 
     **Signature**
 
-    `constructor(address _owner, Oikos _synthetix) public`
+    `constructor(address _owner, Oikos _oikos) public`
 
     **Superconstructors**
 
@@ -122,7 +122,7 @@ Sets the address of the [`Oikos`](Synthetix.md) contract, so that escrowed SNX c
 
     **Signature**
 
-    `setOikos(Synthetix _synthetix) external`
+    `setOikos(Synthetix _oikos) external`
 
     **Modifiers**
 
@@ -130,7 +130,7 @@ Sets the address of the [`Oikos`](Synthetix.md) contract, so that escrowed SNX c
 
     **Emits**
 
-    * [`OikosUpdated(_synthetix)`](#synthetixupdated)
+    * [`OikosUpdated(_oikos)`](#oikosupdated)
 
 ---
 

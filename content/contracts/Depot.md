@@ -66,7 +66,7 @@ Stores an individual Synth deposit on sale.
 
 ---
 
-### `synthetix`
+### `oikos`
 
 The address of the main [`Oikos`](Synthetix.md) contract; the depot contains SNX.
 
@@ -214,7 +214,7 @@ Initialises the various addresses this contract knowws, along with the initial p
 
     **Signature**
 
-    `constructor(address _owner, address _fundsWallet, Oikos _synthetix, Synth _synth, FeePool _feePool, address _oracle, uint _usdToEthPrice, uint _usdToSnxPrice) public`
+    `constructor(address _owner, address _fundsWallet, Oikos _oikos, Synth _synth, FeePool _feePool, address _oracle, uint _usdToEthPrice, uint _usdToSnxPrice) public`
 
     **Superconstructors**
 
@@ -285,13 +285,13 @@ Allows the owner to set the address of the [`synth`](#synth) contract the depot 
 
 ### `setOikos`
 
-Allows the owner to set the address of the [`synthetix`](#synthetix) contract.
+Allows the owner to set the address of the [`oikos`](#oikos) contract.
 
 ??? example "Details"
 
     **Signature**
 
-    `setOikos(Synthetix _synthetix)`
+    `setOikos(Synthetix _oikos)`
 
     **Modifiers**
 
@@ -299,7 +299,7 @@ Allows the owner to set the address of the [`synthetix`](#synthetix) contract.
 
     **Emits**
 
-    * [`OikosUpdated(_synthetix)`](#synthetixupdated)
+    * [`OikosUpdated(_oikos)`](#oikosupdated)
 
 ---
 
@@ -411,7 +411,7 @@ Returns the number of sUSD exchanged. Converts any ether sent to the contract to
 
 ### `exchangeEtherForOikos`
 
-- `exchangeEtherForOikos() returns (uint)`: Requires that the contract is not paused, and that the prices are not stale. Converts the received ether to a quantity of SNX with `synthetixReceivedForEther`. Sends the ether to `fundsWallet`, sends the converted quantity of SNX to the message sender from the contract's own reserves. Returns the SNX quantity sent. If the contract has insufficient SNX, then the transfer will fail and the transaction will revert.
+- `exchangeEtherForOikos() returns (uint)`: Requires that the contract is not paused, and that the prices are not stale. Converts the received ether to a quantity of SNX with `oikosReceivedForEther`. Sends the ether to `fundsWallet`, sends the converted quantity of SNX to the message sender from the contract's own reserves. Returns the SNX quantity sent. If the contract has insufficient SNX, then the transfer will fail and the transaction will revert.
 
 ---
 
@@ -423,7 +423,7 @@ Returns the number of sUSD exchanged. Converts any ether sent to the contract to
 
 ### `exchangeSynthsForOikos`
 
-- `exchangeSynthsForOikos(uint synthAmount) returns (uint)`: Identical to `exchangeEtherForSynthetix`, but perform the price conversion with `synthetixReceivedForSynths`. The amount of synths to send is provided as a function argument, and then transferred to `fundsWallet` with `transferFrom`, so this function requires the caller to have approved the depot contract to make such a withdrawal. Note that this assumes that sUSD is worth exactly one dollar.
+- `exchangeSynthsForOikos(uint synthAmount) returns (uint)`: Identical to `exchangeEtherForSynthetix`, but perform the price conversion with `oikosReceivedForSynths`. The amount of synths to send is provided as a function argument, and then transferred to `fundsWallet` with `transferFrom`, so this function requires the caller to have approved the depot contract to make such a withdrawal. Note that this assumes that sUSD is worth exactly one dollar.
 
 ---
 
@@ -473,7 +473,7 @@ If prices are stale, then the depot's exchange functionality is disabled. This i
 
 ---
 
-### `synthetixReceivedForSynths`
+### `oikosReceivedForSynths`
 
 Computes the quantity of SNX received in exchange for a given quantity of sUSD at current prices, assuming sUSD are worth \$1. This is equivalent to:
 
@@ -485,11 +485,11 @@ $$
 
     **Signature**
 
-    `synthetixReceivedForSynths(uint amount) public view returns (uint)`
+    `oikosReceivedForSynths(uint amount) public view returns (uint)`
 
 ---
 
-### `synthetixReceivedForEther`
+### `oikosReceivedForEther`
 
 Computes the quantity of SNX received in exchange for a given quantity of Ether at current prices. This is equivalent to:
 
@@ -501,7 +501,7 @@ $$
 
     **Signature**
 
-    `synthetixReceivedForEther(uint amount) public view returns (uint)`
+    `oikosReceivedForEther(uint amount) public view returns (uint)`
 
 ---
 

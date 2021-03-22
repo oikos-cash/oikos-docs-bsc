@@ -35,7 +35,7 @@ The logic of RewardEscrow is derived from the [OikosEscrow](SynthetixEscrow.md) 
 
 ---
 
-### `synthetix`
+### `oikos`
 
 The address of the main [`Oikos`](Synthetix.md) contract.
 
@@ -125,7 +125,7 @@ Initialises the [`Oikos`](Synthetix.md) and [`FeePool`](FeePool.md) contract add
 
     **Signature**
 
-    `constructor(address _owner, Oikos _synthetix, FeePool _feePool) public`
+    `constructor(address _owner, Oikos _oikos, FeePool _feePool) public`
 
     **Superconstructors**
 
@@ -141,7 +141,7 @@ Sets the address of the [`Oikos`](Synthetix.md) contract, so that escrowed SNX c
 
     **Signature**
 
-    `setOikos(Synthetix _synthetix) external`
+    `setOikos(Synthetix _oikos) external`
 
     **Modifiers**
 
@@ -149,7 +149,7 @@ Sets the address of the [`Oikos`](Synthetix.md) contract, so that escrowed SNX c
 
     **Emits**
 
-    * [`OikosUpdated(_synthetix)`](#synthetixupdated)
+    * [`OikosUpdated(_oikos)`](#oikosupdated)
 
 ---
 

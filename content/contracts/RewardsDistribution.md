@@ -64,7 +64,7 @@ The address authorised to call [`distributeRewards`](#distributerewards), which 
 
 ---
 
-### `synthetixProxy`
+### `oikosProxy`
 
 The address of the Oikos [`ProxyERC20`](ProxyERC20.md) for transferring SNX to distribution recipients and the [`RewardEscrow`](RewardEscrow.md) contract.
 
@@ -108,7 +108,7 @@ Initialises the addresses of various related contracts, as well as the inherited
 
     **Signature**
 
-    `constructor(address _owner, address _authority, address _synthetixProxy, address _rewardEscrow, address _feePoolProxy) public`
+    `constructor(address _owner, address _authority, address _oikosProxy, address _rewardEscrow, address _feePoolProxy) public`
 
     **Superconstructors**
 
@@ -118,13 +118,13 @@ Initialises the addresses of various related contracts, as well as the inherited
 
 ### `setOikosProxy`
 
-Allows the owner to set the address of the [Oikos ProxyERC20](#synthetixproxy).
+Allows the owner to set the address of the [Oikos ProxyERC20](#oikosproxy).
 
 ??? example "Details"
 
     **Signature**
 
-    `setOikosProxy(address _synthetixProxy) external`
+    `setOikosProxy(address _oikosProxy) external`
 
     **Modifiers**
 
@@ -270,7 +270,7 @@ This function always returns true if it does not revert.
     **Preconditions**
 
     * `msg.sender` must be the [`authority`](#authority); i.e. the Oikos contract.
-    * The [`rewardEscrow`](#rewardescrow), [`synthetixProxy`](#synthetixproxy), and [feePoolProxy](#feepoolproxy) addresses must all be initialised.
+    * The [`rewardEscrow`](#rewardescrow), [`oikosProxy`](#oikosproxy), and [feePoolProxy](#feepoolproxy) addresses must all be initialised.
     * The amount to distribute must be nonzero.
     * The SNX balance in RewardsDistribution must not be less than the amount to distribute.
 

@@ -28,7 +28,7 @@ A small utility contract that augments the SNX escrow contract to allow extracti
 
 ---
 
-### `synthetix_escrow`
+### `oikos_escrow`
 
 The [SNX escrow contract](OikosEscrow.md).
 
@@ -42,7 +42,7 @@ The [SNX escrow contract](OikosEscrow.md).
 
 ### `constructor`
 
-Initialises the [synthetix escrow address](#synthetix_escrow).
+Initialises the [oikos escrow address](#oikos_escrow).
 
 ??? example "Details"
 
