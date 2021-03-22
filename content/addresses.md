@@ -2,7 +2,7 @@ Here is the list of all contracts within the current Oikos system.
 
 **Version**: 0.2.11
 
-**Docs Built**: Oct 26, 1985
+**Docs Built**: Mar 22, 2021
 
 !!! info "Naming Conventions"
 	Within the developer ecosystem, the names of Oikos contracts are referred to by their `source` Solidity file.If the same source is used for multiple instances of contracts with different constructor arguments - such as `Synth.sol`, `TokenState.sol` and `ProxyERC20.sol` - then the convention is to suffix the name of the differing feature to the end - be it the proxy target e.g. `FeePool` for `ProxyFeePool` or the synth's currencyKey eg: `oBNB` for `SynthoBNB`

@@ -8,7 +8,8 @@ const moment = require('moment');
 const snxPackageJSON = path.join(__dirname, '..', 'node_modules', '@oikos', 'oikos-bsc', 'package.json');
 
 const snxVersion = JSON.parse(fs.readFileSync(snxPackageJSON)).version;
-const snxDate = fs.statSync(snxPackageJSON).mtime;
+// const snxDate = fs.statSync(snxPackageJSON).mtime;
+const snxDate = Date.now();
 
 console.log('Building addresses.md');
 
