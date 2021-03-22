@@ -1,7 +1,7 @@
 !!! info "Notice"
-		This details the `publish` script in the synthetix repository for building, deploying and verifying contracts.
+		This details the `publish` script in the oikos repository for building, deploying and verifying contracts.
 
-		Imported from https://github.com/Synthetixio/synthetix/tree/master/publish
+		Imported from https://github.com/oikos-cash/oikos-bsc/tree/master/publish
 
 # Publisher
 
@@ -22,7 +22,7 @@ Will attempt to deploy (or reuse) all of the contracts listed in the given `cont
 
 :warning: **This step requires the `build` step having been run to compile the sources into ABIs and bytecode.**
 
-> Note: this action will update in place both the [contract-flag input file](contract-flags.json) and the contract addresses output ([here's the rinkeby one for example](out/rinkeby/contracts.json)) in real time so that if any transactions fail, it can be restarted at the same place.
+> Note: this action will update the deployment files for the associated network in "publish/deployed/<network-name>". For example, [here's the "deployment.json" file for mainnet](publish/deployed/mainnet/deployment.json).
 
 ```bash
 # deploy (take compiled SOL files and deploy)
@@ -140,31 +140,76 @@ Will attempt purge the given synth with all token holders it can find. Uses the 
 node publish purge-synths # "--help" for options
 ```
 
+## 8. Release
+
+Will initiate the synthetix release process, publishing the synthetix `npm` module and updating all dependent projects in GitHub and `npm`.
+
+```bash
+node publish release # "--help" for options
+```
+
+## 9. Staking Rewards
+
+Will deploy an instance of StakingRewards.sol with the configured stakingToken and rewardsToken in rewards.json. Then `run node publish verify`
+
+```bash
+node publish deploy-staking-rewards # "--help" for options
+```
+
+### Examples
+
+```bash
+node publish deploy-staking-rewards -n kovan -d publish/deployed/kovan -t iBTC --dry-run
+node publish deploy-staking-rewards -n local -d publish/deployed/local
+
+```
+
+### Example
+
+```bash
+node publish release --version 2.22.0 --branch master --release Altair
+```
+
+### Branching
+
+For `synthetix` repo, we are using the following branch mapping:
+
+- `alpha` is `KOVAN`
+- `beta` is `RINKEBY`
+- `rc` is `ROPSTEN`
+- `master` is `MAINNET`
+
+PRs should start being merged into `develop` then deployed onto `KOVAN`, then merged into `staging` once deployed for releasing onto `rinkeby` and `ropsten` for staging into a `mainnet` release. These can be done multiple times for each branch, as long as we keep these up to date.
+
+### Versioning
+
+Using semantic versioning ([semver](https://semver.org/)): `v[MAJOR].[MINOR].[PATCH]-[ADDITIONAL]`
+
+- `MAJOR` stipulates an overhaul of the Solidity contracts
+- `MINOR` are any changes to the underlying Solidity contracts
+- `PATCH` are for any JavaScript or deployed contract JSON changes
+- `ADDITIONAL` are for testnet deployments
+  - `-alpha` is for `Kovan`
+  - `-beta` follows alpha, and contains `Rinkeby` .
+  - `-rc[N]` follows beta, and contrains `Ropsten`. `N` starts at `0` and can be incremented until we are ready to release without the suffix.
+
+### Examples
+
+- Say `v3.1.8` is a mainnet release
+- `v3.1.9-alpha` is a Kovan deployment of new synths (no contract changes)
+- `v3.1.9-beta` is additionally a Rinkeby deployment of new synths
+- `v3.1.9-rc3` is the fourth release of a release candidate with all testnets having the deployment
+- `v3.1.9` is the mainnet release with all environments
+
+### Example
+
+```bash
+node publish release --version 2.22.0 --branch master --release Altair
+```
+
 # When adding new synths
 
 1. In the environment folder you are deploying to, add the synth key to the `synths.json` file. If you want the synth to be purgeable, add `subclass: "PurgeableSynth"` to the object.
 2. [Optional] Run `build` if you've changed any source files, if not you can skip this step.
 3. Run `deploy` as usual but add the `--add-new-synths` flag
 4. Run `verify` as usual.
-
-# Additional functionality
-
-## Generate token file
-
-Th `generate-token-list` command will generate an array of token proxy addresses for the given deployment to be used in the Synthetix website. The command outputs a JSON array to the console.
-
-```bash
-# output a list of token addresses, decimals and symbol names for all the token proxy contracts
-node publish generate-token-list -d publish/deployed/mainnet
-
-```
-
-### CLI Options
-
-- `-d, --deployment-path <value>` Same as `deploy` step above.
-
-### Example
-
-```bash
-node publish generate-token-list -d publish/deployed/rinkeby/ > token-list.json
-```

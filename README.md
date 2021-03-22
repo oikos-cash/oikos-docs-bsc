@@ -11,5 +11,6 @@ Run the following to get all the required dependencies:
 
 ## Commands
 
+- `npm run build`
 - `mkdocs serve` - Start the live-reloading docs server.
 - `mkdocs build` - Build the documentation site.
