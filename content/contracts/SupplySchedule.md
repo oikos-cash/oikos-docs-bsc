@@ -2,9 +2,9 @@
 
 ## Description
 
-Defines the Synthetix inflationary supply schedule, according to which the synthetix inflationary supply is released.
+Defines the Oikos inflationary supply schedule, according to which the synthetix inflationary supply is released.
 
-Minting is performed in increments of a week whenever [`recordMintEvent`](#recordMintEvent) is called from [`Synthetix.mint`](Synthetix.md#mint). Minting can be called weekly after the time elapses for more than 7 days. These accrue so that no tokens are lost even if minting is not performed for several periods; the accrued total is minted at the next invocation. These computations are covered in more detail in the [`mintableSupply`](#mintablesupply) description.
+Minting is performed in increments of a week whenever [`recordMintEvent`](#recordMintEvent) is called from [`Oikos.mint`](Synthetix.md#mint). Minting can be called weekly after the time elapses for more than 7 days. These accrue so that no tokens are lost even if minting is not performed for several periods; the accrued total is minted at the next invocation. These computations are covered in more detail in the [`mintableSupply`](#mintablesupply) description.
 
 The supply decay follows an exponential decay formula calculated for each week.
 
@@ -32,7 +32,7 @@ After Week 235 the SNX supply will grow at 2.5% APR based on the total Supply of
 
 ### Related Contracts
 
-- <>[Synthetix](Synthetix.md)
+- <>[Oikos](Synthetix.md)
 
 ---
 
@@ -68,9 +68,9 @@ The timestamp when new supply was last minted - Is set to the number of weeks si
 
 ### `synthetixProxy`
 
-The address of the main [`SynthetixProxy`](Proxy.md) contract.
+The address of the main [`OikosProxy`](Proxy.md) contract.
 
-**Type:** `Synthetix Proxy`
+**Type:** `Oikos Proxy`
 
 ---
 
@@ -106,7 +106,7 @@ A buffer added to the lastMintEvent to ensure that synthetix rewards are issued 
 
 ### `minterReward`
 
-Used as the quantity of SNX to reward the caller of [`Synthetix.mint`](Synthetix.md#mint), which incentivises users to continue minting the inflationary supply over time. Initialised to 200 SNX.
+Used as the quantity of SNX to reward the caller of [`Oikos.mint`](Synthetix.md#mint), which incentivises users to continue minting the inflationary supply over time. Initialised to 200 SNX.
 
 **Type:** `uint public`
 
@@ -162,7 +162,7 @@ Sets up the minting schedule and the inherited [`Owned`](Owned.md) instance.
 
 ---
 
-### `setSynthetixProxy`
+### `setOikosProxy`
 
 Allows the owner to set the [`synthetix`](#synthetix) address.
 
@@ -170,7 +170,7 @@ Allows the owner to set the [`synthetix`](#synthetix) address.
 
     **Signature**
 
-    `setSynthetix(ISynthetix _synthetixProxy) external`
+    `setOikos(ISynthetix _synthetixProxy) external`
 
     **Modifiers**
 
@@ -220,11 +220,11 @@ This means that tokens are only mintable once a week.
 
 ### `recordMintEvent`
 
-This is called within [`Synthetix.mint`](Synthetix.md#mint) to declare that the outstanding inflationary supply of tokens has been minted before they are actually distributed.
+This is called within [`Oikos.mint`](Synthetix.md#mint) to declare that the outstanding inflationary supply of tokens has been minted before they are actually distributed.
 
 When called, this function adds a quantity of [`mintableSupply()`](#mintablesupply) tokens to the current [`schedule.totalSupplyMinted`](#schedule) entry, and updates the [`lastMintEvent`](#lastmintevent) timestamp.
 
-Although this function has no check that any tokens actually are mintable when it is called, the [`Synthetix`](Synthetix.md) contract requires it to be the case, so double calls should not occur. Similarly, the function does not itself enforce that the actual token supply has been increased by [`Synthetix`](Synthetix.md) in a manner consistent with the defined schedule and must simply trust that this compact is observed.
+Although this function has no check that any tokens actually are mintable when it is called, the [`Oikos`](Synthetix.md) contract requires it to be the case, so double calls should not occur. Similarly, the function does not itself enforce that the actual token supply has been increased by [`Synthetix`](Synthetix.md) in a manner consistent with the defined schedule and must simply trust that this compact is observed.
 
 The function always returns `true` if the transaction was not reverted.
 
@@ -236,7 +236,7 @@ The function always returns `true` if the transaction was not reverted.
 
     **Modifiers**
 
-    * [`onlySynthetix`](#onlysynthetix)
+    * [`onlyOikos`](#onlysynthetix)
 
     **Emits**
 
@@ -268,9 +268,9 @@ Allows the owner to set the current [minter reward](#minterreward).
 
 ---
 
-### `onlySynthetix`
+### `onlyOikos`
 
-Reverts the transaction if `msg.sender` is not the [`synthetix`](#synthetix) address. Synthetix address is found by lookup to the proxy.target().
+Reverts the transaction if `msg.sender` is not the [`synthetix`](#synthetix) address. Oikos address is found by lookup to the proxy.target().
 
 ---
 

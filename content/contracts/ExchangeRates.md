@@ -1,14 +1,14 @@
 # ExchangeRates
 
-This contract stores the latest Synth exchange rates. These rates are set by an oracle, which updates this contract every three minutes with any prices that have moved sufficiently. Once set, these prices are available for any contract in the Synthetix system to query.
-Prices which have not been updated recently enough are considered stale; Synthetix functionality using stale prices does not operate. All rates are denominated in terms of sUSD, so the price of sUSD is always \$1.00, and is never stale.
+This contract stores the latest Synth exchange rates. These rates are set by an oracle, which updates this contract every three minutes with any prices that have moved sufficiently. Once set, these prices are available for any contract in the Oikos system to query.
+Prices which have not been updated recently enough are considered stale; Oikos functionality using stale prices does not operate. All rates are denominated in terms of sUSD, so the price of sUSD is always \$1.00, and is never stale.
 
 The ExchangeRates contract is also responsible for computing the prices of various derived synths.
 In particular, the behaviour of [inverse synths](#rateorinverted) is defined here. These are derivative synths whose price varies inversely with the price of an underlying asset.
 
-This contract interacts with the oracle's frontrunning protection, which is partially described in [SIP-6](https://sips.synthetix.io/sips/sip-6) and [SIP-7](https://sips.synthetix.io/sips/sip-7).
+This contract interacts with the oracle's frontrunning protection, which is partially described in [SIP-6](https://sips.oikos.cash/sips/sip-6) and [SIP-7](https://sips.synthetix.io/sips/sip-7).
 
-This does not turn off any functionality in the exchange rate contract, but is used by [`Synthetix`](Synthetix.md) to disable [currency exchanges](Synthetix.md#_internalexchange) while prices are being updated to protect against oracle front running. The lock is released when [rate updates have completed](#internalupdaterates).
+This does not turn off any functionality in the exchange rate contract, but is used by [`Oikos`](Synthetix.md) to disable [currency exchanges](Synthetix.md#_internalexchange) while prices are being updated to protect against oracle front running. The lock is released when [rate updates have completed](#internalupdaterates).
 
 **Source:** [ExchangeRates.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/ExchangeRates.sol)
 
@@ -35,7 +35,7 @@ This does not turn off any functionality in the exchange rate contract, but is u
     - [`oracle`](#oracle): This address is not actually a contract, but it is the source of prices for this contract.
     - [`Aggregators`](#aggregators): These are a collection of decentralized pricing networks that collect and aggregate results from a network of oracles.
     - [`PurgeableSynth`](PurgeableSynth.md): exchange rates are used to determine if the total token value is below the purge threshold.
-    - [`Synthetix`](Synthetix.md): the value of tokens is used to in order to facilitate exchange between them, and to ensure exchanges cannot occur while price updates and being made or if a particular exchange rate is stale.
+    - [`Oikos`](Synthetix.md): the value of tokens is used to in order to facilitate exchange between them, and to ensure exchanges cannot occur while price updates and being made or if a particular exchange rate is stale.
     - [`ArbRewarder`](ArbRewarder.md): The ArbRewarder must know the current SNX/BNB price so that arbitrage is accurate.
 
 ---
@@ -130,7 +130,7 @@ The address which is permitted to push rate updates to the contract.
 
 ### `rateStalePeriod`
 
-The duration after which a rate will be considered out of date. Synth exchange and other price-sensitive transactions in the [`Synthetix`](Synthetix.md) contract will not operate if a relevant rate is stale.
+The duration after which a rate will be considered out of date. Synth exchange and other price-sensitive transactions in the [`Oikos`](Synthetix.md) contract will not operate if a relevant rate is stale.
 Initialised to $3$ hours.
 
 **Type:** `uint public`
@@ -185,7 +185,7 @@ $$
 Q_B = Q_A \frac{\pi_A}{\pi_B}
 $$
 
-This computation is simple because all fractional quantities in the Synthetix system except for the [debt ledger](SynthetixState.md#debtledger) are [18 decimal fixed point numbers](SafeDecimalMath.md).
+This computation is simple because all fractional quantities in the Oikos system except for the [debt ledger](SynthetixState.md#debtledger) are [18 decimal fixed point numbers](SafeDecimalMath.md).
 
 ??? example "Details"
 

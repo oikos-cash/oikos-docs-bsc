@@ -1,6 +1,6 @@
 # Versioning
 
-Synthetix versions are denoted as follows
+Oikos versions are denoted as follows
 
 `<major>.<minor>.<patch>[-environment]`
 
@@ -16,4 +16,4 @@ E.g. `v2.19.3-alpha` denotes a build deployed to `kovan` whereas `v2.20.0-releas
 
 !!! info
 
-    There are occasions when builds skip and enviroment on the way to mainnet, but in those instances the Synthetix team will endeavour to backport changes to testnets promptly.
+    There are occasions when builds skip and enviroment on the way to mainnet, but in those instances the Oikos team will endeavour to backport changes to testnets promptly.

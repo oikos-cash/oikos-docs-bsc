@@ -26,7 +26,7 @@
 If any, see:
 
 <centered-image>
-    ![Oikos architture graph](../img/graphs/Synthetix-architecture.svg)
+    ![Oikos architture graph](../img/graphs/Oikos-architecture.svg)
 </centered-image>
 --->
 

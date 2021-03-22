@@ -6,17 +6,17 @@
 
     The typical smart contact Proxy pattern is discussed in depth [here](https://blog.openzeppelin.com/proxy-patterns/) and [here](https://fravoll.github.io/solidity-patterns/proxy_delegate.html). This implementation has its own architecture, however, and is not identical to most other proxy contracts.
 
-The Synthetix proxy sits in front of an underlying target contract. Any calls made to the proxy [are forwarded](#fallback-function) to that target contract, so it appears as if the target was called. This is designed to allow a contract to be upgraded without altering its address.
-In Synthetix, this proxy typically operates in tandem with a [`Proxyable`](Proxyable.md) instance as its target. In this configuration, events are always emitted at the proxy, not at the target, even if the target is called directly.
+The Oikos proxy sits in front of an underlying target contract. Any calls made to the proxy [are forwarded](#fallback-function) to that target contract, so it appears as if the target was called. This is designed to allow a contract to be upgraded without altering its address.
+In Oikos, this proxy typically operates in tandem with a [`Proxyable`](Proxyable.md) instance as its target. In this configuration, events are always emitted at the proxy, not at the target, even if the target is called directly.
 
-The [`Synthetix`](Synthetix.md), [`Synth`](Synth.md), and [`FeePool`](FeePool.md) contracts all exist behind proxies, which has allowed their behaviour to be substantially altered over time.
+The [`Oikos`](Synthetix.md), [`Synth`](Synth.md), and [`FeePool`](FeePool.md) contracts all exist behind proxies, which has allowed their behaviour to be substantially altered over time.
 
 This proxy provides two different operation modes,[^1] which can be switched between at any point.
 
 [^1]: Specific descriptions of the behaviour of the `CALL` and `DELEGATECALL` EVM instructions can be found in the [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf).
 
 - `DELEGATECALL`: Execution of the target's code occurs in the proxy's context, which preserves the message sender and writes state updates to the storage of the proxy itself. This is the standard proxy style used across most Ethereum projects.
-- `CALL`: Execution occurs in the target's context, so the storage of the proxy is never touched, but function call and event data, as well as the message sender, must be explicitly passed between the proxy and target contracts. This is the style mainly used in Synthetix.
+- `CALL`: Execution occurs in the target's context, so the storage of the proxy is never touched, but function call and event data, as well as the message sender, must be explicitly passed between the proxy and target contracts. This is the style mainly used in Oikos.
 
 The motivation for the `CALL` style was to allow complete decoupling of the storage structure from the proxy, except what's required for the proxy's own functionality. This means there's no necessity for the proxy to be concerned in advance with the storage architecture of the target contract. We can avoid using elaborate or unstructured storage solutions for state variables, and there are no constraints on the use of (possibly nested) mapping or reference types.
 
@@ -31,7 +31,7 @@ This allows the proxy's target contract to be largely disposable. This structure
 </centered-image>
 
 In this way the main contract defining the logic can be swapped out without replacing the proxy or state contracts. The user only ever communicates with the proxy and need not know any implementation details.
-This architecture also allows [multiple proxies](Proxyable.md#integrationproxy) with differing interfaces to be used simultaneously for a single underlying contract, though events will usually be emitted only from one of them. This feature is currently used by [`ProxyERC20`](ProxyERC20.md), which operates atop the [`Synthetix`](Synthetix.md) contract.
+This architecture also allows [multiple proxies](Proxyable.md#integrationproxy) with differing interfaces to be used simultaneously for a single underlying contract, though events will usually be emitted only from one of them. This feature is currently used by [`ProxyERC20`](ProxyERC20.md), which operates atop the [`Oikos`](Synthetix.md) contract.
 
 There are some tradeoffs to this approach. There is potentially a little more communication overhead for event emission, though there may be some savings available elsewhere depending on system and storage architecture and the particular application.
 

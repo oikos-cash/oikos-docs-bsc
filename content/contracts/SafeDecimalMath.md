@@ -12,8 +12,8 @@ Several functions are included for converting between precision levels, and oper
 
 SafeDecimalMath uses OpenZeppelin's [SafeMath](SafeMath.md) library for most of its basic arithmetic operations in order to protect from arithmetic overflows and zero divisions.
 
-In Synthetix, the standard precision fixed point numbers are used to deal with most fractional quantities, such as token balances and prices.
-The high-precision numbers are mainly used for dealing with the [debt ledger](SynthetixState.md#debtledger), which [is constructed](Synthetix.md#_addtodebtregister) as an extended product of many fractional numbers very close to $1$. As this is a financially-sensitive component of the system, representational precision matters in order to minimise errors resulting from rounding or truncation.
+In Oikos, the standard precision fixed point numbers are used to deal with most fractional quantities, such as token balances and prices.
+The high-precision numbers are mainly used for dealing with the [debt ledger](OikosState.md#debtledger), which [is constructed](Synthetix.md#_addtodebtregister) as an extended product of many fractional numbers very close to $1$. As this is a financially-sensitive component of the system, representational precision matters in order to minimise errors resulting from rounding or truncation.
 
 ### Fixed-Point Mechanics
 
@@ -84,7 +84,7 @@ So multiplication produces an extra unwanted unit factor, and division divides o
 
 Note that multiplication and division of fixed point numbers may involve some loss of precision in the lowest digit. Such inaccuracy can accumulate over many operations
 
-Synthetix provides versions of $\dot{\times}$ and $\dot{/}$ which perform the operation with one extra internal digit of precision, and then rounds up if the least significant digit is 5 or greater. Consequently, results exactly halfway between two increments are rounded up.
+Oikos provides versions of $\dot{\times}$ and $\dot{/}$ which perform the operation with one extra internal digit of precision, and then rounds up if the least significant digit is 5 or greater. Consequently, results exactly halfway between two increments are rounded up.
 
 ---
 

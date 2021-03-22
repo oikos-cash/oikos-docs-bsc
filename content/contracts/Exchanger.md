@@ -44,7 +44,7 @@ A constant used to initialise the ERC20 [`ExternStateToken.name`](ExternStateTok
 
 **Type:** `string constant`
 
-**Value:** `"Synthetix Network Token"`
+**Value:** `"Oikos Network Token"`
 -->
 
 ---
@@ -77,7 +77,7 @@ The constructor initialises the various addresses that this contract knows about
 
     **Signature**
 
-    `constructor(address _proxy, TokenState _tokenState, SynthetixState _synthetixState, address _owner, ExchangeRates _exchangeRates, FeePool _feePool, SupplySchedule _supplySchedule, SynthetixEscrow _rewardEscrow, SynthetixEscrow _escrow, RewardsDistribution _rewardsDistribution, uint _totalSupply) public`
+    `constructor(address _proxy, TokenState _tokenState, OikosState _synthetixState, address _owner, ExchangeRates _exchangeRates, FeePool _feePool, SupplySchedule _supplySchedule, SynthetixEscrow _rewardEscrow, SynthetixEscrow _escrow, RewardsDistribution _rewardsDistribution, uint _totalSupply) public`
 
     **Superconstructors**
 
@@ -208,7 +208,7 @@ The transaction is reverted if the given account is the [fee address](FeePool.md
 
 Records that an [exchange](#exchange) between two flavours of synths occurred.
 
-This event is emitted from the Synthetix [proxy](Proxy.md#_emit) with the `emitSynthExchange` function.
+This event is emitted from the Oikos [proxy](Proxy.md#_emit) with the `emitSynthExchange` function.
 
 **Signature:** `SynthExchange(address indexed account, bytes32 fromCurrencyKey, uint256 fromAmount, bytes32 toCurrencyKey, uint256 toAmount, address toAddress)`
 -->

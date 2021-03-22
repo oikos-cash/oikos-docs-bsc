@@ -1,4 +1,4 @@
-# SynthetixEscrow
+# OikosEscrow
 
 ## Description
 
@@ -8,7 +8,7 @@ The contract was subject to an eight week setup period during which the vesting 
 
 This contract is augmented by the [`EscrowChecker`](EscrowChecker.md) contract, which is able to return vesting schedules as an array rather than one at a time.
 
-**Source:** [SynthetixEscrow.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/SynthetixEscrow.sol)
+**Source:** [OikosEscrow.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/SynthetixEscrow.sol)
 
 ## Architecture
 
@@ -17,7 +17,7 @@ This contract is augmented by the [`EscrowChecker`](EscrowChecker.md) contract, 
 ### Inheritance Graph
 
 <centered-image>
-    ![SynthetixEscrow inheritance graph](../img/graphs/SynthetixEscrow.svg)
+    ![OikosEscrow inheritance graph](../img/graphs/SynthetixEscrow.svg)
 </centered-image>
 
 ---
@@ -34,9 +34,9 @@ This contract is augmented by the [`EscrowChecker`](EscrowChecker.md) contract, 
 
 ### `synthetix`
 
-The address of the main [`Synthetix`](Synthetix.md) contract.
+The address of the main [`Oikos`](Synthetix.md) contract.
 
-**Type:** `Synthetix public`
+**Type:** `Oikos public`
 
 ---
 
@@ -100,13 +100,13 @@ This constant limits vesting schedules to be shorter than twenty entries long so
 
 ### `constructor`
 
-Initialises the [`Synthetix`](Synthetix.md) contract address, and the inherited [`Owned`](Owned.md) instance.
+Initialises the [`Oikos`](Synthetix.md) contract address, and the inherited [`Owned`](Owned.md) instance.
 
 ??? example "Details"
 
     **Signature**
 
-    `constructor(address _owner, Synthetix _synthetix) public`
+    `constructor(address _owner, Oikos _synthetix) public`
 
     **Superconstructors**
 
@@ -114,15 +114,15 @@ Initialises the [`Synthetix`](Synthetix.md) contract address, and the inherited 
 
 ---
 
-### `setSynthetix`
+### `setOikos`
 
-Sets the address of the [`Synthetix`](Synthetix.md) contract, so that escrowed SNX can be transferred to accounts claiming them.
+Sets the address of the [`Oikos`](Synthetix.md) contract, so that escrowed SNX can be transferred to accounts claiming them.
 
 ??? example "Details"
 
     **Signature**
 
-    `setSynthetix(Synthetix _synthetix) external`
+    `setOikos(Synthetix _synthetix) external`
 
     **Modifiers**
 
@@ -130,7 +130,7 @@ Sets the address of the [`Synthetix`](Synthetix.md) contract, so that escrowed S
 
     **Emits**
 
-    * [`SynthetixUpdated(_synthetix)`](#synthetixupdated)
+    * [`OikosUpdated(_synthetix)`](#synthetixupdated)
 
 ---
 
@@ -246,9 +246,9 @@ Returns the SNX quantity of the next vesting entry. Returns `0` if there is no s
 
 ---
 
-### `withdrawSynthetix`
+### `withdrawOikos`
 
-Transfers a quantity of SNX back to the Synthetix contract.
+Transfers a quantity of SNX back to the Oikos contract.
 
 This was callable by the owner during the setup period in case too much SNX was deposited into the escrow contract.
 
@@ -256,7 +256,7 @@ This was callable by the owner during the setup period in case too much SNX was 
 
     **Signature**
 
-    `withdrawSynthetix(uint quantity) external`
+    `withdrawOikos(uint quantity) external`
 
     **Modifiers**
 
@@ -355,11 +355,11 @@ Finds all vesting schedule entries that have come due for the caller and transfe
 
 ---
 
-### `SynthetixUpdated`
+### `OikosUpdated`
 
 Records that the SNX contract address was altered.
 
-**Signature:** `SynthetixUpdated(address newSynthetix)`
+**Signature:** `OikosUpdated(address newSynthetix)`
 
 ---
 

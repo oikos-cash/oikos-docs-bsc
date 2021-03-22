@@ -8,7 +8,7 @@
 
 Initial Gitcoin Bounty: https://github.com/oikos-cash/oikos-bsc/issues/188
 
-Announcement Post: https://blog.synthetix.io/our-new-sbnb-snx-arb-contract-is-now-live/
+Announcement Post: https://blog.oikos.cash/our-new-sbnb-snx-arb-contract-is-now-live/
 
 **Source:** [`ArbRewarder.sol`](https://github.com/oikos-cash/oikos-bsc/blob/arb-rewarder/contracts/ArbRewarder.sol)
 
@@ -35,7 +35,7 @@ Announcement Post: https://blog.synthetix.io/our-new-sbnb-snx-arb-contract-is-no
     * [Uniswap Exchange (sBNB)](https://etherscan.io/address/0xe9Cf7887b93150D4F2Da7dFc6D502B216438F244): This is the market through which the arbitrage is performed.
     * [`ExchangeRates`](ExchangeRates.md): The current SNX/BNB price is retrieved from the exchange rates contract.
     * [`Synth (sBNB)`](Synth.md): One half of the sETH/ETH pair.
-    * [`Synthetix (Proxy)`](Synthetix.md): The ArbRewarder rewards the caller with the arb profit as SNX.
+    * [`Oikos (Proxy)`](Synthetix.md): The ArbRewarder rewards the caller with the arb profit as SNX.
 
 ---
 
@@ -102,11 +102,11 @@ Announcement Post: https://blog.synthetix.io/our-new-sbnb-snx-arb-contract-is-no
 
 ---
 
-### `setSynthetix`
+### `setOikos`
 
 ---
 
-### `setSynthetixBNBAddress`
+### `setOikosBNBAddress`
 
 ---
 

@@ -1,16 +1,16 @@
-# SynthetixState
+# OikosState
 
-This is a state contract associated with the main [`Synthetix`](Synthetix.md) contract, which is the only address permitted to invoke most of its functionality.
+This is a state contract associated with the main [`Oikos`](Synthetix.md) contract, which is the only address permitted to invoke most of its functionality.
 
 This contract is responsible for recording issuance and debt information for the system and users within it, as well as the global [issuance ratio](#issuanceratio).
 
-Upon system updates, this contract will continue to exist, while the Synthetix logic itself is swapped out.
+Upon system updates, this contract will continue to exist, while the Oikos logic itself is swapped out.
 
 !!! danger "Disabled: Preferred Currency Transfer Conversion"
 
     This contract also contains functionality enabling automatic [preferred currency](#preferredcurrency) conversion on Synth transfers, but it is currently disabled.
 
-**Source:** [SynthetixState.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/SynthetixState.sol)
+**Source:** [OikosState.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/SynthetixState.sol)
 
 ## Architecture
 
@@ -19,14 +19,14 @@ Upon system updates, this contract will continue to exist, while the Synthetix l
 ### Inheritance Graph
 
 <centered-image>
-    ![SynthetixState inheritance graph](../img/graphs/SynthetixState.svg)
+    ![OikosState inheritance graph](../img/graphs/SynthetixState.svg)
 </centered-image>
 
 ---
 
 ### Related Contracts
 
-- Synthetix as this contract's `State.associatedContract`
+- Oikos as this contract's `State.associatedContract`
 
 ---
 
@@ -44,12 +44,12 @@ Upon system updates, this contract will continue to exist, while the Synthetix l
 ### IssuanceData
 
 Individual wallets have an issuance data object associated with their address.
-This holds the issuance state and preferred currency of users in the Synthetix system, which is used to compute user's exit price and collateralisation ratio.
+This holds the issuance state and preferred currency of users in the Oikos system, which is used to compute user's exit price and collateralisation ratio.
 
 | Field                | Type   | Description                                                                                                                                                      |
 | -------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | initialDebtOwnership | `uint` | The percentage of the total system debt owned by the address associated with this entry at the time of issuance.                                                 |
-| debtEntryIndex       | `uint` | The [debt ledger](SynthetixState.md#debtledger) index when this user last issued or destroyed tokens. That is, the length of the ledger at the time of issuance. |
+| debtEntryIndex       | `uint` | The [debt ledger](OikosState.md#debtledger) index when this user last issued or destroyed tokens. That is, the length of the ledger at the time of issuance. |
 
 This struct is replicated in the [`FeePoolState`](FeePoolState.md#issuancedata) contract.
 
@@ -97,7 +97,7 @@ The current global issuance ratio, which is the conversion factor between a valu
 
 It is also the target ratio for SNX stakers. As per the logic in [`FeePool.feesClaimable`](FeePool.md#feesclaimable), stakers can only claim any fee rewards if they are within ten percent of the issuance ratio. Therefore altering it will also alter the maximum total supply of Synths, as suppliers of Synths are strongly incentivised to track the issuance ratio closely.
 
-If the issuance ratio is $\rho$, then the [maximum value](Synthetix.md#maxissuablesynths) $V_s$ of a synth $s$ [issuable](Synthetix.md#issuesynths) against a value $V_c$ of SNX collateral is just:
+If the issuance ratio is $\rho$, then the [maximum value](Oikos.md#maxissuablesynths) $V_s$ of a synth $s$ [issuable](Synthetix.md#issuesynths) against a value $V_c$ of SNX collateral is just:
 
 $$
 V_s = \rho \ V_c
@@ -123,7 +123,7 @@ As a result of this calculation, the number of synths that can be issued increas
 
     In cases where Synths are oversupplied, there is downward price pressure and decreased stability. Decreasing the issuance ratio both constrains the total supply of Synths circulating in the system, and transiently increases aggregate demand for Synths as every staker must rebuy a quantity of Synths and burn them.
 
-    For precisely these reasons the issuance ratio was altered by [SCCP-2](https://sips.synthetix.io/sccp/sccp-2) from its initial value of $\frac{1}{5}$ to $\frac{2}{15}$.
+    For precisely these reasons the issuance ratio was altered by [SCCP-2](https://sips.oikos.cash/sccp/sccp-2) from its initial value of $\frac{1}{5}$ to $\frac{2}{15}$.
 
     The related case of increasing the issuance ratio is similar.
 
@@ -133,7 +133,7 @@ As a result of this calculation, the number of synths that can be issued increas
 
 ### `MAX_ISSUANCE_RATIO`
 
-Constraining the value of [`issuanceRatio`](#issuanceratio) to be less than $1.0$ ensures that Synthetix does not become a fractional reserve system.
+Constraining the value of [`issuanceRatio`](#issuanceratio) to be less than $1.0$ ensures that Oikos does not become a fractional reserve system.
 
 **Type:** `uint constant`
 
@@ -145,7 +145,7 @@ Constraining the value of [`issuanceRatio`](#issuanceratio) to be less than $1.0
 
 !!! danger "Disabled"
 
-    This feature is currently dormant. It can still operate, but the [`Synthetix`](Synthetix.md) contract does not expose any means for an account's preferred currency to actually be set, so it never operates.
+    This feature is currently dormant. It can still operate, but the [`Oikos`](Synthetix.md) contract does not expose any means for an account's preferred currency to actually be set, so it never operates.
 
 If users nominate a preferred currency, all synths they receive will be converted to this currency. This mapping stores the nominated preferred currency for each account, if any. A null preferred currency means no conversion will be performed.
 
@@ -155,7 +155,7 @@ This is used within [`Synth._internalTransfer`](Synth.md#_internaltransfer).
 
 !!! caution "Short Currency Keys"
 
-    Note that as of [SIP-17](https://sips.synthetix.io/sips/sip-17) currency keys in other contracts are of the `bytes32` type. This means that if this preferred currency component is ever reused, it will only be able to support short-named synths unless new storage is provided.
+    Note that as of [SIP-17](https://sips.oikos.cash/sips/sip-17) currency keys in other contracts are of the `bytes32` type. This means that if this preferred currency component is ever reused, it will only be able to support short-named synths unless new storage is provided.
 
 ---
 
@@ -182,7 +182,7 @@ Initialises the inherited [`State`](State.md) and [`LimitedSetup`](LimitedSetup.
 
 ### `setCurrentIssuanceData`
 
-Allows the [`Synthetix`](Synthetix.md) contract to update the debt ownership entry for this account and sets their debt entry index to the current length of the [`debtLedger`](#debtledger).
+Allows the [`Oikos`](Synthetix.md) contract to update the debt ownership entry for this account and sets their debt entry index to the current length of the [`debtLedger`](#debtledger).
 The debt ledger itself is not modified.
 
 ??? example "Details"
@@ -215,7 +215,7 @@ Deletes the issuance data associated with a given account.
 
 ### `incrementTotalIssuerCount`
 
-Increases [`totalIssuerCount`](#totalissuercount) by one. This is called within [`Synthetix._addToDebtRegister`](Synthetix.md#_addtodebtregister) whenever an account with no outstanding issuance debt mints new Synths.
+Increases [`totalIssuerCount`](#totalissuercount) by one. This is called within [`Oikos._addToDebtRegister`](Synthetix.md#_addtodebtregister) whenever an account with no outstanding issuance debt mints new Synths.
 
 ??? example "Details"
 
@@ -231,7 +231,7 @@ Increases [`totalIssuerCount`](#totalissuercount) by one. This is called within 
 
 ### `decrementTotalIssuerCount`
 
-Reduces [`totalIssuerCount`](#totalissuercount) by one. This is called within [`Synthetix._removeFromDebtRegister`](Synthetix.md#_removefromdebtregister) whenever an issuer burns enough Synths to pay down their entire outstanding debt.
+Reduces [`totalIssuerCount`](#totalissuercount) by one. This is called within [`Oikos._removeFromDebtRegister`](Synthetix.md#_removefromdebtregister) whenever an issuer burns enough Synths to pay down their entire outstanding debt.
 
 ??? example "Details"
 
@@ -249,7 +249,7 @@ Reduces [`totalIssuerCount`](#totalissuercount) by one. This is called within [`
 
 Pushes a new value to the end of the [`debtLedger`](#debtledger).
 
-This is used by [`Synthetix._addToDebtRegister`](Synthetix.md#addtodebtregister) contract whenever Synths are issued or burnt, which modifies the total outstanding system debt.
+This is used by [`Oikos._addToDebtRegister`](Synthetix.md#addtodebtregister) contract whenever Synths are issued or burnt, which modifies the total outstanding system debt.
 
 ??? example "Details"
 
@@ -267,7 +267,7 @@ This is used by [`Synthetix._addToDebtRegister`](Synthetix.md#addtodebtregister)
 
 !!! danger "Disabled"
 
-    This function is not used anywhere within the [`Synthetix`](Synthetix.md) contract, which is the only address with the privileges to call it. As a result the preferred currency feature is not operational.
+    This function is not used anywhere within the [`Oikos`](Synthetix.md) contract, which is the only address with the privileges to call it. As a result the preferred currency feature is not operational.
 
 Sets the preferred currency for a particular account. Pass in null to unset this value.
 
@@ -338,8 +338,8 @@ This function allowed the owner to migrate sUSD issuance data during the launch 
 
     This function is only called from [`importIssuerData`](#importissuerdata), which only operated during the one week [setup period](LimitedSetup.md).
 
-This utility function allows adds a new entry to the debt register to set up staker debt holdings when migrating from the previous Synthetix version.
-It duplicates the logic of [`Synthetix._addToDebtRegister`](Synthetix.md#_addtodebtregister) with some minor modifications to keep track of how much [debt has been imported](#importedxdramount).
+This utility function allows adds a new entry to the debt register to set up staker debt holdings when migrating from the previous Oikos version.
+It duplicates the logic of [`Oikos._addToDebtRegister`](Synthetix.md#_addtodebtregister) with some minor modifications to keep track of how much [debt has been imported](#importedxdramount).
 
 ??? example "Details"
 
@@ -367,7 +367,7 @@ Primarily used in [`FeePool`](FeePool.md) for fee period computations.
 
 Returns the most recent [`debtLedger`](#debtledger) entry.
 
-Primarily used in the [`Synthetix`](Synthetix.md) for debt computations.
+Primarily used in the [`Oikos`](Synthetix.md) for debt computations.
 
 ??? example "Details"
 
@@ -381,7 +381,7 @@ Primarily used in the [`Synthetix`](Synthetix.md) for debt computations.
 
 Returns true if a given account has any outstanding issuance debt resulting from Synth minting.
 
-Used in [`Synthetix._addToDebtRegister`](Synthetix.md#_addtodebtregister) to determine whether an minting event requires incrementing the total issuer count.
+Used in [`Oikos._addToDebtRegister`](Synthetix.md#_addtodebtregister) to determine whether an minting event requires incrementing the total issuer count.
 
 ??? example "Details"
 

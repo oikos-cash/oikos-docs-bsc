@@ -1,8 +1,8 @@
-# Synthetix
+# Oikos
 
 ## Description
 
-**Source:** [Synthetix.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Synthetix.sol)
+**Source:** [Oikos.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Synthetix.sol)
 
 ## Architecture
 
@@ -11,7 +11,7 @@
 ### Inheritance Graph
 
 <centered-image>
-    ![Synthetix inheritance graph](../img/graphs/Synthetix.svg)
+    ![Oikos inheritance graph](../img/graphs/Synthetix.svg)
 </centered-image>
 
 ---
@@ -19,23 +19,23 @@
 ### Related Contracts
 
 <centered-image>
-    ![Synthetix architture graph](../img/graphs/Synthetix-architecture.svg)
+    ![Oikos architture graph](../img/graphs/Synthetix-architecture.svg)
 </centered-image>
 
 ??? example "Details"
 
-    - [`Depot`](Depot.md): The depot trades SNX and therefore knows the Synthetix address. \* [`ArbRewarder`](ArbRewarder.md): The ArbRewarder knows the Synthetix address because it exchanges SNX.
+    - [`Depot`](Depot.md): The depot trades SNX and therefore knows the Oikos address. \* [`ArbRewarder`](ArbRewarder.md): The ArbRewarder knows the Synthetix address because it exchanges SNX.
     - [`Exchanger`](Exchanger.md) The helper contract that performs the heavy lifting for `exchange()` and `settle()`.
-    - [`ExchangeRates`](ExchangeRates.md): The Synthetix contract fetches prices from the exchange rates contract to facilitate synth exchange and to determine the value of various quantities of synths.
-    - [`FeePool`](FeePool.md): The Synthetix contract remits exchange fees as sUSD to the fee pool, and also uses it to keep track of historical issuance records for each issuer.
+    - [`ExchangeRates`](ExchangeRates.md): The Oikos contract fetches prices from the exchange rates contract to facilitate synth exchange and to determine the value of various quantities of synths.
+    - [`FeePool`](FeePool.md): The Oikos contract remits exchange fees as sUSD to the fee pool, and also uses it to keep track of historical issuance records for each issuer.
     - [`Issuer`](Issuer.md) The helper contract that performs the heavy lifting for `issueSynths()`, `issueMaxSynths()` and `burnSynths()`.
-    - [`Proxy`](Proxy.md): The Synthetix contract, which is [`Proxyable`](Proxyable.md), exists behind a `CALL`-style proxy for upgradeability.
-    - [`RewardEscrow`](RewardEscrow.md): This is similar to the SynthetixEscrow contract, but it is where the SNX inflationary supply is kept before it is released to Synth issuers.
+    - [`Proxy`](Proxy.md): The Oikos contract, which is [`Proxyable`](Proxyable.md), exists behind a `CALL`-style proxy for upgradeability.
+    - [`RewardEscrow`](RewardEscrow.md): This is similar to the OikosEscrow contract, but it is where the SNX inflationary supply is kept before it is released to Synth issuers.
     - [`RewardsDistribution`](RewardsDistribution): This contract works closely with RewardEscrow to release portions of the inflationary supply to different recipients.
     - [`SupplySchedule`](SupplySchedule.md): The supply schedule determines the rate at which SNX are released from the inflationary supply.
-    - [`Synth`](Synth.md): Synthetix manages the supply of synths. It keeps track of which ones exist, and they are all issued and burnt from the Synthetix contract. The Synthetix contract is also responsible for exchange between different synth flavours.
-    - [`SynthetixEscrow`](SynthetixEscrow.md): The escrow contract keeps track of SNX owed to participants in the initial token sale, and releases them according to specified vesting schedules.
-    - [`SynthetixState`](SynthetixState.md): This state contract stores the debt ledger and the current issuance information for synth issuers.
+    - [`Synth`](Synth.md): Oikos manages the supply of synths. It keeps track of which ones exist, and they are all issued and burnt from the Synthetix contract. The Synthetix contract is also responsible for exchange between different synth flavours.
+    - [`OikosEscrow`](SynthetixEscrow.md): The escrow contract keeps track of SNX owed to participants in the initial token sale, and releases them according to specified vesting schedules.
+    - [`OikosState`](SynthetixState.md): This state contract stores the debt ledger and the current issuance information for synth issuers.
 
 ---
 
@@ -49,7 +49,7 @@ A constant used to initialise the ERC20 [`ExternStateToken.name`](ExternStateTok
 
 **Type:** `string constant`
 
-**Value:** `"Synthetix Network Token"`
+**Value:** `"Oikos Network Token"`
 
 ---
 
@@ -152,7 +152,7 @@ Returns the number of synths in the system, that is [`availableSynths.length`](#
 
 Returns the total SNX owned by the given account, locked and unlocked, escrowed and unescrowed. This is the quantity of SNX synths can be issued against.
 
-This is computed as the sum of [`Synthetix.balanceOf(account)`](TokenState.md#balanceof), [`SynthetixEscrow.balanceOf(account)`](SynthetixEscrow.md#balanceof), and [`RewardEscrow.balanceOf(account)`](RewardEscrow.md#balanceof); so an account may issue synths against both its active balance and its unclaimed escrow funds.
+This is computed as the sum of [`Oikos.balanceOf(account)`](TokenState.md#balanceof), [`SynthetixEscrow.balanceOf(account)`](SynthetixEscrow.md#balanceof), and [`RewardEscrow.balanceOf(account)`](RewardEscrow.md#balanceof); so an account may issue synths against both its active balance and its unclaimed escrow funds.
 
 ??? example "Details"
 
@@ -166,7 +166,7 @@ This is computed as the sum of [`Synthetix.balanceOf(account)`](TokenState.md#ba
 
 The ratio between value of synths that an account has issued and the value of the collateral they control. That is, this is just [`debtBalanceOf(issuer, "SNX") /`](#debtbalanceof) [`collateral(issuer)`](#collateral).
 
-Ideally, issuers should maintain their collateralisation ratio at a level less than the [global issuance ratio](SynthetixState.md#issuanceratio), and they are incentivised to do this by the [fees they can claim](FeePool.md#claim) if they do so.
+Ideally, issuers should maintain their collateralisation ratio at a level less than the [global issuance ratio](OikosState.md#issuanceratio), and they are incentivised to do this by the [fees they can claim](FeePool.md#claim) if they do so.
 
 ??? example "Details"
 
@@ -192,7 +192,7 @@ $$
 \check{\omega} = \omega \frac{\Delta_\text{last}}{\Delta_\text{entry}}
 $$
 
-Where $\omega$ is the account's debt ownership fraction at the time it [last issued or burnt](SynthetixState.md#issuancedata) synths, which produced the $\Delta_\text{entry}$ item in the [debt ledger](SynthetixState.md#debtledger). $\Delta_\text{last}$ is the latest value on the ledger. This logic is much the same as that found in [`FeePool._effectiveDebtRatioForPeriod`](FeePool.md#_effectivedebtratioforperiod). The actual value of $\omega$ is set in [`_addToDebtRegister`](#_addtodebtregister) and [`_removeFromDebtRegister`](#_removefromdebtregister).
+Where $\omega$ is the account's debt ownership fraction at the time it [last issued or burnt](OikosState.md#issuancedata) synths, which produced the $\Delta_\text{entry}$ item in the [debt ledger](SynthetixState.md#debtledger). $\Delta_\text{last}$ is the latest value on the ledger. This logic is much the same as that found in [`FeePool._effectiveDebtRatioForPeriod`](FeePool.md#_effectivedebtratioforperiod). The actual value of $\omega$ is set in [`_addToDebtRegister`](#_addtodebtregister) and [`_removeFromDebtRegister`](#_removefromdebtregister).
 
 ??? example "Details"
 
@@ -216,7 +216,7 @@ Reports an equivalent value of a quantity of one synth in terms of another at cu
 
 ### `maxIssuableSynths`
 
-The maximum number of a given synth that is issuable against the issuer's collateral. This is simply [`issuanceRatio *`](SynthetixState.md#issuanceratio) [`collateral(issuer)`](#collateral), priced in the requested currency.
+The maximum number of a given synth that is issuable against the issuer's collateral. This is simply [`issuanceRatio *`](OikosState.md#issuanceratio) [`collateral(issuer)`](#collateral), priced in the requested currency.
 
 ??? example "Details"
 
@@ -270,11 +270,11 @@ Where $\sigma_s$ and $\pi_s$ are the total supply and price of synth $s$, and $\
 
 ---
 
-### `transferableSynthetix`
+### `transferableOikos`
 
 The quantity of SNX this account can transfer given that a portion of it may be locked due to issuance.
 
-If $\text{balance}$ is [`balanceOf(account)`](TokenState.md#balanceof), and $\text{lockedSnx}$ is [`debtBalanceOf(account, "SNX") / SynthetixState.issuanceRatio`](#debtbalanceof), the function returns $max(0, \text{balance} - \text{lockedSnx})$. Escrowed tokens are not taken into account in this computation, so unescrowed tokens are locked immediately.
+If $\text{balance}$ is [`balanceOf(account)`](TokenState.md#balanceof), and $\text{lockedSnx}$ is [`debtBalanceOf(account, "SNX") / OikosState.issuanceRatio`](#debtbalanceof), the function returns $max(0, \text{balance} - \text{lockedSnx})$. Escrowed tokens are not taken into account in this computation, so unescrowed tokens are locked immediately.
 
 ???+ info "A Note on Price Motion"
 
@@ -310,7 +310,7 @@ If $\text{balance}$ is [`balanceOf(account)`](TokenState.md#balanceof), and $\te
 
     **Signature**
 
-    `transferableSynthetix(address account) public view returns (uint)`
+    `transferableOikos(address account) public view returns (uint)`
 
     **Modifiers**
 
@@ -491,7 +491,7 @@ Implemented based on [`ExternStateToken._transfer_byProxy`](ExternStateToken#_tr
 
     **Preconditions and Events**
 
-    * `value` must not exceed [`transferableSynthetix(messageSender)`](#transferablesynthetix)
+    * `value` must not exceed [`transferableOikos(messageSender)`](#transferablesynthetix)
 
     Otherwise, function behaves as per [`ExternStateToken._internalTransfer`](ExternStateToken.md#_internaltransfer).
 
@@ -518,7 +518,7 @@ Implemented based on [`ExternStateToken._transferFrom_byProxy`](ExternStateToken
 
     **Preconditions and Events**
 
-    * `value` must not exceed [`transferableSynthetix(from)`](#transferablesynthetix)
+    * `value` must not exceed [`transferableOikos(from)`](#transferablesynthetix)
 
     Otherwise, the these functions behave as per [`ExternStateToken._internalTransfer`](ExternStateToken.md#_internaltransfer).
 
@@ -634,8 +634,8 @@ This function can be [disabled](#setexchangeenabled) by the owner.
 
     * [`exchangeEnabled`](#exchangeenabled) must be true.
     * The destination address must not be the zero address.
-    * The destination address must not be the Synthetix contract itself.
-    * The destination address must not be the Synthetix proxy.
+    * The destination address must not be the Oikos contract itself.
+    * The destination address must not be the Oikos proxy.
     * The `from` address must have at least `sourceAmount` of the source currency.
 
 ---
@@ -654,9 +654,9 @@ This simply burns a quantity of the given synth from the specified account. This
 
 ### `_addToDebtRegister`
 
-Whenever synths are issued, this function is invoked to update the [debt ledger](SynthetixState.md#debtledger). It computes the factor the issuance changes the overall supply by and appends the resulting entry to the debt ledger. This entry is saved as a [27-decimal fixed point number](SafeDecimalMath.md).
+Whenever synths are issued, this function is invoked to update the [debt ledger](OikosState.md#debtledger). It computes the factor the issuance changes the overall supply by and appends the resulting entry to the debt ledger. This entry is saved as a [27-decimal fixed point number](SafeDecimalMath.md).
 
-In addition, the caller's [current issuance data](SynthetixState.md#setcurrentissuancedata) is updated and, if they haven't issued before, the [total issuer count is incremented](SynthetixState.md#incrementtotalissuercount).
+In addition, the caller's [current issuance data](OikosState.md#setcurrentissuancedata) is updated and, if they haven't issued before, the [total issuer count is incremented](SynthetixState.md#incrementtotalissuercount).
 
 This function performs the same operation as [`_removeFromDebtRegister`](#_removefromdebtregister), but a quantity of debt is added rather than removed from the total pool.
 
@@ -668,7 +668,7 @@ This function performs the same operation as [`_removeFromDebtRegister`](#_remov
 
     | Term             | Definition                                           | Description                                                                                                                                                                                                                                                                                                                                 |
     | ---------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | $\Delta$         | See the **Ledger Updates** section below.            | The [debt ledger](SynthetixState.md#debtledger): an array of debt movement factors, indicating the size of the issued system debt over time. $\Delta_n$ is the $n^{th}$ entry in the ledger.                                                                                                                                                |
+    | $\Delta$         | See the **Ledger Updates** section below.            | The [debt ledger](OikosState.md#debtledger): an array of debt movement factors, indicating the size of the issued system debt over time. $\Delta_n$ is the $n^{th}$ entry in the ledger.                                                                                                                                                |
     | $X$              | $\frac{1}{\pi_\text{sUSD}}\sum_{c}{\pi_c \sigma_c}$  | The sUSD value of all issued synths ([`totalIssuedSynths`](#totalissuedsynths)) at current prices.                                                                                                                                                                                                                                          |
     | $\widehat{\chi}$ | $\omega \frac{\Delta_\text{last}}{\Delta_{entry}} X$ | The XDR value of the account's existing issuance debt at current prices ([`debtBalanceOf`](#debtbalanceof)). $\omega$ is the calling account's last recorded owership fraction of the total system debt. We will also refer to the adjusted current ownership fraction $\check{\omega} = \omega \frac{\Delta_\text{last}}{\Delta_{entry}}$. |
     | $\chi$           |                                                      | The XDR value of the newly-issued synth debt; the new total debt will be $X + \chi$.                                                                                                                                                                                                                                                        |
@@ -758,9 +758,9 @@ This operates by calling [`FeePool.appendAccountIssuanceRecord`](FeePool.md#appe
 
 ### `_removeFromDebtRegister`
 
-Whenever synths are burnt, this function is invoked to update the [debt ledger](SynthetixState.md#debtledger). It computes the factor the burning changes the overall supply by and appends the resulting entry to the debt ledger. This entry is saved as a [27-decimal fixed point number](SafeDecimalMath.md).
+Whenever synths are burnt, this function is invoked to update the [debt ledger](OikosState.md#debtledger). It computes the factor the burning changes the overall supply by and appends the resulting entry to the debt ledger. This entry is saved as a [27-decimal fixed point number](SafeDecimalMath.md).
 
-In addition, the caller's [current issuance data](SynthetixState.md#setcurrentissuancedata) is updated and, if they are burning all their tokens, the [total issuer count is decremented](SynthetixState.md#decrementtotalissuercount).
+In addition, the caller's [current issuance data](OikosState.md#setcurrentissuancedata) is updated and, if they are burning all their tokens, the [total issuer count is decremented](SynthetixState.md#decrementtotalissuercount).
 
 This function performs the same operation as [`_addToDebtRegister`](#_addtodebtregister), but a quantity of debt is removed rather than added to the total pool.
 
@@ -820,7 +820,7 @@ The transaction is reverted if the given currency's latest exchange rate [is sta
 
 Records that an [exchange](#exchange) between two flavours of synths occurred.
 
-This event is emitted from the Synthetix [proxy](Proxy.md#_emit) with the `emitSynthExchange` function.
+This event is emitted from the Oikos [proxy](Proxy.md#_emit) with the `emitSynthExchange` function.
 
 **Signature:** `SynthExchange(address indexed account, bytes32 fromCurrencyKey, uint256 fromAmount, bytes32 toCurrencyKey, uint256 toAmount, address toAddress)`
 

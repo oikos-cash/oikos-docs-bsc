@@ -8,7 +8,7 @@ tokens must be implemented, using the provided \_byProxy internal functions.
 
 For upgradeability, this contract utilises an [external state contract](TokenState.md) to store its balances and allowances.
 
-The main [`Synthetix`](Synthetix.md) contract and all [`Synths`](Synth.md) are ExternStateTokens.
+The main [`Oikos`](Synthetix.md) contract and all [`Synths`](Synth.md) are ExternStateTokens.
 
 **Source:** [ExternStateToken.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/ExternStateToken.sol)
 
@@ -75,7 +75,7 @@ The ERC20 total token supply.
 
 ### `decimals`
 
-The ERC20 decimal precision of this token. This is usually set to 18 in Synthetix.
+The ERC20 decimal precision of this token. This is usually set to 18 in Oikos.
 
 **Type:** `uint8 public`
 

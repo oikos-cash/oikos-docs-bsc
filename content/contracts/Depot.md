@@ -16,7 +16,7 @@ Throughout, the contract assumes that sUSD is always worth exactly US\$1. So: a)
 
 !!! info "Zero Transfer Fee"
 
-    [SIP-19](https://sips.synthetix.io/sips/sip-19) deprecated transfer fees. Hence, although exchange operations call [`FeePool.amountReceivedFromTransfer`](FeePool.md#amountreceivedfromtransfer) to subtract this fee from the sale quantity, the fee function just returns its argument unchanged, so nothing is actually charged.
+    [SIP-19](https://sips.oikos.cash/sips/sip-19) deprecated transfer fees. Hence, although exchange operations call [`FeePool.amountReceivedFromTransfer`](FeePool.md#amountreceivedfromtransfer) to subtract this fee from the sale quantity, the fee function just returns its argument unchanged, so nothing is actually charged.
 
 **Source:** [Depot.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Depot.sol)
 
@@ -34,7 +34,7 @@ Throughout, the contract assumes that sUSD is always worth exactly US\$1. So: a)
 
 ### Related Contracts
 
-- [Synthetix](Synthetix.md)
+- [Oikos](Synthetix.md)
 - [Synth](Synth.md)
 - [FeePool](FeePool.md)
 
@@ -68,9 +68,9 @@ Stores an individual Synth deposit on sale.
 
 ### `synthetix`
 
-The address of the main [`Synthetix`](Synthetix.md) contract; the depot contains SNX.
+The address of the main [`Oikos`](Synthetix.md) contract; the depot contains SNX.
 
-**Type:** `Synthetix public`
+**Type:** `Oikos public`
 
 ---
 
@@ -84,7 +84,7 @@ The address of the sUSD [`Synth`](Synth.md), which are the synth held in the dep
 
 ### `feePool`
 
-The address of the [`FeePool`](FeePool.md) contract. Since transfer fees were eliminated in [SIP-19](https://sips.synthetix.io/sips/sip-19), this is not really used anymore. All the fee pool functions this contract calls have now been replaced with effective no-ops.
+The address of the [`FeePool`](FeePool.md) contract. Since transfer fees were eliminated in [SIP-19](https://sips.oikos.cash/sips/sip-19), this is not really used anymore. All the fee pool functions this contract calls have now been replaced with effective no-ops.
 
 **Type:** `FeePool public`
 
@@ -214,7 +214,7 @@ Initialises the various addresses this contract knowws, along with the initial p
 
     **Signature**
 
-    `constructor(address _owner, address _fundsWallet, Synthetix _synthetix, Synth _synth, FeePool _feePool, address _oracle, uint _usdToEthPrice, uint _usdToSnxPrice) public`
+    `constructor(address _owner, address _fundsWallet, Oikos _synthetix, Synth _synth, FeePool _feePool, address _oracle, uint _usdToEthPrice, uint _usdToSnxPrice) public`
 
     **Superconstructors**
 
@@ -283,7 +283,7 @@ Allows the owner to set the address of the [`synth`](#synth) contract the depot 
 
 ---
 
-### `setSynthetix`
+### `setOikos`
 
 Allows the owner to set the address of the [`synthetix`](#synthetix) contract.
 
@@ -291,7 +291,7 @@ Allows the owner to set the address of the [`synthetix`](#synthetix) contract.
 
     **Signature**
 
-    `setSynthetix(Synthetix _synthetix)`
+    `setOikos(Synthetix _synthetix)`
 
     **Modifiers**
 
@@ -299,7 +299,7 @@ Allows the owner to set the address of the [`synthetix`](#synthetix) contract.
 
     **Emits**
 
-    * [`SynthetixUpdated(_synthetix)`](#synthetixupdated)
+    * [`OikosUpdated(_synthetix)`](#synthetixupdated)
 
 ---
 
@@ -357,7 +357,7 @@ The prices are accompanied by the time they were sent. The oracle will not accep
 
     **Signature**
 
-    `updatePrices(uint newEthPrice, uint newSynthetixPrice, uint timeSent) external`
+    `updatePrices(uint newEthPrice, uint newOikosPrice, uint timeSent) external`
 
     **Modifiers**
 
@@ -370,7 +370,7 @@ The prices are accompanied by the time they were sent. The oracle will not accep
 
     **Emits**
 
-    * [`PricesUpdated(newEthPrice, newSynthetixPrice, timeSent)`](#pricesupdated)
+    * [`PricesUpdated(newEthPrice, newOikosPrice, timeSent)`](#pricesupdated)
 
 ---
 
@@ -409,33 +409,33 @@ Returns the number of sUSD exchanged. Converts any ether sent to the contract to
 
 ---
 
-### `exchangeEtherForSynthetix`
+### `exchangeEtherForOikos`
 
-- `exchangeEtherForSynthetix() returns (uint)`: Requires that the contract is not paused, and that the prices are not stale. Converts the received ether to a quantity of SNX with `synthetixReceivedForEther`. Sends the ether to `fundsWallet`, sends the converted quantity of SNX to the message sender from the contract's own reserves. Returns the SNX quantity sent. If the contract has insufficient SNX, then the transfer will fail and the transaction will revert.
-
----
-
-### `exchangeEtherForSynthetixAtRate`
-
-- `exchangeEtherForSynthetixAtRate(uint guaranteedEtherRate, uint guaranteedSynthetixRate) returns (uint)`: As `exchangeEtherForSynthsAtRate` is to `exchangeEtherForSynths`, this is to `exchangeEtherForSynthetix`.
+- `exchangeEtherForOikos() returns (uint)`: Requires that the contract is not paused, and that the prices are not stale. Converts the received ether to a quantity of SNX with `synthetixReceivedForEther`. Sends the ether to `fundsWallet`, sends the converted quantity of SNX to the message sender from the contract's own reserves. Returns the SNX quantity sent. If the contract has insufficient SNX, then the transfer will fail and the transaction will revert.
 
 ---
 
-### `exchangeSynthsForSynthetix`
+### `exchangeEtherForOikosAtRate`
 
-- `exchangeSynthsForSynthetix(uint synthAmount) returns (uint)`: Identical to `exchangeEtherForSynthetix`, but perform the price conversion with `synthetixReceivedForSynths`. The amount of synths to send is provided as a function argument, and then transferred to `fundsWallet` with `transferFrom`, so this function requires the caller to have approved the depot contract to make such a withdrawal. Note that this assumes that sUSD is worth exactly one dollar.
-
----
-
-### `exchangeSynthsForSynthetixAtRate`
-
-- `exchangeSynthsForSynthetixAtRate(uint synthAmount, uint guaranteedRate) returns (uint)`: As per `exchangeEtherForSynthetixAtRate`.
+- `exchangeEtherForOikosAtRate(uint guaranteedEtherRate, uint guaranteedSynthetixRate) returns (uint)`: As `exchangeEtherForSynthsAtRate` is to `exchangeEtherForSynths`, this is to `exchangeEtherForSynthetix`.
 
 ---
 
-### `withdrawSynthetix`
+### `exchangeSynthsForOikos`
 
-- `withdrawSynthetix(uint amount)`: Only callable by the contract owner. Allows the owner to transfer SNX out of the Depot to themselves.
+- `exchangeSynthsForOikos(uint synthAmount) returns (uint)`: Identical to `exchangeEtherForSynthetix`, but perform the price conversion with `synthetixReceivedForSynths`. The amount of synths to send is provided as a function argument, and then transferred to `fundsWallet` with `transferFrom`, so this function requires the caller to have approved the depot contract to make such a withdrawal. Note that this assumes that sUSD is worth exactly one dollar.
+
+---
+
+### `exchangeSynthsForOikosAtRate`
+
+- `exchangeSynthsForOikosAtRate(uint synthAmount, uint guaranteedRate) returns (uint)`: As per `exchangeEtherForSynthetixAtRate`.
+
+---
+
+### `withdrawOikos`
+
+- `withdrawOikos(uint amount)`: Only callable by the contract owner. Allows the owner to transfer SNX out of the Depot to themselves.
 
 ---
 
@@ -565,9 +565,9 @@ Reverts the transaction if [`pricesAreStale`](#pricesarestale) returns false, be
 
 ---
 
-### `SynthetixUpdated`
+### `OikosUpdated`
 
-- `SynthetixUpdated(Synthetix newSynthetixContract)`
+- `OikosUpdated(Synthetix newSynthetixContract)`
 
 ---
 
@@ -579,7 +579,7 @@ Reverts the transaction if [`pricesAreStale`](#pricesarestale) returns false, be
 
 ### `PricesUpdated`
 
-- `PricesUpdated(uint newEthPrice, uint newSynthetixPrice, uint timeSent)`
+- `PricesUpdated(uint newEthPrice, uint newOikosPrice, uint timeSent)`
 
 ---
 

@@ -2,7 +2,7 @@
 
 This is the mechanism for distributing SNX rewards from the inflationary supply. When an SNX staker claims fees, the inflationary reward component is escrowed in this contract and an entry is added to an escrow schedule for that staker for them to claim after a year. These vesting schedules can only be appended to by the [FeePool](FeePool.md) contract.
 
-The logic of RewardEscrow is derived from the [SynthetixEscrow](SynthetixEscrow.md) contract.
+The logic of RewardEscrow is derived from the [OikosEscrow](SynthetixEscrow.md) contract.
 
 **Source:** [RewardEscrow.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/RewardEscrow.sol)
 
@@ -20,7 +20,7 @@ The logic of RewardEscrow is derived from the [SynthetixEscrow](SynthetixEscrow.
 
 ### Related Contracts
 
-- <>[Synthetix](Synthetix.md)
+- <>[Oikos](Synthetix.md)
 - <>[FeePool](FeePool.md)
 
 ---
@@ -37,9 +37,9 @@ The logic of RewardEscrow is derived from the [SynthetixEscrow](SynthetixEscrow.
 
 ### `synthetix`
 
-The address of the main [`Synthetix`](Synthetix.md) contract.
+The address of the main [`Oikos`](Synthetix.md) contract.
 
-**Type:** `Synthetix public`
+**Type:** `Oikos public`
 
 ---
 
@@ -119,13 +119,13 @@ This constant limits vesting schedules to be shorter than 260 entries long so th
 
 ### `constructor`
 
-Initialises the [`Synthetix`](Synthetix.md) and [`FeePool`](FeePool.md) contract addresses, and the inherited [`Owned`](Owned.md) instance.
+Initialises the [`Oikos`](Synthetix.md) and [`FeePool`](FeePool.md) contract addresses, and the inherited [`Owned`](Owned.md) instance.
 
 ??? example "Details"
 
     **Signature**
 
-    `constructor(address _owner, Synthetix _synthetix, FeePool _feePool) public`
+    `constructor(address _owner, Oikos _synthetix, FeePool _feePool) public`
 
     **Superconstructors**
 
@@ -133,15 +133,15 @@ Initialises the [`Synthetix`](Synthetix.md) and [`FeePool`](FeePool.md) contract
 
 ---
 
-### `setSynthetix`
+### `setOikos`
 
-Sets the address of the [`Synthetix`](Synthetix.md) contract, so that escrowed SNX can be transferred to accounts claiming them.
+Sets the address of the [`Oikos`](Synthetix.md) contract, so that escrowed SNX can be transferred to accounts claiming them.
 
 ??? example "Details"
 
     **Signature**
 
-    `setSynthetix(Synthetix _synthetix) external`
+    `setOikos(Synthetix _synthetix) external`
 
     **Modifiers**
 
@@ -149,7 +149,7 @@ Sets the address of the [`Synthetix`](Synthetix.md) contract, so that escrowed S
 
     **Emits**
 
-    * [`SynthetixUpdated(_synthetix)`](#synthetixupdated)
+    * [`OikosUpdated(_synthetix)`](#synthetixupdated)
 
 ---
 
@@ -355,11 +355,11 @@ Reverts the transaction if the `msg.sender` is not the [`FeePool`](FeePool.md).
 
 ---
 
-### `SynthetixUpdated`
+### `OikosUpdated`
 
 Records that the SNX contract address was altered.
 
-**Signature:** `SynthetixUpdated(address newSynthetix)`
+**Signature:** `OikosUpdated(address newSynthetix)`
 
 ---
 

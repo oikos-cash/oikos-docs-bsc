@@ -13,27 +13,27 @@ Here are a collection of Codepens for reading Oikos state using `@oikos/oikos-js
 
 ### Distribution of Synths
 
-<p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="result" data-user="justinjmoses" data-slug-hash="vMKywz" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Synthetix synth distribution">
+<p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="result" data-user="justinjmoses" data-slug-hash="vMKywz" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Oikos synth distribution">
   <span>See the Pen <a href="https://codepen.io/justinjmoses/pen/vMKywz">
-  Synthetix synth distribution</a> by justin j. moses (<a href="https://codepen.io/justinjmoses">@justinjmoses</a>)
+  Oikos synth distribution</a> by justin j. moses (<a href="https://codepen.io/justinjmoses">@justinjmoses</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 ### Lookup SNX Holder
 
-<p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="result" data-user="justinjmoses" data-slug-hash="qwqoBR" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Synthetix get collateralized state">
+<p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="result" data-user="justinjmoses" data-slug-hash="qwqoBR" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Oikos get collateralized state">
   <span>See the Pen <a href="https://codepen.io/justinjmoses/pen/qwqoBR">
-  Synthetix get collateralized state</a> by justin j. moses (<a href="https://codepen.io/justinjmoses">@justinjmoses</a>)
+  Oikos get collateralized state</a> by justin j. moses (<a href="https://codepen.io/justinjmoses">@justinjmoses</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 ### Top Holders Lock Status
 
-<p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="result" data-user="justinjmoses" data-slug-hash="mgWZEm" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Synthetix top holders lock status">
+<p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="result" data-user="justinjmoses" data-slug-hash="mgWZEm" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Oikos top holders lock status">
   <span>See the Pen <a href="https://codepen.io/justinjmoses/pen/mgWZEm">
-  Synthetix top holders lock status</a> by justin j. moses (<a href="https://codepen.io/justinjmoses">@justinjmoses</a>)
+  Oikos top holders lock status</a> by justin j. moses (<a href="https://codepen.io/justinjmoses">@justinjmoses</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>

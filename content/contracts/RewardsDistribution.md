@@ -4,9 +4,9 @@
 
 This contract distributes the inflationary supply rewards after they have been minted. The primary recipient remains the population of SNX stakers, but new ones can be added to receive an allocation of tokens first. These entries can then be modified or removed.
 
-The actual quantity of tokens to inject into the supply each week is passed into [`distributeRewards`](#distributerewards) by [`Synthetix.mint`](Synthetix.md#mint); how much the quantity is on any given week is determined by the [`SupplySchedule`](SupplySchedule.md) contract.
+The actual quantity of tokens to inject into the supply each week is passed into [`distributeRewards`](#distributerewards) by [`Oikos.mint`](Synthetix.md#mint); how much the quantity is on any given week is determined by the [`SupplySchedule`](SupplySchedule.md) contract.
 
-Incentivising activities other than staking was first trialed with UniSwap, which was then formalised into [SIP-8](https://sips.synthetix.io/sips/sip-8), resulting in this contract.
+Incentivising activities other than staking was first trialed with UniSwap, which was then formalised into [SIP-8](https://sips.oikos.cash/sips/sip-8), resulting in this contract.
 
 **Source:** [RewardsDistribution.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/RewardsDistribution.sol)
 
@@ -26,7 +26,7 @@ Incentivising activities other than staking was first trialed with UniSwap, whic
 
 - \>[FeePoolProxy](Proxy.md)
 - \>[RewardEscrow](RewardEscrow.md)
-- \>[SynthetixProxy](Proxy.md)
+- \>[OikosProxy](Proxy.md)
 
 ---
 
@@ -58,7 +58,7 @@ Stores an address and a quantity of the inflationary tokens to send to it.
 
 ### `authority`
 
-The address authorised to call [`distributeRewards`](#distributerewards), which is used only by [`Synthetix.mint`](Synthetix.md#mint).
+The address authorised to call [`distributeRewards`](#distributerewards), which is used only by [`Oikos.mint`](Synthetix.md#mint).
 
 **Type:** `address public`
 
@@ -66,7 +66,7 @@ The address authorised to call [`distributeRewards`](#distributerewards), which 
 
 ### `synthetixProxy`
 
-The address of the Synthetix [`ProxyERC20`](ProxyERC20.md) for transferring SNX to distribution recipients and the [`RewardEscrow`](RewardEscrow.md) contract.
+The address of the Oikos [`ProxyERC20`](ProxyERC20.md) for transferring SNX to distribution recipients and the [`RewardEscrow`](RewardEscrow.md) contract.
 
 **Type:** `address public`
 
@@ -116,15 +116,15 @@ Initialises the addresses of various related contracts, as well as the inherited
 
 ---
 
-### `setSynthetixProxy`
+### `setOikosProxy`
 
-Allows the owner to set the address of the [Synthetix ProxyERC20](#synthetixproxy).
+Allows the owner to set the address of the [Oikos ProxyERC20](#synthetixproxy).
 
 ??? example "Details"
 
     **Signature**
 
-    `setSynthetixProxy(address _synthetixProxy) external`
+    `setOikosProxy(address _synthetixProxy) external`
 
     **Modifiers**
 
@@ -259,7 +259,7 @@ This function always returns true if it does not revert.
 
 !!! info "Sufficient SNX Balance"
 
-    There will always be sufficient SNX in the RewardsDistribution contract to support this operation, since its SNX balance is directly credited the correct number of tokens by [`Synthetix.mint`](Synthetix.md#mint) immediately before the only call to this function. Only the Synthetix contract is authorised to execute rewards distribution, and this is the only place new SNX finds its way into the system.
+    There will always be sufficient SNX in the RewardsDistribution contract to support this operation, since its SNX balance is directly credited the correct number of tokens by [`Oikos.mint`](Synthetix.md#mint) immediately before the only call to this function. Only the Synthetix contract is authorised to execute rewards distribution, and this is the only place new SNX finds its way into the system.
 
 ??? example "Details"
 
@@ -269,7 +269,7 @@ This function always returns true if it does not revert.
 
     **Preconditions**
 
-    * `msg.sender` must be the [`authority`](#authority); i.e. the Synthetix contract.
+    * `msg.sender` must be the [`authority`](#authority); i.e. the Oikos contract.
     * The [`rewardEscrow`](#rewardescrow), [`synthetixProxy`](#synthetixproxy), and [feePoolProxy](#feepoolproxy) addresses must all be initialised.
     * The amount to distribute must be nonzero.
     * The SNX balance in RewardsDistribution must not be less than the amount to distribute.

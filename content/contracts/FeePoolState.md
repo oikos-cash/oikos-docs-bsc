@@ -10,7 +10,7 @@ See [`FeePool.feesByPeriod`](FeePool.md#feesbyperiod) and [`FeePool.effectiveDeb
 
 !!! caution "Caution: The Number of Stored Fee Periods"
 
-    Note that this contract contains storage for [up to six fee periods](#fee_period_length), while the FeePool contract limits it to [only three](FeePool.md#fee_period_length). This is a consequence of the implementation of [SIP 4](https://sips.synthetix.io/sips/sip-4), which reduced the fee window in the main [`FeePool`](FeePool.md) contract in order to encourage faster responses to alterations of system incentives. As part of this process, this storage contract was, of course, not upgraded.
+    Note that this contract contains storage for [up to six fee periods](#fee_period_length), while the FeePool contract limits it to [only three](FeePool.md#fee_period_length). This is a consequence of the implementation of [SIP 4](https://sips.oikos.cash/sips/sip-4), which reduced the fee window in the main [`FeePool`](FeePool.md) contract in order to encourage faster responses to alterations of system incentives. As part of this process, this storage contract was, of course, not upgraded.
 
     See also: [Design_Decisions.md](https://github.com/oikos-cash/oikos-bsc/blob/master/Design_Decisions.md#feepoolstate).
 
@@ -57,14 +57,14 @@ Holds the issuance state and index of users interacting with the [`FeePool`](Fee
 
 | Field          | Type   | Description                                                                                                                                                                                                                                                                    |
 | -------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| debtPercentage | `uint` | The percentage of the total system debt owned by the address associated with this entry at the time of issuance. These are [27-decimal fixed point numbers](SafeDecimalMath.md), closely related to the values in [`SynthetixState.debtLedger`](SynthetixState.md#debtledger). |
-| debtEntryIndex | `uint` | The [debt ledger](SynthetixState.md#debtledger) index when this user issued or destroyed tokens. That is, the length of the ledger at the time of issuance.                                                                                                                    |
+| debtPercentage | `uint` | The percentage of the total system debt owned by the address associated with this entry at the time of issuance. These are [27-decimal fixed point numbers](SafeDecimalMath.md), closely related to the values in [`OikosState.debtLedger`](SynthetixState.md#debtledger). |
+| debtEntryIndex | `uint` | The [debt ledger](OikosState.md#debtledger) index when this user issued or destroyed tokens. That is, the length of the ledger at the time of issuance.                                                                                                                    |
 
-For more information on these fields and their meaning, see the main [`Synthetix`](Synthetix.md) contract functions [`_addToDebtRegister`](Synthetix.md#_addtodebtregister) and [`_removeFromDebtRegister`](Synthetix.md#_removefromdebtregister), along with the corresponding struct in [`SynthetixState`](SynthetixState.md#issuancedata).
+For more information on these fields and their meaning, see the main [`Oikos`](Synthetix.md) contract functions [`_addToDebtRegister`](Synthetix.md#_addtodebtregister) and [`_removeFromDebtRegister`](Synthetix.md#_removefromdebtregister), along with the corresponding struct in [`SynthetixState`](SynthetixState.md#issuancedata).
 
-!!! info "Relationship with `SynthetixState`"
+!!! info "Relationship with `OikosState`"
 
-    This is the same struct as [`SynthetixState.issuanceData`](SynthetixState.md#issuancedata), modulo naming, but in the case of SynthetixState, only one entry is kept, corresponding to only the most recent issuance event associated with an address.
+    This is the same struct as [`OikosState.issuanceData`](SynthetixState.md#issuancedata), modulo naming, but in the case of SynthetixState, only one entry is kept, corresponding to only the most recent issuance event associated with an address.
 
     This induces a slightly awkward structure where the current and historical issuance information is stored over two separate contracts. In a future version this information could potentially be stored in a unified structure for dividends in efficiency and clarity.
 
@@ -175,7 +175,7 @@ The returned values are as per [`getAccountsDebtEntry`](#getaccountsdebtentry), 
 
 ### `appendAccountIssuanceRecord`
 
-Allows the [`Synthetix`](Synthetix.md#_appendaccountissuancerecord) contract, through [`FeePool.appendAccountIssuanceRecord`](FeePool.md#appendaccountissuancerecord), to record current fee period issuance information for a given account in the issuance ledger. This is used when synths are issued or burnt.
+Allows the [`Oikos`](Synthetix.md#_appendaccountissuancerecord) contract, through [`FeePool.appendAccountIssuanceRecord`](FeePool.md#appendaccountissuancerecord), to record current fee period issuance information for a given account in the issuance ledger. This is used when synths are issued or burnt.
 
 If the latest entry in this account's issuance ledger was from the current fee period, it is overwritten. Otherwise, the existing entries are shifted down one spot, dropping the last one (using a call to [`issuanceDataIndexOrder`](#issuancedataindexorder)), and a new entry is added at the head of the list.
 
@@ -207,7 +207,7 @@ Shifts this account's array of issuance ledger entries down one place, overwriti
 
 ### `importIssuerData`
 
-This function was used during the initial six week setup period to initialise the issuance ledger from the previous Synthetix version.
+This function was used during the initial six week setup period to initialise the issuance ledger from the previous Oikos version.
 
 ??? example "Details"
 

@@ -25,15 +25,15 @@
 ??? example "Details"
 
     - [`Proxy`](Proxy.md): The fee pool, being [`Proxyable`](Proxyable.md), sits behind a `CALL`-style proxy for upgradeability.
-    - [`Synthetix`](Synthetix.md): The fee pool needs the Synthetix address for a onlySynthetix modifer for storing a minters issue and burn events to track their debt % of the system.
-    - [`SynthetixState`](SynthetixState.md): The fee pool retrieves the global issuance ratio, and queries the debt ledger directly from the Synthetix state contract.
-    - [`Synth`](Synth.md): The fee pool, retrieving their addresses from the Synthetix contract, directly burns and issues sUSD when transferring fees. Fees are denominated and paid out in sUSD. Synths themselves do not know the fee pool address directly, but ask the fee pool's proxy for its target.
+    - [`Oikos`](Synthetix.md): The fee pool needs the Synthetix address for a onlySynthetix modifer for storing a minters issue and burn events to track their debt % of the system.
+    - [`OikosState`](SynthetixState.md): The fee pool retrieves the global issuance ratio, and queries the debt ledger directly from the Synthetix state contract.
+    - [`Synth`](Synth.md): The fee pool, retrieving their addresses from the Oikos contract, directly burns and issues sUSD when transferring fees. Fees are denominated and paid out in sUSD. Synths themselves do not know the fee pool address directly, but ask the fee pool's proxy for its target.
     - [`FeePoolState`](FeePoolState.md): The fee pool state contract holds the details of each user's most recent issuance events: when they issued and burnt synths, and their value.
     - [`FeePoolEternalStorage`](FeePoolEternalStorage): A storage contact that holds the last fee withdrawal time for each account.
     - [`DelegateApprovals`](DelegateApprovals): A storage contract containing addresses to which the right to withdraw fees has been delegated by another account, for example to allow hot wallets to withdraw fees.
     - [`RewardEscrow`](RewardEscrow.md): The contract into which inflationary SNX rewards are paid by the fee pool so that they can be escrowed for a year after being claimed.
     - [`RewardsDistribution`](RewardsDistribution.md): This contract, in the guise of the [`rewardsAuthority`](#rewardsauthority), distributes allocations from the inflationary supply to various recipients.
-    - [`Depot`](Depot.md): Allows users to exchange between Synths, SNX, and Ether. The Depot uses the fee pool to know what transfer fees were being incurred on its transfers, although the transfer fee has been nil since before [SIP-19](https://sips.synthetix.io/sips/sip-19).
+    - [`Depot`](Depot.md): Allows users to exchange between Synths, SNX, and Ether. The Depot uses the fee pool to know what transfer fees were being incurred on its transfers, although the transfer fee has been nil since before [SIP-19](https://sips.oikos.cash/sips/sip-19).
 
 ---
 
@@ -55,11 +55,11 @@ A record for a fee period, when it was opened, and the fees and rewards accrued 
 | Field               | Type                                       | Description                                                                                                                                                                                                                                                                                                                       |
 | ------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | feePeriodId         | `uint`                                     | A serial id for fee periods which is incremented for each new fee period.                                                                                                                                                                                                                                                         |
-| startingDebtIndex   | `uint`                                     | The length of [`SynthetixState.debtLedger`](SynthetixState.md#debtledger) at the time this fee period began.                                                                                                                                                                                                                      |
+| startingDebtIndex   | `uint`                                     | The length of [`OikosState.debtLedger`](SynthetixState.md#debtledger) at the time this fee period began.                                                                                                                                                                                                                      |
 | startTime           | `uint`                                     | The current timestamp when this fee period began.                                                                                                                                                                                                                                                                                 |
 | feesToDistribute    | `uint` ([18 decimals](SafeDecimalMath.md)) | The total of fees to be distributed in this period, in sUSD. This increases when fees are collected in the current period or when unclaimed fees roll over from the oldest period to the second oldest. See [`feePaid`](#feepaid) and [`closeCurrentPeriod`](#closecurrentperiod).                                                |
 | feesClaimed         | `uint` ([18 decimals](SafeDecimalMath.md)) | The number of fees that have already been claimed during this period.                                                                                                                                                                                                                                                             |
-| rewardsToDistribute | `uint` ([18 decimals](SafeDecimalMath.md)) | The total of inflationary rewards to be distributed in this period, in SNX. This increases when new rewards are minted by [`Synthetix.mint`](Synthetix.md#mint)/[`rewardsMinted`](#rewardsminted), or when unclaimed rewards roll over from the oldest period to the second oldest ([`closeCurrentPeriod`](#closecurrentperiod)). |
+| rewardsToDistribute | `uint` ([18 decimals](SafeDecimalMath.md)) | The total of inflationary rewards to be distributed in this period, in SNX. This increases when new rewards are minted by [`Oikos.mint`](Synthetix.md#mint)/[`rewardsMinted`](#rewardsminted), or when unclaimed rewards roll over from the oldest period to the second oldest ([`closeCurrentPeriod`](#closecurrentperiod)). |
 | rewardsClaimed      | `uint` ([18 decimals](SafeDecimalMath.md)) | The quantity of inflationary rewards that have already been claimed during this period.                                                                                                                                                                                                                                           |
 
 ---
@@ -82,7 +82,7 @@ The address where fees are pooled as sUSD.
 
 This is the number of weekly fee periods that are tracked by the smart contracts, hence the length of the [`recentFeePeriods`](#recentfeeperiods) array.
 
-This was reduced from 6 to 3 as part of [SIP-4](https://sips.synthetix.io/sips/sip-4), but note the inconsistency with the corresponding constant in [`FeePoolState`](FeePoolState.md#fee_period_length), which cannot be altered.
+This was reduced from 6 to 3 as part of [SIP-4](https://sips.oikos.cash/sips/sip-4), but note the inconsistency with the corresponding constant in [`FeePoolState`](FeePoolState.md#fee_period_length), which cannot be altered.
 
 **Type:** `uint constant public`
 
@@ -136,7 +136,7 @@ The minimum value of [`feePeriodDuration`](#feeperiodduration).
 
 ### `TARGET_THRESHOLD`
 
-A threshold that allows issuers to be undercollateralised by up to 10%. Users may claim fees if their [collateralisation ratio](Synthetix.md#collateralisationratio) is below the target [issuance ratio](SynthetixState.md#issuanceratio) plus 10%.
+A threshold that allows issuers to be undercollateralised by up to 10%. Users may claim fees if their [collateralisation ratio](Oikos.md#collateralisationratio) is below the target [issuance ratio](SynthetixState.md#issuanceratio) plus 10%.
 
 This is designed to allow users to have a little slack in case prices move quickly.
 
@@ -218,17 +218,17 @@ Stores [fee period information](#feeperiod) for the last three weeks, from newes
 
 ### `synthetix`
 
-The main [`Synthetix`](Synthetix.md) contract.
+The main [`Oikos`](Synthetix.md) contract.
 
-**Type:** `Synthetix public`
+**Type:** `Oikos public`
 
 ---
 
 ### `synthetixState`
 
-The associated [`SynthetixState`](SynthetixState.md) contract.
+The associated [`OikosState`](SynthetixState.md) contract.
 
-**Type:** `SynthetixState public`
+**Type:** `OikosState public`
 
 ---
 
@@ -244,7 +244,7 @@ This constructor also begins the first fee period, as it initialises the first f
 
     **Signature**
 
-    `constructor(address _proxy, address _owner, Synthetix _synthetix, FeePoolState _feePoolState, FeePoolEternalStorage _feePoolEternalStorage, ISynthetixState _synthetixState, ISynthetixEscrow _rewardEscrow, address _rewardsAuthority, uint _exchangeFeeRate) public`
+    `constructor(address _proxy, address _owner, Oikos _synthetix, FeePoolState _feePoolState, FeePoolEternalStorage _feePoolEternalStorage, ISynthetixState _synthetixState, ISynthetixEscrow _rewardEscrow, address _rewardsAuthority, uint _exchangeFeeRate) public`
 
     **Superconstructors**
 
@@ -266,7 +266,7 @@ This constructor also begins the first fee period, as it initialises the first f
 
 Computes the number of Synths received by the recipient if a certain quantity is sent.
 
-As of [SIP-19](https://sips.synthetix.io/sips/sip-19), this is just the identity function, since there are no longer any transfer fees. It is only used by the [`Depot`](Depot.md) contract.
+As of [SIP-19](https://sips.oikos.cash/sips/sip-19), this is just the identity function, since there are no longer any transfer fees. It is only used by the [`Depot`](Depot.md) contract.
 
 ??? example "Details"
 
@@ -278,7 +278,7 @@ As of [SIP-19](https://sips.synthetix.io/sips/sip-19), this is just the identity
 
 ### `amountReceivedFromExchange`
 
-Computes the quantity received if a quantity of Synths is exchanged into another flavour. The amount received is the quantity sent minus the [exchange fee](#exchangefeeincurred), as per the logic in [`Synthetix._internalExchange`](Synthetix.md#_internalexchange).
+Computes the quantity received if a quantity of Synths is exchanged into another flavour. The amount received is the quantity sent minus the [exchange fee](#exchangefeeincurred), as per the logic in [`Oikos._internalExchange`](Synthetix.md#_internalexchange).
 
 ??? example "Details"
 
@@ -357,7 +357,7 @@ Periods where the user has already withdrawn since that period closed are skippe
 
 This is a predicate, returning true iff a particular account is permitted to claim any fees it has accrued.
 
-A account is able to claim fees if its [collateralisation ratio](Synthetix.md#collateralisationratio) is less than 110% of the [global issuance ratio](SynthetixState.md#issuanceratio).
+A account is able to claim fees if its [collateralisation ratio](Oikos.md#collateralisationratio) is less than 110% of the [global issuance ratio](SynthetixState.md#issuanceratio).
 
 ??? example "Details"
 
@@ -381,7 +381,7 @@ Returns from [`FeePoolEternalStorage`](FeePoolEternalStorage.md) the id of the f
 
 ### `getPenaltyThresholdRatio`
 
-Returns the collateralisation level a user can reach before they cannot claim fees. This is simply [`SynthetixState.issuanceRatio *`](SynthetixState.md#issuanceratio) [`(1 + TARGET_THRESHOLD)`](#target_threshold). The result is returned as a [18-decimal fixed point number](SafeDecimalMath.md).
+Returns the collateralisation level a user can reach before they cannot claim fees. This is simply [`OikosState.issuanceRatio *`](SynthetixState.md#issuanceratio) [`(1 + TARGET_THRESHOLD)`](#target_threshold). The result is returned as a [18-decimal fixed point number](SafeDecimalMath.md).
 
 ??? example "Details"
 
@@ -486,7 +486,7 @@ If the current fee period has been open for longer than [`feePeriodDuration`](#f
 
 The new fee period is added to the beginning of the [`recentFeePeriods`](#recentfeeperiods) list, and the last one is discarded. Any unclaimed fees from the last fee period roll over into the penultimate fee period.
 
-The new fee period's [`feePeriodId`](#feeperiod) is the previous id incremented by 1, and its [`startingDebtIndex`](#feeperiod) is the length of [`SynthetixState.debtLedger`](SynthetixState.md#debtledger) at the time the fee period rolls over. Note that before a new minting event occurs this index will be one past the end of the ledger.
+The new fee period's [`feePeriodId`](#feeperiod) is the previous id incremented by 1, and its [`startingDebtIndex`](#feeperiod) is the length of [`OikosState.debtLedger`](SynthetixState.md#debtledger) at the time the fee period rolls over. Note that before a new minting event occurs this index will be one past the end of the ledger.
 
 ??? example "Details"
 
@@ -648,15 +648,15 @@ Allows the contract owner to set the [rewards authority](#rewardsauthority).
 
 ---
 
-### `setSynthetix`
+### `setOikos`
 
-Allows the contract owner to set the [`Synthetix` contract address](#synthetix).
+Allows the contract owner to set the [`Oikos` contract address](#synthetix).
 
 ??? example "Details"
 
     **Signature**
 
-    `setSynthetix(Synthetix _synthetix) external`
+    `setOikos(Synthetix _synthetix) external`
 
     **Modifiers**
 
@@ -698,7 +698,7 @@ The function requires its input as an integral percentage point value, rather th
 
 Records that an account issued or burnt synths in the fee pool state.
 
-This function merely emits an event and passes through to [`FeePoolState.appendAccountIssuanceRecord`](FeePoolState.md#appendAccountIssuanceRecord) and is itself only invoked by [`Synthetix._appendAccountIssuanceRecord`](Synthetix.md#_appendaccountissuancerecord).
+This function merely emits an event and passes through to [`FeePoolState.appendAccountIssuanceRecord`](FeePoolState.md#appendAccountIssuanceRecord) and is itself only invoked by [`Oikos._appendAccountIssuanceRecord`](Synthetix.md#_appendaccountissuancerecord).
 
 The `debtRatio` argument is a [27-decimal fixed point number](SafeDecimalMath.md).
 
@@ -710,7 +710,7 @@ The `debtRatio` argument is a [27-decimal fixed point number](SafeDecimalMath.md
 
     **Modifiers**
 
-    * [`onlySynthetix`](#onlysynthetix)
+    * [`onlyOikos`](#onlysynthetix)
 
     **Emits**
 
@@ -720,7 +720,7 @@ The `debtRatio` argument is a [27-decimal fixed point number](SafeDecimalMath.md
 
 ### `recordFeePaid`
 
-Allows the [`Synthetix._internalExchange`](Synthetix.md#_internalexchange) function to record that a fee was paid whenever an exchange between Synth flavours occurs.
+Allows the [`Oikos._internalExchange`](Synthetix.md#_internalexchange) function to record that a fee was paid whenever an exchange between Synth flavours occurs.
 
 Adds the value in sUSD to the current fee period's pool of fees to be distributed.
 
@@ -732,7 +732,7 @@ Adds the value in sUSD to the current fee period's pool of fees to be distribute
 
     **Modifiers**
 
-    * [`onlySynthetix`](#onlysynthetix)
+    * [`onlyOikos`](#onlysynthetix)
 
 ---
 
@@ -760,7 +760,7 @@ Adds a quantity of SNX to the current fee period's total of rewards to be distri
 
 Claims fees and rewards owed to the specified address.
 
-The account's collateralisation ratio must be less than the [issuance ratio](SynthetixState.md#issuanceratio), plus the [target threshold](#target_threshold), as specified by the [`feesClaimable`](#feesclaimable) function. The quantity of fees and rewards owed is computed by [`feesAvailable`](#feesavailable).
+The account's collateralisation ratio must be less than the [issuance ratio](OikosState.md#issuanceratio), plus the [target threshold](#target_threshold), as specified by the [`feesClaimable`](#feesclaimable) function. The quantity of fees and rewards owed is computed by [`feesAvailable`](#feesavailable).
 
 Upon invocation, this function updates the account's [last fee withdrawal time](#_setlastfeewithdrawal), and removes the claimed [fees](#_recordFeePayment) and [rewards](#_recordRewardPayment) from the pool.
 Fees are paid into the claiming address [in the specified currency](#_payFees), while the rewards are [escrowed](#_payRewards) on behalf of the claiming address in the [`RewardEscrow`](#rewardescrow) contract for one year.
@@ -775,7 +775,7 @@ The return value is always true if the transaction was not reverted.
 
     **Preconditions**
 
-    * The user's [collateralisation ratio](Synthetix.md#collateralisationratio) must be below the threshold, as per [`feesClaimable`](#feesclaimable).
+    * The user's [collateralisation ratio](Oikos.md#collateralisationratio) must be below the threshold, as per [`feesClaimable`](#feesclaimable).
     * The user must have a positive value of fees or rewards available to claim.
 
     **Emits**
@@ -788,13 +788,13 @@ The return value is always true if the transaction was not reverted.
 
 Given entry and exit indices into the debt ledger, and a percentage of total debt ownership at the entry index, this function computes the adjusted ownership percentage at the exit index. This percentage changes due to fluctuations in Synth prices and total supply.
 
-If $\Delta_i$ is the value of the $i^{th}$ entry in the [debt ledger](SynthetixState.md#debtledger) and $\omega$ is the provided debt ownership percentage, then the result of this function is:
+If $\Delta_i$ is the value of the $i^{th}$ entry in the [debt ledger](OikosState.md#debtledger) and $\omega$ is the provided debt ownership percentage, then the result of this function is:
 
 $$
 \omega \frac{\Delta_\text{exit}}{\Delta_\text{entry}}
 $$
 
-See [`Synthetix._addToDebtRegister`](Synthetix.md#_addToDebtRegister) for details of the debt ownership percentage adjustment.
+See [`Oikos._addToDebtRegister`](Synthetix.md#_addToDebtRegister) for details of the debt ownership percentage adjustment.
 
 ??? example "Details"
 
@@ -842,7 +842,7 @@ The quantity is burnt from the fee pool, and and then issued into the destinatio
     * `account` can't be 0.
     * `account` can't be the FeePool contract itself.
     * `account` can't be the fee pool's proxy.
-    * `account` can't be the Synthetix contract.
+    * `account` can't be the Oikos contract.
 
 ---
 
@@ -866,7 +866,7 @@ Pays a quantity of rewards to a specified address, escrowing it for one year wit
     * `account` can't be 0.
     * `account` can't be the FeePool contract itself.
     * `account` can't be the fee pool's proxy.
-    * `account` can't be the Synthetix contract.
+    * `account` can't be the Oikos contract.
 
 ---
 
@@ -950,7 +950,7 @@ Reverts the transaction if `account` is the [fee address](#fee_address).
 
 ---
 
-### `onlySynthetix`
+### `onlyOikos`
 
 Reverts the transaction if `msg.sender` is not the [`synthetix`](#synthetix) address.
 

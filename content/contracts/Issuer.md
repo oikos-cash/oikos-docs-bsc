@@ -7,7 +7,7 @@
 
 ## Description
 
-This contract does all the heavy lifting of issuing and burning `sUSD`. It's used primarily to reduce the size of the `Synthetix` contract
+This contract does all the heavy lifting of issuing and burning `sUSD`. It's used primarily to reduce the size of the `Oikos` contract
 
 **Source:** [Issuer.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Issuer.sol)
 
@@ -26,13 +26,13 @@ This contract does all the heavy lifting of issuing and burning `sUSD`. It's use
 ### Related Contracts
 
 <centered-image>
-    ![Synthetix architture graph](../img/graphs/Issuer-architecture.svg)
+    ![Oikos architture graph](../img/graphs/Issuer-architecture.svg)
 </centered-image>
 
 ??? example "Details"
 
-    - [`FeePool`](FeePool.md): The Synthetix contract remits exchange fees as sUSD to the fee pool, and also uses it to keep track of historical issuance records for each issuer.
-    - [`SynthetixState`](SynthetixState.md): This state contract stores the debt ledger and the current issuance information for synth issuers.
+    - [`FeePool`](FeePool.md): The Oikos contract remits exchange fees as sUSD to the fee pool, and also uses it to keep track of historical issuance records for each issuer.
+    - [`OikosState`](SynthetixState.md): This state contract stores the debt ledger and the current issuance information for synth issuers.
 
 ---
 
@@ -40,7 +40,7 @@ This contract does all the heavy lifting of issuing and burning `sUSD`. It's use
 If any, see:
 
 <centered-image>
-    ![Synthetix architture graph](../img/graphs/Synthetix-architecture.svg)
+    ![Oikos architture graph](../img/graphs/Synthetix-architecture.svg)
 </centered-image>
 --->
 
@@ -58,7 +58,7 @@ A constant used to initialise the ERC20 [`ExternStateToken.name`](ExternStateTok
 
 **Type:** `string constant`
 
-**Value:** `"Synthetix Network Token"`
+**Value:** `"Oikos Network Token"`
 -->
 
 ---
@@ -91,7 +91,7 @@ The constructor initialises the various addresses that this contract knows about
 
     **Signature**
 
-    `constructor(address _proxy, TokenState _tokenState, SynthetixState _synthetixState, address _owner, ExchangeRates _exchangeRates, FeePool _feePool, SupplySchedule _supplySchedule, SynthetixEscrow _rewardEscrow, SynthetixEscrow _escrow, RewardsDistribution _rewardsDistribution, uint _totalSupply) public`
+    `constructor(address _proxy, TokenState _tokenState, OikosState _synthetixState, address _owner, ExchangeRates _exchangeRates, FeePool _feePool, SupplySchedule _supplySchedule, SynthetixEscrow _rewardEscrow, SynthetixEscrow _escrow, RewardsDistribution _rewardsDistribution, uint _totalSupply) public`
 
     **Superconstructors**
 
@@ -213,7 +213,7 @@ The transaction is reverted if the given account is the [fee address](FeePool.md
 
 Records that an [exchange](#exchange) between two flavours of synths occurred.
 
-This event is emitted from the Synthetix [proxy](Proxy.md#_emit) with the `emitSynthExchange` function.
+This event is emitted from the Oikos [proxy](Proxy.md#_emit) with the `emitSynthExchange` function.
 
 **Signature:** `SynthExchange(address indexed account, bytes32 fromCurrencyKey, uint256 fromAmount, bytes32 toCurrencyKey, uint256 toAmount, address toAddress)`
 

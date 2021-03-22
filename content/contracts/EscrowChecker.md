@@ -20,7 +20,7 @@ A small utility contract that augments the SNX escrow contract to allow extracti
 
 ### Related Contracts
 
-- [SynthetixEscrow](SynthetixEscrow.md)
+- [OikosEscrow](SynthetixEscrow.md)
 
 ---
 
@@ -30,9 +30,9 @@ A small utility contract that augments the SNX escrow contract to allow extracti
 
 ### `synthetix_escrow`
 
-The [SNX escrow contract](SynthetixEscrow.md).
+The [SNX escrow contract](OikosEscrow.md).
 
-**Type:** `SynthetixEscrow public`
+**Type:** `OikosEscrow public`
 
 ---
 
@@ -48,13 +48,13 @@ Initialises the [synthetix escrow address](#synthetix_escrow).
 
     **Signature**
 
-    `constructor(SynthetixEscrow _esc) public`
+    `constructor(OikosEscrow _esc) public`
 
 ---
 
 ### `checkAccountSchedule`
 
-Returns the given address's vesting schedule as up to 16 `uints`, composed of an alternating sequence of up to 8 `(timestamp, quantity)` pairs, as per [`SynthetixEscrow.getVestingScheduleEntry`](SynthetixEscrow.md#getVestingScheduleEntry).
+Returns the given address's vesting schedule as up to 16 `uints`, composed of an alternating sequence of up to 8 `(timestamp, quantity)` pairs, as per [`OikosEscrow.getVestingScheduleEntry`](SynthetixEscrow.md#getVestingScheduleEntry).
 
 Vested entries are not skipped, and appear as a leading sequence of zeroes.
 
