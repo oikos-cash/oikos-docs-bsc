@@ -10,7 +10,7 @@ For upgradeability, this contract utilises an [external state contract](TokenSta
 
 The main [`Synthetix`](Synthetix.md) contract and all [`Synths`](Synth.md) are ExternStateTokens.
 
-**Source:** [ExternStateToken.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/ExternStateToken.sol)
+**Source:** [ExternStateToken.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/ExternStateToken.sol)
 
 ## Architecture
 

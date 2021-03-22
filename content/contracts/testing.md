@@ -1,8 +1,8 @@
 # Testing
 
-[![Travis Build Status](https://travis-ci.org/Synthetixio/synthetix.svg?branch=master)](https://travis-ci.org/Synthetixio/synthetix)
-[![CircleCI](https://circleci.com/gh/Synthetixio/synthetix.svg?style=svg)](https://circleci.com/gh/Synthetixio/synthetix)
-[![codecov](https://codecov.io/gh/Synthetixio/synthetix/branch/develop/graph/badge.svg)](https://codecov.io/gh/Synthetixio/synthetix)
+[![Travis Build Status](https://travis-ci.org/oikos-cash/oikos-bsc.svg?branch=master)](https://travis-ci.org/Synthetixio/synthetix)
+[![CircleCI](https://circleci.com/gh/oikos-cash/oikos-bsc.svg?style=svg)](https://circleci.com/gh/Synthetixio/synthetix)
+[![codecov](https://codecov.io/gh/oikos-cash/oikos-bsc/branch/develop/graph/badge.svg)](https://codecov.io/gh/Synthetixio/synthetix)
 
 The Synthetix ecosystem relies on automated testing as much as possible to enable a high-frequency of updates while maintaining security and reliability.
 
@@ -27,4 +27,4 @@ Every time we deploy updates to Synthetix, we mutate our `deployment.json` files
 
 ## Testnet E2E Tests
 
-Finally, under the `test/testnet` folder is a script that when run, will execute a basic PVT of our system. Because it's live testnet ETH and SNX, the script uses tiny amounts of the tokens in its execution.Tthis script is used after each deployment to a testnet to ensure health of the system.
+Finally, under the `test/testnet` folder is a script that when run, will execute a basic PVT of our system. Because it's live testnet BNB and SNX, the script uses tiny amounts of the tokens in its execution.Tthis script is used after each deployment to a testnet to ensure health of the system.

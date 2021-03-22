@@ -4,7 +4,7 @@
 
 <!-- TODO -->
 
-**Source:** [.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/[name].sol)
+**Source:** [.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/[name].sol)
 
 ## Architecture
 

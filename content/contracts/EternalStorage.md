@@ -10,7 +10,7 @@ The contract is architected this way so that the access pattern is uniform and t
 
 Each type of variable has its own mapping, along with getters and setters. As this entails some replication, this document will express functions and variables generically with the type variable 𝕋, where 𝕋 $\in$ {`uint`, `string`, `address`, `bytes`, `bytes32`, `bool`, `int`}. This notation is used slightly abusively, standing in for both names and types; in the former case, substitution is in camelCase. More complex types, such as structs and nested mappings, are not supported.
 
-**Source:** [EternalStorage.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/EternalStorage.sol)
+**Source:** [EternalStorage.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/EternalStorage.sol)
 
 ## Architecture
 

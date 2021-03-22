@@ -10,7 +10,7 @@ This contract interacts with the oracle's frontrunning protection, which is part
 
 This does not turn off any functionality in the exchange rate contract, but is used by [`Synthetix`](Synthetix.md) to disable [currency exchanges](Synthetix.md#_internalexchange) while prices are being updated to protect against oracle front running. The lock is released when [rate updates have completed](#internalupdaterates).
 
-**Source:** [ExchangeRates.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/ExchangeRates.sol)
+**Source:** [ExchangeRates.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/ExchangeRates.sol)
 
 ## Architecture
 
@@ -36,7 +36,7 @@ This does not turn off any functionality in the exchange rate contract, but is u
     - [`Aggregators`](#aggregators): These are a collection of decentralized pricing networks that collect and aggregate results from a network of oracles.
     - [`PurgeableSynth`](PurgeableSynth.md): exchange rates are used to determine if the total token value is below the purge threshold.
     - [`Synthetix`](Synthetix.md): the value of tokens is used to in order to facilitate exchange between them, and to ensure exchanges cannot occur while price updates and being made or if a particular exchange rate is stale.
-    - [`ArbRewarder`](ArbRewarder.md): The ArbRewarder must know the current SNX/ETH price so that arbitrage is accurate.
+    - [`ArbRewarder`](ArbRewarder.md): The ArbRewarder must know the current SNX/BNB price so that arbitrage is accurate.
 
 ---
 

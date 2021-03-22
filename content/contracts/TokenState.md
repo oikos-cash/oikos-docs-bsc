@@ -4,7 +4,7 @@
 
 An external state contract to hold ERC20 balances and allowances. This operates as an adjunct to [`ExternStateToken`](ExternStateToken.md), so that important token information can persist while the token contract itself can be switched out to upgrade its functionality.
 
-**Source:** [TokenState.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/TokenState.sol)
+**Source:** [TokenState.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/TokenState.sol)
 
 ## Architecture
 

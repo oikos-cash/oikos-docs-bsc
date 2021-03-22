@@ -8,7 +8,7 @@ The contract was subject to an eight week setup period during which the vesting 
 
 This contract is augmented by the [`EscrowChecker`](EscrowChecker.md) contract, which is able to return vesting schedules as an array rather than one at a time.
 
-**Source:** [SynthetixEscrow.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/SynthetixEscrow.sol)
+**Source:** [SynthetixEscrow.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/SynthetixEscrow.sol)
 
 ## Architecture
 

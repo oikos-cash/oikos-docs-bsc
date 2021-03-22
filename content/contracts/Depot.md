@@ -6,7 +6,7 @@
 
 ## Description
 
-**Old:** Depot.sol: Allows users to exchange ETH for sUSD and SNX (has not yet been updated for multicurrency).
+**Old:** Depot.sol: Allows users to exchange BNB for sUSD and SNX (has not yet been updated for multicurrency).
 
 Throughout, the contract assumes that sUSD is always worth exactly US\$1. So: a) this will only work with `sUSD`. b) there's a profit opportunity if the `sUSD` is off its peg.
 
@@ -18,7 +18,7 @@ Throughout, the contract assumes that sUSD is always worth exactly US\$1. So: a)
 
     [SIP-19](https://sips.synthetix.io/sips/sip-19) deprecated transfer fees. Hence, although exchange operations call [`FeePool.amountReceivedFromTransfer`](FeePool.md#amountreceivedfromtransfer) to subtract this fee from the sale quantity, the fee function just returns its argument unchanged, so nothing is actually charged.
 
-**Source:** [Depot.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/Depot.sol)
+**Source:** [Depot.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Depot.sol)
 
 ## Architecture
 
@@ -144,7 +144,7 @@ The price of SNX in USD.
 
 ### `usdToEthPrice`
 
-The price of ETH in USD.
+The price of BNB in USD.
 
 **Type:** `uint public` ([18 decimals](SafeDecimalMath.md))
 
@@ -349,7 +349,7 @@ Allows the owner to set the [minimum deposit amount](#minimumdepositamount).
 
 ### `updatePrices`
 
-Allows the oracle address to update the USD [ETH](#usdToEthPrice) and [SNX](#usdToSnxPrice) prices known to the depot.
+Allows the oracle address to update the USD [BNB](#usdToEthPrice) and [SNX](#usdToSnxPrice) prices known to the depot.
 
 The prices are accompanied by the time they were sent. The oracle will not accept updates that are not the most recent, otherwise which protects from accepting stale prices during network congestion.
 
@@ -494,7 +494,7 @@ $$
 Computes the quantity of SNX received in exchange for a given quantity of Ether at current prices. This is equivalent to:
 
 $$
-Q_\text{SNX} = Q_\text{ETH} \times \frac{\pi_\text{ETH}}{\pi_\text{SNX}}
+Q_\text{SNX} = Q_\text{BNB} \times \frac{\pi_\text{ETH}}{\pi_\text{SNX}}
 $$
 
 ??? example "Details"
@@ -507,10 +507,10 @@ $$
 
 ### `synthsReceivedForEther`
 
-Computes the quantity of sUSD received in exchange for a given quantity of ETH at current prices. This is equivalent to:
+Computes the quantity of sUSD received in exchange for a given quantity of BNB at current prices. This is equivalent to:
 
 $$
-Q_\text{sUSD} = Q_\text{ETH} \times \pi_\text{SNX}
+Q_\text{sUSD} = Q_\text{BNB} \times \pi_\text{SNX}
 $$
 
 ??? example "Details"
@@ -627,6 +627,6 @@ Reverts the transaction if [`pricesAreStale`](#pricesarestale) returns false, be
 
 ### `ClearedDeposit`
 
-- `ClearedDeposit(address indexed fromAddress, address indexed toAddress, uint fromETHAmount, uint toAmount, uint indexed depositIndex)`
+- `ClearedDeposit(address indexed fromAddress, address indexed toAddress, uint fromBNBAmount, uint toAmount, uint indexed depositIndex)`
 
 ---

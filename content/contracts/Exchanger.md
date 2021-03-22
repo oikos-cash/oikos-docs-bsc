@@ -10,7 +10,7 @@
 
 Performs all the heavy lifting internally of `exchange` and `settle` functionality.
 
-**Source:** [Exchanger.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/Exchanger.sol)
+**Source:** [Exchanger.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Exchanger.sol)
 
 ## Architecture
 

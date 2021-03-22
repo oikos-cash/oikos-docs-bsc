@@ -7,7 +7,7 @@ In fact, in order to function properly, every contract operating behind a `CALL`
 
 This contract can support two proxies simultaneously. Events can be emitted independently from each proxy, but it is sensible to restrict event emission to a single proxy in most cases.
 
-**Source:** [Proxyable.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/Proxyable.sol)
+**Source:** [Proxyable.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Proxyable.sol)
 
 ## Architecture
 

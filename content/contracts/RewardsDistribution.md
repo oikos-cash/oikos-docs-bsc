@@ -8,7 +8,7 @@ The actual quantity of tokens to inject into the supply each week is passed into
 
 Incentivising activities other than staking was first trialed with UniSwap, which was then formalised into [SIP-8](https://sips.synthetix.io/sips/sip-8), resulting in this contract.
 
-**Source:** [RewardsDistribution.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/RewardsDistribution.sol)
+**Source:** [RewardsDistribution.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/RewardsDistribution.sol)
 
 ## Architecture
 

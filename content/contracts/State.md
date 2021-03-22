@@ -6,7 +6,7 @@ An external state contract whose functions can only be called by an [associated 
 
 This is designed to allow behaviour to be decoupled from storage so that upgrades can be made without losing data.
 
-**Source:** [State.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/State.sol)
+**Source:** [State.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/State.sol)
 
 ## Architecture
 

@@ -4,9 +4,9 @@
 
 This is a [Synth](Synth.md) where all the holders can be force-[exchanged](Synthetix.md#exchange) back to `sUSD` at current rates so that the contract can be removed from the system or otherwise repurposed. In order to be liquidated, a Synth must either be frozen (if it is an inverse synth) or have its total outstanding supply worth less than $100\,000$ USD. Hence it is mainly useful for eliminating Synths which are unused or at the end of their useful life. The value of the token is read from the system's central [ExchangeRates](ExchangeRates.md) contract.
 
-Purgeable synths were introduced by [SIP-3](https://github.com/Synthetixio/SIPs/blob/master/SIPS/sip-3.md) in response to increasing gas costs associated with minting, and to allow faster reconfiguration of inverse synths.
+Purgeable synths were introduced by [SIP-3](https://github.com/oikos-cash/SIPs/blob/master/SIPS/sip-3.md) in response to increasing gas costs associated with minting, and to allow faster reconfiguration of inverse synths.
 
-**Source:** [PurgeableSynth.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/PurgeableSynth.sol)
+**Source:** [PurgeableSynth.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/PurgeableSynth.sol)
 
 ## Architecture
 

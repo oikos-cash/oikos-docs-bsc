@@ -4,7 +4,7 @@
 
 A utility that gives the inheritor access to the [`AddressResolver`](AddressResolver.md)
 
-**Source:** [.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/MixinResolver.sol)
+**Source:** [.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/MixinResolver.sol)
 
 ---
 

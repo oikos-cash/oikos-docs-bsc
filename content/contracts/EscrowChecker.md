@@ -4,7 +4,7 @@
 
 A small utility contract that augments the SNX escrow contract to allow extracting a user's schedule as an array rather than as individual entries.
 
-**Source:** [EscrowChecker.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/EscrowChecker.sol)
+**Source:** [EscrowChecker.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/EscrowChecker.sol)
 
 ## Architecture
 

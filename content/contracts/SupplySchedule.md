@@ -16,7 +16,7 @@ To the initial 100 million tokens, 75 million / 52 weeks tokens were added for 3
 
 After Week 235 the SNX supply will grow at 2.5% APR based on the total Supply of SNX each week. Compounded weekly the supply growth APY is 2.53% for the terminal supply growth.
 
-**Source:** [SupplySchedule.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/SupplySchedule.sol)
+**Source:** [SupplySchedule.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/SupplySchedule.sol)
 
 ## Architecture
 

@@ -30,7 +30,7 @@
 
 >Tracks the price of Bitcoin (BTC) through price feeds supplied by an oracle.
 
-## Ether (oETH)
+## Ether (oBNB)
 
 **Address:** [0xC826A8E4249bC312E21E00e6ae461986cB0D2E78](https://bscscan.com/address/0xC826A8E4249bC312E21E00e6ae461986cB0D2E78)
 
@@ -41,7 +41,7 @@
 - Oracle: [0xFafD104549a63278E36EAaf3b199c2915A29CfFA](https://bscscan.com/address/0xFafD104549a63278E36EAaf3b199c2915A29CfFA)
 - Contract: [ExchangeRates](https://contracts.oikos.cash/ExchangeRates)
 
->Tracks the price of Ether (ETH) through price feeds supplied by an oracle.
+>Tracks the price of Ether (BNB) through price feeds supplied by an oracle.
 
 ## Gold Ounce (oXAU)
 
@@ -94,7 +94,7 @@
 
 >Inversely tracks the price of Bitcoin (BTC) through price feeds supplied by an oracle. The entry point is $10600 (the approximate market price at time of creation). This Synth freezes when it reaches its upper limit of $15900 (i.e. when Bitcoin's value reaches $5300) or its lower limit of $5300 (i.e. when Bitcoin’s value reaches $15900). If it reaches either of its limits and gets frozen, it will no longer be able to be purchased on Oikos.Exchange, but can still be traded for other Synths at its frozen value. At some point after it has reached either of its limits, it will be substituted for another iBTC with different limits.
 
-## Inverted Ether (iETH)
+## Inverted Ether (iBNB)
 
 **Address:** [0x19399869d4582C3B9729fc9B2A3776309d235F13](https://bscscan.com/address/0x19399869d4582C3B9729fc9B2A3776309d235F13)
 
@@ -105,13 +105,13 @@
 - Oracle: [0xFafD104549a63278E36EAaf3b199c2915A29CfFA](https://bscscan.com/address/0xFafD104549a63278E36EAaf3b199c2915A29CfFA)
 - Contract: [ExchangeRates](https://contracts.oikos.cash/ExchangeRates)
 
-**Inverse of**: [sETH](#ether-seth)
+**Inverse of**: [sBNB](#ether-sbnb)
 
 | Entry Point | Upper Limit | Lower Limit |
 | - | - | - |
 | $220 | $330 | $110|
 
->Inversely tracks the price of Ether (ETH) through price feeds supplied by an oracle. The entry point is $220 (the approximate market price at time of creation). This Synth freezes when it reaches its upper limit of $330 (i.e. when Ether's value reaches $110) or its lower limit of $110 (i.e. when Ether’s value reaches $330). If it reaches either of its limits and gets frozen, it will no longer be able to be purchased on Oikos.Exchange, but can still be traded for other Synths at its frozen value. At some point after it has reached either of its limits, it will be substituted for another iETH with different limits.
+>Inversely tracks the price of Ether (BNB) through price feeds supplied by an oracle. The entry point is $220 (the approximate market price at time of creation). This Synth freezes when it reaches its upper limit of $330 (i.e. when Ether's value reaches $110) or its lower limit of $110 (i.e. when Ether’s value reaches $330). If it reaches either of its limits and gets frozen, it will no longer be able to be purchased on Oikos.Exchange, but can still be traded for other Synths at its frozen value. At some point after it has reached either of its limits, it will be substituted for another iETH with different limits.
 
 ## Oikos (SNX)
 

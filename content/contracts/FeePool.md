@@ -2,7 +2,7 @@
 
 ## Description
 
-**Source:** [FeePool.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/FeePool.sol)
+**Source:** [FeePool.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/FeePool.sol)
 
 ## Architecture
 

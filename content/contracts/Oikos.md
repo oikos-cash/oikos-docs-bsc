@@ -2,7 +2,7 @@
 
 ## Description
 
-**Source:** [Synthetix.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/Synthetix.sol)
+**Source:** [Synthetix.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Synthetix.sol)
 
 ## Architecture
 

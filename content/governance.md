@@ -8,17 +8,17 @@ The SIP format describes protocol standards and proposed updates. They provide a
 
 Historically, SIPs have been used to modify the fee/reward structure, allow the liquidation of unused synths, introduce new synths, and implement various exchange rate front-running protections. They are an appropriate mechanism for a broad range of fundamental alterations to the Synthetix platform and as such require an organised process for community consultation and iteration.
 
-SIPs live in their own [GitHub repository](https://github.com/Synthetixio/SIPs), where the SIP format is [documented](https://github.com/Synthetixio/SIPs/blob/master/SIPS/sip-1.md) and community members may participate in the acceptance process. Anyone may propose SIPs, though not all SIPs are necessarily accepted.
+SIPs live in their own [GitHub repository](https://github.com/oikos-cash/SIPs), where the SIP format is [documented](https://github.com/Synthetixio/SIPs/blob/master/SIPS/sip-1.md) and community members may participate in the acceptance process. Anyone may propose SIPs, though not all SIPs are necessarily accepted.
 
 ## Synthetix Configuration Change Proposal (SCCPs)
 
 SCCPs are similar to SIPs, but concern modifications to system configuration values such as exchange fees and the global collateralisation limit.
 
-SCCPs live in the same repository and website as SIPs do, but have a [slightly different specification](https://github.com/Synthetixio/SIPs/blob/master/SCCP/sccp-1.md).
+SCCPs live in the same repository and website as SIPs do, but have a [slightly different specification](https://github.com/oikos-cash/SIPs/blob/master/SCCP/sccp-1.md).
 
 ## Synthetix GrantsDAO
 
-The Synthetix GrantsDAO was set up to fund community grant proposals for such purposes as infrastructure and promotional resources. It consists of 3 community members and 2 team members. Open grants can be [viewed](https://snxgrants.io/) by the public, and new grant proposals can be [submitted](https://github.com/Synthetixio/snx-grants-dao/blob/master/proposals/proposal-template.md).
+The Synthetix GrantsDAO was set up to fund community grant proposals for such purposes as infrastructure and promotional resources. It consists of 3 community members and 2 team members. Open grants can be [viewed](https://snxgrants.io/) by the public, and new grant proposals can be [submitted](https://github.com/oikos-cash/snx-grants-dao/blob/master/proposals/proposal-template.md).
 
 ## Community Governance Calls
 
@@ -26,4 +26,4 @@ Community governance calls are a venue for the Synthetix team to consult with th
 
 ## Development Bounties
 
-The code that runs Synthetix is mostly [MIT licenced](https://github.com/Synthetixio/synthetix/blob/master/LICENSE) and open source, and in principle anyone can contribute. To encourage this, the Synthetix foundation has offered bounties for development and bug reports by parties outside of the core engineering team. Development bounties are managed on [Gitcoin](https://gitcoin.co/profile/Synthetixio) and discussion takes place in corresponding [GitHub issues](https://github.com/Synthetixio/synthetix/issues). Bug bounties are described in [this blog post](https://blog.synthetix.io/synthetix-bug-bounties/).
+The code that runs Synthetix is mostly [MIT licenced](https://github.com/oikos-cash/oikos-bsc/blob/master/LICENSE) and open source, and in principle anyone can contribute. To encourage this, the Synthetix foundation has offered bounties for development and bug reports by parties outside of the core engineering team. Development bounties are managed on [Gitcoin](https://gitcoin.co/profile/Synthetixio) and discussion takes place in corresponding [GitHub issues](https://github.com/Synthetixio/synthetix/issues). Bug bounties are described in [this blog post](https://blog.synthetix.io/synthetix-bug-bounties/).

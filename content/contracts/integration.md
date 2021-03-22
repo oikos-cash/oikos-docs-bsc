@@ -19,7 +19,7 @@ As of this moment, the following contracts are behind proxies:
 - `FeePool` is behind `ProxyFeePool`
 - `Synthetix` is behind both `ProxySynthetix` (deprecated, see notice below) and `ProxyERC20`
 - `SynthsUSD` is behind both `ProxysUSD` (deprecated) and `ProxyERC20sUSD`
-- All remaining synths are also behind a Proxy, all of which are the newer ProxyERC20 pattern. e.g. `ProxysETH`, `ProxyiBTC`, etc.
+- All remaining synths are also behind a Proxy, all of which are the newer ProxyERC20 pattern. e.g. `ProxysBNB`, `ProxyiBTC`, etc.
 
 !!! Warning "Deprecation Notice"
 
@@ -28,9 +28,9 @@ As of this moment, the following contracts are behind proxies:
     - [Synthetix](https://contracts.synthetix.io/ProxySynthetix) (aka `ProxySynthetix` at `0xC011A72400E58ecD99Ee497CF89E3775d4bd732F`) and
     - [sUSD](https://contracts.synthetix.io/ProxysUSD) (aka `ProxysUSD` at `0x57Ab1E02fEE23774580C119740129eAC7081e9D3`)
 
-    The current proxies use the CALL pattern and set `messageSender` on the target for any request (see [here](https://github.com/Synthetixio/synthetix/blob/master/contracts/Proxy.sol#L118)). This mutation inside functions that are marked `view` - such as `balanceOf`, break ERC20 interface conventions, and thus fail.
+    The current proxies use the CALL pattern and set `messageSender` on the target for any request (see [here](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Proxy.sol#L118)). This mutation inside functions that are marked `view` - such as `balanceOf`, break ERC20 interface conventions, and thus fail.
 
-    In their stead we have new *integration* proxies in place, used by both Uniswap and Kyber. The new integration proxies are fully ERC20 compliant and explictly call through to the target for all ERC20 functions (see [ProxyERC20.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/ProxyERC20.sol)).
+    In their stead we have new *integration* proxies in place, used by both Uniswap and Kyber. The new integration proxies are fully ERC20 compliant and explictly call through to the target for all ERC20 functions (see [ProxyERC20.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/ProxyERC20.sol)).
 
     If you are planning any integration with Synthetix, it is recommended that you use the newer proxies:
 
@@ -39,7 +39,7 @@ As of this moment, the following contracts are behind proxies:
 
     That said however, both are functioning side by side while we transition over.
 
-    One note of caution: the events from the underlying contracts - `Synthetix` and `Synth` are still emitted on the currently deprecated proxy contracts. Indeed, SynthetixJs still use the deprecated proxies for this reason (see [Synthetix.js](https://github.com/Synthetixio/synthetix-js/blob/master/src/contracts/mainnet/Synthetix.js#L12)). Once we migrate to the new proxies, the events will be emitted on the integration proxies and the deprecated ones will be removed entirely.
+    One note of caution: the events from the underlying contracts - `Synthetix` and `Synth` are still emitted on the currently deprecated proxy contracts. Indeed, SynthetixJs still use the deprecated proxies for this reason (see [Synthetix.js](https://github.com/oikos-cash/oikos-bsc-js/blob/master/src/contracts/mainnet/Synthetix.js#L12)). Once we migrate to the new proxies, the events will be emitted on the integration proxies and the deprecated ones will be removed entirely.
 
 ## Fee Reclamation and Atomicity of Exchanges
 
@@ -51,7 +51,7 @@ You can use [`Exchanger.maxSecsLeftInWaitingPeriod()`](/contracts/exchanger/#max
 
 In our Achernar release, we introduced a new feature called the `AddressResolver` contract ([contracts.synthetix.io/AddressResolver](https://contracts.synthetix.io/AddressResolver)).
 
-In short, the `AddressResolver` allows any referencing contract to have access to a number of key contract - in particular the underlying `Synthetix`, `FeePool`, `SynthsUSD` and `SynthsETH` contracts. There are plans in the near future to add our proxies as well.
+In short, the `AddressResolver` allows any referencing contract to have access to a number of key contract - in particular the underlying `Synthetix`, `FeePool`, `SynthsUSD` and `SynthsBNB` contracts. There are plans in the near future to add our proxies as well.
 
 !!! danger "Be Advised"
 

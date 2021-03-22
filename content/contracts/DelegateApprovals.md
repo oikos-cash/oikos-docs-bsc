@@ -6,7 +6,7 @@ This contract is used by the [`FeePool`](FeePool.md) to enable users to permit o
 
 In principle it is generic, as the approver just marks a number of delegates as authorised to perform some action on their behalf, with no reference to what that action is, or who the delegates are.
 
-**Source:** [DelegateApprovals.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/DelegateApprovals.sol)
+**Source:** [DelegateApprovals.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/DelegateApprovals.sol)
 
 ## Architecture
 

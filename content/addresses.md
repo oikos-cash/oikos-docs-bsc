@@ -5,7 +5,7 @@ Here is the list of all contracts within the current Oikos system.
 **Docs Built**: Oct 26, 1985
 
 !!! info "Naming Conventions"
-	Within the developer ecosystem, the names of Oikos contracts are referred to by their `source` Solidity file.If the same source is used for multiple instances of contracts with different constructor arguments - such as `Synth.sol`, `TokenState.sol` and `ProxyERC20.sol` - then the convention is to suffix the name of the differing feature to the end - be it the proxy target e.g. `FeePool` for `ProxyFeePool` or the synth's currencyKey eg: `sETH` for `SynthsETH`
+	Within the developer ecosystem, the names of Oikos contracts are referred to by their `source` Solidity file.If the same source is used for multiple instances of contracts with different constructor arguments - such as `Synth.sol`, `TokenState.sol` and `ProxyERC20.sol` - then the convention is to suffix the name of the differing feature to the end - be it the proxy target e.g. `FeePool` for `ProxyFeePool` or the synth's currencyKey eg: `sBNB` for `SynthsETH`
 
 !!! tip "Handy Contract Links"
 	All of the below contracts can be accessed by our [contract linker](https://github.com/oikos-cash/contract-linker) utility. Simply suffix the contract name to the end of https://contracts.oikos.cash to get a link that will always redirect to the latest version of the contract on Etherscan.
@@ -186,7 +186,7 @@ Here is the list of all contracts within the current Oikos system.
                 </td>
               </tr>
               <tr>
-                <td>ProxyiETH</td>
+                <td>ProxyiBNB</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/ProxyERC20.sol">ProxyERC20.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/ProxyERC20.json">ProxyERC20.json</a></td>
                 <td><a target="_blank" href="https://bscscan.com/address/0x19399869d4582C3B9729fc9B2A3776309d235F13">0x19399869d4582C3B9729fc9B2A3776309d235F13</a>
@@ -207,7 +207,7 @@ Here is the list of all contracts within the current Oikos system.
                 </td>
               </tr>
               <tr>
-                <td>ProxyoETH</td>
+                <td>ProxyoBNB</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/ProxyERC20.sol">ProxyERC20.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/ProxyERC20.json">ProxyERC20.json</a></td>
                 <td><a target="_blank" href="https://bscscan.com/address/0xC826A8E4249bC312E21E00e6ae461986cB0D2E78">0xC826A8E4249bC312E21E00e6ae461986cB0D2E78</a>
@@ -277,7 +277,7 @@ Here is the list of all contracts within the current Oikos system.
                 </td>
               </tr>
               <tr>
-                <td>SynthiETH</td>
+                <td>SynthiBNB</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/PurgeableSynth.sol">PurgeableSynth.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/PurgeableSynth.json">PurgeableSynth.json</a></td>
                 <td><a target="_blank" href="https://bscscan.com/address/0xe7344d961Cc1eBb02a170A9268733036A77Ffb81">0xe7344d961Cc1eBb02a170A9268733036A77Ffb81</a>
@@ -298,7 +298,7 @@ Here is the list of all contracts within the current Oikos system.
                 </td>
               </tr>
               <tr>
-                <td>SynthoETH</td>
+                <td>SynthoBNB</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/MultiCollateralSynth.sol">MultiCollateralSynth.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/MultiCollateralSynth.json">MultiCollateralSynth.json</a></td>
                 <td><a target="_blank" href="https://bscscan.com/address/0x0a26DfC10dAC132307dc84Bd2A86744332e0f63f">0x0a26DfC10dAC132307dc84Bd2A86744332e0f63f</a>
@@ -347,7 +347,7 @@ Here is the list of all contracts within the current Oikos system.
                 </td>
               </tr>
               <tr>
-                <td>TokenStateiETH</td>
+                <td>TokenStateiBNB</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/TokenState.sol">TokenState.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/TokenState.json">TokenState.json</a></td>
                 <td><a target="_blank" href="https://bscscan.com/address/0xe284247c913a7810aC3539C7DFce1dc7Bc750DBB">0xe284247c913a7810aC3539C7DFce1dc7Bc750DBB</a>
@@ -368,7 +368,7 @@ Here is the list of all contracts within the current Oikos system.
                 </td>
               </tr>
               <tr>
-                <td>TokenStateoETH</td>
+                <td>TokenStateoBNB</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/TokenState.sol">TokenState.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/TokenState.json">TokenState.json</a></td>
                 <td><a target="_blank" href="https://bscscan.com/address/0x917633b6543790E6D3B62cF54f037037d430d56D">0x917633b6543790E6D3B62cF54f037037d430d56D</a>

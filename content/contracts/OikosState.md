@@ -10,7 +10,7 @@ Upon system updates, this contract will continue to exist, while the Synthetix l
 
     This contract also contains functionality enabling automatic [preferred currency](#preferredcurrency) conversion on Synth transfers, but it is currently disabled.
 
-**Source:** [SynthetixState.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/SynthetixState.sol)
+**Source:** [SynthetixState.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/SynthetixState.sol)
 
 ## Architecture
 

@@ -9,7 +9,7 @@
 
 This contract does all the heavy lifting of issuing and burning `sUSD`. It's used primarily to reduce the size of the `Synthetix` contract
 
-**Source:** [Issuer.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/Issuer.sol)
+**Source:** [Issuer.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Issuer.sol)
 
 ## Architecture
 

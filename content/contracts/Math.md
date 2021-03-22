@@ -8,7 +8,7 @@ This is a library contract that provides math functions on fractional numbers, p
 
 Math uses OpenZeppelin's [SafeMath](SafeMath.md) library and SafeDecimalMath library for most of its basic arithmetic operations in order to protect from arithmetic overflows and zero divisions.
 
-**Source:** [Math.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/Math.sol)
+**Source:** [Math.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Math.sol)
 
 ## Architecture
 

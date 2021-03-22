@@ -94,7 +94,7 @@ The representation of a number $q$ at two different fixed point precision levels
 
 ---
 
-**Source:** [SafeDecimalMath.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/SafeDecimalMath.sol)
+**Source:** [SafeDecimalMath.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/SafeDecimalMath.sol)
 
 ## Architecture
 

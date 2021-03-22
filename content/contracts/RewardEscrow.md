@@ -4,7 +4,7 @@ This is the mechanism for distributing SNX rewards from the inflationary supply.
 
 The logic of RewardEscrow is derived from the [SynthetixEscrow](SynthetixEscrow.md) contract.
 
-**Source:** [RewardEscrow.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/RewardEscrow.sol)
+**Source:** [RewardEscrow.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/RewardEscrow.sol)
 
 ## Architecture
 

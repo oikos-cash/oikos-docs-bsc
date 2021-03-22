@@ -12,9 +12,9 @@ See [`FeePool.feesByPeriod`](FeePool.md#feesbyperiod) and [`FeePool.effectiveDeb
 
     Note that this contract contains storage for [up to six fee periods](#fee_period_length), while the FeePool contract limits it to [only three](FeePool.md#fee_period_length). This is a consequence of the implementation of [SIP 4](https://sips.synthetix.io/sips/sip-4), which reduced the fee window in the main [`FeePool`](FeePool.md) contract in order to encourage faster responses to alterations of system incentives. As part of this process, this storage contract was, of course, not upgraded.
 
-    See also: [Design_Decisions.md](https://github.com/Synthetixio/synthetix/blob/master/Design_Decisions.md#feepoolstate).
+    See also: [Design_Decisions.md](https://github.com/oikos-cash/oikos-bsc/blob/master/Design_Decisions.md#feepoolstate).
 
-**Source:** [FeePoolState.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/FeePoolState.sol)
+**Source:** [FeePoolState.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/FeePoolState.sol)
 
 ## Architecture
 

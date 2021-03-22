@@ -4,7 +4,7 @@
 
 This contract is a type of Service Locator pattern that allows for easier interaction between multiple contracts. Instead of contract A needing references to contracts B and C (and updating ever release), contract A can refer to an `AddressResolver` and query for B and C at transaction time. Then, during a release, the AddressResolver is updated with the latest B and C contarct. Thus this ensures that contract A always has the latest B and C contracts.
 
-**Source:** [AddressResolver.sol](https://github.com/Synthetixio/synthetix/blob/master/contracts/AddressResolver.sol)
+**Source:** [AddressResolver.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/AddressResolver.sol)
 
 ## Architecture
 
