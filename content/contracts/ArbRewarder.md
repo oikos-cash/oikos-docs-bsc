@@ -34,7 +34,7 @@ Announcement Post: https://blog.oikos.cash/our-new-sbnb-snx-arb-contract-is-now-
 
     * [Uniswap Exchange (sBNB)](https://etherscan.io/address/0xe9Cf7887b93150D4F2Da7dFc6D502B216438F244): This is the market through which the arbitrage is performed.
     * [`ExchangeRates`](ExchangeRates.md): The current OKS/BNB price is retrieved from the exchange rates contract.
-    * [`Synth (sBNB)`](Synth.md): One half of the sETH/ETH pair.
+    * [`Synth (oBNB)`](Synth.md): One half of the oBNB/BNB pair.
     * [`Oikos (Proxy)`](Synthetix.md): The ArbRewarder rewards the caller with the arb profit as OKS.
 
 ---

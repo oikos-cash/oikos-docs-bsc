@@ -5,7 +5,7 @@ Here is the list of all contracts within the current Oikos system.
 **Docs Built**: Oct 26, 1985
 
 !!! info "Naming Conventions"
-	Within the developer ecosystem, the names of Oikos contracts are referred to by their `source` Solidity file.If the same source is used for multiple instances of contracts with different constructor arguments - such as `Synth.sol`, `TokenState.sol` and `ProxyERC20.sol` - then the convention is to suffix the name of the differing feature to the end - be it the proxy target e.g. `FeePool` for `ProxyFeePool` or the synth's currencyKey eg: `sETH` for `SynthsETH`
+	Within the developer ecosystem, the names of Oikos contracts are referred to by their `source` Solidity file.If the same source is used for multiple instances of contracts with different constructor arguments - such as `Synth.sol`, `TokenState.sol` and `ProxyERC20.sol` - then the convention is to suffix the name of the differing feature to the end - be it the proxy target e.g. `FeePool` for `ProxyFeePool` or the synth's currencyKey eg: `oBNB` for `SynthoBNB`
 
 !!! tip "Handy Contract Links"
 	All of the below contracts can be accessed by our [contract linker](https://github.com/oikos-cash/contract-linker) utility. Simply suffix the contract name to the end of https://contracts.oikos.cash to get a link that will always redirect to the latest version of the contract on Etherscan.

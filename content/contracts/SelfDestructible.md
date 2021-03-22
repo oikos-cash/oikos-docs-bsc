@@ -40,7 +40,7 @@ True iff the contract is currently undergoing self destruction.
 
 ### `selfDestructBeneficiary`
 
-The address where any lingering eth in this contract will be sent.
+The address where any lingering bnb in this contract will be sent.
 
 **Type:** `address public`
 

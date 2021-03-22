@@ -67,7 +67,7 @@
 - Oracle: [0xFafD104549a63278E36EAaf3b199c2915A29CfFA](https://bscscan.com/address/0xFafD104549a63278E36EAaf3b199c2915A29CfFA)
 - Contract: [ExchangeRates](https://contracts.oikos.cash/ExchangeRates)
 
-**Inverse of**: [oBNB](#binance-coin-sbnb)
+**Inverse of**: [oBNB](#binance-coin-obnb)
 
 | Entry Point | Upper Limit | Lower Limit |
 | - | - | - |
@@ -86,7 +86,7 @@
 - Oracle: [0xFafD104549a63278E36EAaf3b199c2915A29CfFA](https://bscscan.com/address/0xFafD104549a63278E36EAaf3b199c2915A29CfFA)
 - Contract: [ExchangeRates](https://contracts.oikos.cash/ExchangeRates)
 
-**Inverse of**: [oBTC](#bitcoin-sbtc)
+**Inverse of**: [oBTC](#bitcoin-obtc)
 
 | Entry Point | Upper Limit | Lower Limit |
 | - | - | - |
@@ -105,7 +105,7 @@
 - Oracle: [0xFafD104549a63278E36EAaf3b199c2915A29CfFA](https://bscscan.com/address/0xFafD104549a63278E36EAaf3b199c2915A29CfFA)
 - Contract: [ExchangeRates](https://contracts.oikos.cash/ExchangeRates)
 
-**Inverse of**: [oETH](#ether-seth)
+**Inverse of**: [oETH](#ether-oeth)
 
 | Entry Point | Upper Limit | Lower Limit |
 | - | - | - |

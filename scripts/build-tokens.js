@@ -95,7 +95,7 @@ const getLinkToAsset = ({ name, asset }) =>
 			.split(' ')
 			.slice(1)
 			.join('-') +
-		'-s' +
+		'-o' +
 		asset
 	).toLowerCase();
 

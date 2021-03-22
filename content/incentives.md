@@ -14,7 +14,7 @@ OKS staking rewards are generated through the inflationary monetary policy imple
 
 ### Liquidity Rewards
 
-5% of the aforementioned inflationary OKS supply is distributed to people providing sBNB/ETH liquidity on Uniswap. This is to ensure there is a clear way for traders to enter the system and start trading for the first time (if they hold ETH).
+5% of the aforementioned inflationary OKS supply is distributed to people providing sBNB/BNB liquidity on Uniswap. This is to ensure there is a clear way for traders to enter the system and start trading for the first time (if they hold BNB).
 
 ## Value Recipients
 
@@ -24,7 +24,7 @@ OKS stakers stake their OKS and receive two kinds of rewards: exchange fees and 
 
 ### BNB stakers
 
-It is also possible to mint Synths by staking BNB. However, ETH stakers' debt is denominated in ETH rather than sUSD. It does not get added to the system's pooled debt, and thus does not fluctuate depending on traders' outcomes. However, there is a 5% APR to stake ETH, as well as a small minting fee.
+It is also possible to mint Synths by staking BNB. However, BNB stakers' debt is denominated in BNB rather than sUSD. It does not get added to the system's pooled debt, and thus does not fluctuate depending on traders' outcomes. However, there is a 5% APR to stake BNB, as well as a small minting fee.
 
 ### Traders
 
@@ -32,11 +32,11 @@ Traders on Oikos.Exchange can take advantage of the system enabled by OKS staker
 
 ### Liquidity Providers
 
-Liquidity providers are providing depth to the [sBNB/ETH Uniswap liquidity pool](https://etherscan.io/address/0xe9cf7887b93150d4f2da7dfc6d502b216438f244/#tokentxns). The deeper this pool, the less slippage traders pay when entering or exiting the system. Liquidity providers do not need to stake or hold OKS, only ETH and sETH. To receive rewards they must [stake their Uniswap LP tokens](https://blog.oikos.cash/new-uniswap-sbnb-lp-reward-system/) into a purpose-built smart contract.
+Liquidity providers are providing depth to the [sBNB/BNB Uniswap liquidity pool](https://etherscan.io/address/0xe9cf7887b93150d4f2da7dfc6d502b216438f244/#tokentxns). The deeper this pool, the less slippage traders pay when entering or exiting the system. Liquidity providers do not need to stake or hold OKS, only BNB and sBNB. To receive rewards they must [stake their Uniswap LP tokens](https://blog.oikos.cash/new-uniswap-sbnb-lp-reward-system/) into a purpose-built smart contract.
 
 ### Arbitrageurs
 
-The primary opportunity for arbitrage in Oikos is taking advantage of underpriced assets on the secondary market. If sBNB or sUSD are ever trading below the price of ETH or USD respectively, then stakers can profit by purchasing them cheaply and using them within the Synthetix system, where their values do not take the market rate into consideration.
+The primary opportunity for arbitrage in Oikos is taking advantage of underpriced assets on the secondary market. If sBNB or sUSD are ever trading below the price of BNB or USD respectively, then stakers can profit by purchasing them cheaply and using them within the Synthetix system, where their values do not take the market rate into consideration.
 
 ## Additional Crypto-economic Discussions
 
