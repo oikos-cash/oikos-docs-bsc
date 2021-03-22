@@ -1,27 +1,27 @@
 # Historical Data
 
-??? tip "Tip: The Synthetix Dashboard"
+??? tip "Tip: The Oikos Dashboard"
 
-    Synthetix has a custom dashboard app - https://dashboard.synthetix.io - which shows a number of key metrics within the system. Some of the dashboard is powered by the subgraphs below and some by an internal metrics gathering system (closed source). We are in the process of migrating towards the Graph for our entire dashboard: https://github.com/Synthetixio/synthetix/issues/254
+    Oikos has a custom dashboard app - https://dashboard.oikos.cash - which shows a number of key metrics within the system. Some of the dashboard is powered by the subgraphs below and some by an internal metrics gathering system (closed source). We are in the process of migrating towards the Graph for our entire dashboard.
 
-There are a number a ways to access Synthetix's historical data.
+There are a number a ways to access Oikos's historical data.
 
-- Query Synthetix event log history and calls using The Graph subgraphs
+- Query Oikos event log history and calls using The Graph subgraphs
 - Fetch state at some block in the past using an Archive Node
 - Query event logs directly via the EVM
 - Use a third party service like Google BigQuery or DuneAnalytics
 
 ### Subgraphs
 
-Synthetix currently has four separate subgraphs on The Graph. A subgraph is an entity-based datasource that is populated by Graph indexers - these replay all transactions since the genesis block and use custom mapping code to create entities when events are emitted and functions are invoked.
+Oikos currently has four separate subgraphs on The Graph. A subgraph is an entity-based datasource that is populated by Graph indexers - these replay all transactions since the genesis block and use custom mapping code to create entities when events are emitted and functions are invoked.
 
-We've written a custom JavaScript library to abstract away the complexity of dealing with these subgraphs. It's called [synthetix-data](libraries/synthetix-data.md), and it's an `npm` module to query historical or subscribe to these events in real time.
+We've written a custom JavaScript library to abstract away the complexity of dealing with these subgraphs. It's called [oikos-data](libraries/oikos-data.md), and it's an `npm` module to query historical or subscribe to these events in real time.
 
 Alternatively, Each of these subgraphs can be queried using GraphQL - follow the links below to query the subgraphs using GrapHQL in the data explorer UIs provided.
 
-<a href="//thegraph.com/explorer/subgraph/synthetixio-team/synthetix"><img class="rounded-image" src="/img/misc/subgraph.png" /></a> <a href="//thegraph.com/explorer/subgraph/synthetixio-team/synthetix-exchanges"><img class="rounded-image" src="/img/misc/subgraph-exchanges.png" /></a> <a href="//thegraph.com/explorer/subgraph/synthetixio-team/synthetix-rates"><img class="rounded-image" src="/img/misc/subgraph-rates.png" /></a> <a href="//thegraph.com/explorer/subgraph/synthetixio-team/synthetix-depot"><img class="rounded-image"  src="/img/misc/subgraph-depot.png" /></a>
+<a href="//thegraph.com/explorer/subgraph/oikos-cash/oikos"><img class="rounded-image" src="/img/misc/subgraph.png" /></a> <a href="//thegraph.com/explorer/subgraph/oikos-cash/oikos-exchanges"><img class="rounded-image" src="/img/misc/subgraph-exchanges.png" /></a> <a href="//thegraph.com/explorer/subgraph/oikos-cash/oikos-rates"><img class="rounded-image" src="/img/misc/subgraph-rates.png" /></a> <a href="//thegraph.com/explorer/subgraph/oikos-cash/oikos-depot"><img class="rounded-image"  src="/img/misc/subgraph-depot.png" /></a>
 
-> The code for these subgraphs is up at: @Synthetixio/synthetix-subgraph
+> The code for these subgraphs is up at: @oikos-cash/oikos-subgraph
 
 ### Query event logs directly on the EVM
 
@@ -30,15 +30,15 @@ Instead of using the subgraphs provided, you could directly query the EVM via mo
 !!! example "E.g. Get all `FeePool.FeesClaimed` events"
 
     ```javascript
-    import synthetix from 'synthetix';
+    import oikos from '@oikos-cash/oikos-bsc';
     const provider = ethers.getDefaultProvider();
 
     const network = 'mainnet';
-    const { abi } = synthetix.getSource({
+    const { abi } = oikos.getSource({
       network,
       contract: 'FeePool'
     });
-    const { address } = synthetix.getTarget({
+    const { address } = oikos.getTarget({
       network,
       // Note: for contracts with proxies, events are always emitted on the Proxy,
       // so we need to use this address here
@@ -65,13 +65,13 @@ Instead of using the subgraphs provided, you could directly query the EVM via mo
 
 You can also use an Ethereum node with full historical state (an archive node) to read the blockchain state at some block in the past.
 
-Query using the `{ blockTag: <Number> }` option to get state at a previous block (note the call will fail if the contract was not deployed at the block). Note: usage of this feature of `ethers` and `web3` requires a provider that is a full archive node. [Infura](https://infura.io) and [QuikNode](https://quicknode.io) both provide access to archive nodes for monthly costs. This is supported in [SynthetixJs](libraries/synthetix-js.md) via the underlying `.contract` property in every contract target.
+Query using the `{ blockTag: <Number> }` option to get state at a previous block (note the call will fail if the contract was not deployed at the block). Note: usage of this feature of `ethers` and `web3` requires a provider that is a full archive node. [Infura](https://infura.io) and [QuikNode](https://quicknode.io) both provide access to archive nodes for monthly costs. This is supported in [OikosJs](libraries/oikos-js.md) via the underlying `.contract` property in every contract target.
 
-!!! example "E.g. fetch `Synthetix.totalIssuedSynths()` from a block in the past"
+!!! example "E.g. fetch `Oikos.totalIssuedSynths()` from a block in the past"
 
     ```javascript
     import ethers from 'ethers';
-    import synthetix from 'synthetix';
+    import oikos from '@oikos/oikos-bsc';
 
     // assuming INFURA_PROJECT_ID is from a paid, archive node
     const provider = ethers.providers.InfuraProvider(
@@ -80,21 +80,21 @@ Query using the `{ blockTag: <Number> }` option to get state at a previous block
     );
 
     const network = 'mainnet';
-    const { abi } = synthetix.getSource({
+    const { abi } = oikos.getSource({
       network,
-      contract: 'Synthetix'
+      contract: 'Oikos'
     });
-    const { address } = synthetix.getTarget({
+    const { address } = oikos.getTarget({
       network,
-      contract: 'ProxySynthetix'
+      contract: 'ProxyOikos'
     });
 
     // see https://docs.ethers.io/ethers.js/html/api-contract.html#connecting-to-existing-contracts
-    const Synthetix = new ethers.Contract(address, abi, provider);
+    const Oikos = new ethers.Contract(address, abi, provider);
 
     (async () => {
-      const totalIssuedSynths = await Synthetix.totalIssuedSynths(
-        synthetix.toBytes32('sUSD'),
+      const totalIssuedSynths = await Oikos.totalIssuedSynths(
+        oikos.toBytes32('oUSD'),
         {
           blockTag: 9000000
         }
