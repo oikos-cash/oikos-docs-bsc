@@ -30,7 +30,7 @@ const generateAddresses = () => {
 		' https://contracts.oikos.cash to get a link that will always redirect to the latest version of the contract on Etherscan.\n\n\tFor example, try https://contracts.oikos.cash/Oikos to get linked to the latest Oikos underlying.' +
 		'\n\n\tFor testnets, insert the testnet name before the contract, as in https://contracts.oikos.cash/bsctestnet/ArbRewarder';
 
-	const contractContent = ['mainnet', 'ropsten', 'rinkeby', 'kovan']
+	const contractContent = ['bsc', 'bsctestnet']
 		.map(network => {
 			const targets = snx.getTarget({ network });
 
@@ -48,7 +48,7 @@ const generateAddresses = () => {
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/${source}.sol">${source}.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/${network.toLowerCase()}/${source}.json">${source}.json</a></td>
                 <td><a target="_blank" href="https://${
-									network !== 'bsc' ? network + '.' : ''
+									network !== 'bsc' ? network.replace('bsc', '') + '.' : ''
 								}bscscan.com/address/${address}">${address}</a>
                 </td>
               </tr>`;

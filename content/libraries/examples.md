@@ -1,6 +1,6 @@
 # Examples
 
-Here are a collection of Codepens for reading Synthetix state using `synthetix-js` and `synthetix-data` which you can fork an modify as you need.
+Here are a collection of Codepens for reading Oikos state using `@oikos/oikos-js-bsc` and `oikos-data` which you can fork an modify as you need.
 
 ### Last 24hrs of Exchanges
 

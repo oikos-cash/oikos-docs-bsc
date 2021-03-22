@@ -94,15 +94,15 @@ nav:
 extra:
   social:
     - icon: 'brands/github'
-      link: 'https://github.com/synthetixio'
+      link: 'https://github.com/oikos-cash'
     - icon: 'brands/twitter'
-      link: 'https://twitter.com/synthetix_io'
+      link: 'https://twitter.com/oikos_cash'
     - icon: 'brands/discord'
-      link: 'https://discordapp.com/channels/413890591840272394/'
+      link: 'https://discord.gg/VVDu6Er'
     - icon: 'brands/reddit'
-      link: 'https://www.reddit.com/r/synthetix_io/'
+      link: 'https://www.reddit.com/r/OikosCash/'
     - icon: 'brands/medium'
-      link: 'https://blog.synthetix.io'
+      link: 'https://oikoscash.medium.com'
 
 # This set of documentation uses the MkDocs Material theme by squidfunk: https://github.com/squidfunk/mkdocs-material
 theme:
@@ -139,8 +139,8 @@ markdown_extensions:
       repo_url_shortener: true
       repo_url_shorthand: true
       social_url_shorthand: true
-      user: 'synthetixio'
-      repo: 'synthetix'
+      user: 'oikos-cash'
+      repo: 'oikos-bsc'
 
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'

@@ -1,7 +1,7 @@
 !!! info "Notice"
-		Imported from https://github.com/Synthetixio/synthetix
+Imported from https://github.com/Synthetixio/synthetix
 
-# Synthetix
+# Oikos
 
 [![Build Status](https://travis-ci.org/Synthetixio/synthetix.svg?branch=master)](https://travis-ci.org/Synthetixio/synthetix)
 [![CircleCI](https://circleci.com/gh/Synthetixio/synthetix.svg?style=svg)](https://circleci.com/gh/Synthetixio/synthetix)
@@ -11,7 +11,7 @@
 
 Synthetix is a crypto-backed synthetic asset platform.
 
-It is a multitoken system, powered by SNX, the Synthetix Network Token. SNX holders can stake SNX to issue Synths, on-chain synthetic assets via the [Mintr Dapp](https://mintr.synthetix.io) The network currently supports an ever growing [list of synthetic assets](https://www.synthetix.io/tokens/). Please see the [list of the deployed contracts on MAIN and TESTNETS](https://developer.synthetix.io/api/docs/deployed-contracts.html)
+It is a multitoken system, powered by OKS, the Synthetix Network Token. OKS holders can stake OKS to issue Synths, on-chain synthetic assets via the [Mintr Dapp](https://mintr.synthetix.io) The network currently supports an ever growing [list of synthetic assets](https://www.synthetix.io/tokens/). Please see the [list of the deployed contracts on MAIN and TESTNETS](https://developer.synthetix.io/api/docs/deployed-contracts.html)
 Synths can be traded using (https://synthetix.exchange)
 
 Synthetix uses a proxy system so that upgrades will not be disruptive to the functionality of the contract. This smooths user interaction, since new functionality will become available without any interruption in their experience. It is also transparent to the community at large, since each upgrade is accompanied by events announcing those upgrades. New releases are managed via the [Synthetix Improvement Proposal (SIP)](https://sips.synthetix.io/all-sip) system similar to the [EF's EIPs](https://eips.ethereum.org/all)
@@ -44,13 +44,13 @@ When a new version of the contracts makes its way through all testnets, it event
 ### As an npm module
 
 ```javascript
-const snx = require('synthetix');
+const snx = require('@oikos/oikos-bsc');
 
 // retrieve an object detailing the contract deployed to the given network.
-snx.getTarget({ network: 'rinkeby', contract: 'ProxySynthetix' });
+snx.getTarget({ network: 'rinkeby', contract: 'ProxyOikos' });
 /*
 {
-  name: 'ProxySynthetix',
+  name: 'ProxyOikos',
   address: '0x322A3346bf24363f451164d96A5b5cd5A7F4c337',
   source: 'Proxy',
   link: 'https://rinkeby.etherscan.io/address/0x322A3346bf24363f451164d96A5b5cd5A7F4c337',
@@ -78,9 +78,9 @@ snx.getSynths({ network: 'rinkeby' }).map(({ name }) => name);
 Same as above but as a CLI tool that outputs JSON:
 
 ```bash
-npx synthetix target --network rinkeby --contract ProxySynthetix
+npx oikos target --network rinkeby --contract ProxyOikos
 # {
-#   "name": "ProxySynthetix",
+#   "name": "ProxyOikos",
 #   "address": "0x322A3346bf24363f451164d96A5b5cd5A7F4c337",
 #   "source": "Proxy",
 #   "link": "https://rinkeby.etherscan.io/address/0x322A3346bf24363f451164d96A5b5cd5A7F4c337",
@@ -88,13 +88,13 @@ npx synthetix target --network rinkeby --contract ProxySynthetix
 #   "network": "rinkeby"
 # }
 
-npx synthetix source --network rinkeby --contract Proxy
+npx oikos source --network rinkeby --contract Proxy
 # {
 #   "bytecode": "0..0",
 #   "abi": [ ... ]
 # }
 
-npx synthetix synths --network rinkeby --key name
+npx oikos synths --network rinkeby --key name
 # ["sUSD", "sEUR", ... ]
 ```
 
@@ -114,11 +114,11 @@ $ npm test
 
 ## System Summary
 
-Traditionally gold was used as a reserve store of value by various governments around the world to prove that there was value to back their currency. The Synthetix system replicates this setup, but completely on-chain, and with multiple flavours of stablecoin (Synths), and a store of value backing them up (SNX - Synthetix Network Token).
+Traditionally gold was used as a reserve store of value by various governments around the world to prove that there was value to back their currency. The Oikos system replicates this setup, but completely on-chain, and with multiple flavours of stablecoin (Synths), and a store of value backing them up (OKS - Oikos Network Token).
 
-As users exchange synths via `Exchanger.exchange()` or on [synthetix.exchange](https://synthetix.exchange), small fees are remitted, which get sent to SNX holders that enable the economy to exist.
+As users exchange synths via `Exchanger.exchange()` or on [oikos.exchange](https://oikos.exchange), small fees are remitted, which get sent to OKS holders that enable the economy to exist.
 
-Users are able to withdraw their fees sUSD. Users are entitled to fees once they've issued synths (to help create the economy generating the fees) and waited for a complete fee period to elapse (currently 7 days). Issuers are incentivised to maintain the ratio of collateral (SNX) to Synths such that the Synths in circulation are generally only worth 20% of the value of the Synthetix Network Tokens backing them up via a penalty for being over 20% collateralised. This allows pretty severe price shocks to SNX without threatening the value of the Synths.
+Users are able to withdraw their fees sUSD. Users are entitled to fees once they've issued synths (to help create the economy generating the fees) and waited for a complete fee period to elapse (currently 7 days). Issuers are incentivised to maintain the ratio of collateral (OKS) to Synths such that the Synths in circulation are generally only worth 20% of the value of the Oikos Network Tokens backing them up via a penalty for being over 20% collateralised. This allows pretty severe price shocks to OKS without threatening the value of the Synths.
 
 Also it's worth noting that there's a decimal library being used for "floating point" math with 10^18 as the base. Also many of the contracts are provided behind a proxy contract for easy upgradability.
 
@@ -127,6 +127,6 @@ Also it's worth noting that there's a decimal library being used for "floating p
 ## Documentation
 
 For the latest system documentaion see
-- http://snxdocs.synthetix.io
-- https://synthetix.community
-- https://contracts.synthetix.io
+
+- http://docs.oikos.cash
+- https://contracts.oikos.cash

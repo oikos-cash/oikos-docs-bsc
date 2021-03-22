@@ -5,7 +5,7 @@ const fs = require('fs');
 const numbro = require('numbro');
 const snx = require('@oikos/oikos-bsc');
 
-const network = 'mainnet';
+const network = 'bsc';
 const targets = snx.getTarget({ network });
 const synths = snx.getSynths({ network });
 

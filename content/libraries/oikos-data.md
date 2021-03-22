@@ -1,7 +1,7 @@
 !!! info "Notice"
-		Imported from https://github.com/Synthetixio/synthetix-data
+Imported from https://github.com/Synthetixio/synthetix-data
 
-# synthetix-data
+# oikos-data
 
 [![npm version](https://badge.fury.io/js/synthetix-data.svg)](https://badge.fury.io/js/synthetix-data)
 [![Discord](https://img.shields.io/discord/413890591840272394.svg?color=768AD4&label=discord&logo=https%3A%2F%2Fdiscordapp.com%2Fassets%2F8c9701b98ad4372b58f13fd9f65f966e.svg)](https://discordapp.com/channels/413890591840272394/)

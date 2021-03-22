@@ -6,43 +6,43 @@
 
 ### Fetch deployment information
 
-If you're looking to get the addresses and ABIs of any Synthetix contract, or maybe the list of synths and their parameters, the best way is to use our [`synthetix` `npm` module](synthetix.md#usage-and-requirements) (written for nodejs). Instead of looking it up online, the module contains all the details available to fetch locally (we manage this during our deployment processes).
+If you're looking to get the addresses and ABIs of any Oikos contract, or maybe the list of synths and their parameters, the best way is to use our [`@oikos/oikos-bsc` `npm` module](oikos.md#usage-and-requirements) (written for nodejs). Instead of looking it up online, the module contains all the details available to fetch locally (we manage this during our deployment processes).
 
-If you'd rather than functionality in the browser, you'll need to use our [`synthetix-js` JavaScript library on `npm`](synthetix-js.md).
+If you'd rather than functionality in the browser, you'll need to use our [`@oikos/oikos-js-bsc` JavaScript library on `npm`](oikos-js.md).
 
 ### Read and write state
 
-To interact with Synthetix in your dApps and scripts, you have a few options:
+To interact with Oikos in your dApps and scripts, you have a few options:
 
-1.  Use our [synthetix-js](synthetix-js.md) library, which is updated each synthetix release with the same version number. It uses `ethers.js` under the hood.
+1.  Use our [oikos-js](oikos-js.md) library, which is updated each oikos release with the same version number. It uses `ethers.js` under the hood.
 
-2.  Write a custom JS script using our [synthetix npm module](synthetix.md) to help load the ABIs and addresses as need be.
+2.  Write a custom JS script using our [oikos npm module](oikos.md) to help load the ABIs and addresses as need be.
 
-    ??? example "E.g. fetch `Synthetix.totalIssuedSynths()`"
+    ??? example "E.g. fetch `Oikos.totalIssuedSynths()`"
 
         ```javascript
         // With Ethers
         import ethers from "ethers"; // es modules
-        import synthetix from "synthetix";
+        import oikos from "@oikos/oikos-bsc";
 
         const provider = ethers.getDefaultProvider();
 
         const network = "mainnet";
-        const { abi } = synthetix.getSource({
+        const { abi } = oikos.getSource({
             network,
-            contract: "Synthetix"
+            contract: "Oikos"
         });
-        const { address } = synthetix.getTarget({
+        const { address } = oikos.getTarget({
             network,
-            contract: "ProxySynthetix"
+            contract: "ProxyOikos"
         });
 
         // see https://docs.ethers.io/ethers.js/html/api-contract.html#connecting-to-existing-contracts
-        const Synthetix = new ethers.Contract(address, abi, provider);
+        const Oikos = new ethers.Contract(address, abi, provider);
 
         (async () => {
-            const totalIssuedSynths = await Synthetix.totalIssuedSynths(
-                synthetix.toBytes32("sUSD")
+            const totalIssuedSynths = await Oikos.totalIssuedSynths(
+                oikos.toBytes32("sUSD")
             );
             console.log(ethers.utils.formatEther(totalIssuedSynths));
         })();
@@ -54,17 +54,17 @@ To interact with Synthetix in your dApps and scripts, you have a few options:
 
 To query data historically, a few options are available:
 
-1.  Use our [synthetix-data](synthetix-data.md) library, which abstracts away the various subgraphs Synthetix uses, exposing query and subscription endpoints for a variety of use-case.
+1.  Use our [oikos-data](oikos-data.md) library, which abstracts away the various subgraphs Oikos uses, exposing query and subscription endpoints for a variety of use-case.
 
 2.  Query our subgraphs directly via our various subgraphs which are listed [here](../historical-data.md#subgraphs).
 
-3.  Query using the `{ blockTag: <Number> }` option to get state at a previous block (note the call will fail if the contract was not deployed at the block). Note: usage of this feature of `ethers` and `web3` requires a provider that is a full archive node. [Infura](https://infura.io) and [QuikNode](https://quicknode.io) both provide access to archive nodes for monthly costs. This is supported in [SynthetixJs](synthetix-js.md) via the underlying `.contract` property in every contract target.
+3.  Query using the `{ blockTag: <Number> }` option to get state at a previous block (note the call will fail if the contract was not deployed at the block). Note: usage of this feature of `ethers` and `web3` requires a provider that is a full archive node. [Infura](https://infura.io) and [QuikNode](https://quicknode.io) both provide access to archive nodes for monthly costs. This is supported in [OikosJs](oikos-js.md) via the underlying `.contract` property in every contract target.
 
-    ??? example "E.g. fetch `Synthetix.totalIssuedSynths()` from a block in the past"
+    ??? example "E.g. fetch `Oikos.totalIssuedSynths()` from a block in the past"
 
         ```javascript
         import ethers from 'ethers';
-        import synthetix from 'synthetix';
+        import oikos from '@oikos/oikos-bsc';
 
         // assuming INFURA_PROJECT_ID is from a paid, archive node
         const provider = ethers.providers.InfuraProvider(
@@ -73,21 +73,21 @@ To query data historically, a few options are available:
         );
 
         const network = 'mainnet';
-        const { abi } = synthetix.getSource({
+        const { abi } = oikos.getSource({
           network,
-          contract: 'Synthetix'
+          contract: 'Oikos'
         });
-        const { address } = synthetix.getTarget({
+        const { address } = oikos.getTarget({
           network,
-          contract: 'ProxySynthetix'
+          contract: 'ProxyOikos'
         });
 
         // see https://docs.ethers.io/ethers.js/html/api-contract.html#connecting-to-existing-contracts
-        const Synthetix = new ethers.Contract(address, abi, provider);
+        const Oikos = new ethers.Contract(address, abi, provider);
 
         (async () => {
-          const totalIssuedSynths = await Synthetix.totalIssuedSynths(
-            synthetix.toBytes32('sUSD'),
+          const totalIssuedSynths = await Oikos.totalIssuedSynths(
+            oikos.toBytes32('sUSD'),
             {
               blockTag: 9000000
             }
@@ -101,15 +101,15 @@ To query data historically, a few options are available:
     ??? example "E.g. Get all `FeePool.FeesClaimed` events"
 
         ```javascript
-        import synthetix from 'synthetix';
+        import oikos from '@oikos/oikos-bsc';
         const provider = ethers.getDefaultProvider();
 
         const network = 'mainnet';
-        const { abi } = synthetix.getSource({
+        const { abi } = oikos.getSource({
           network,
           contract: 'FeePool'
         });
-        const { address } = synthetix.getTarget({
+        const { address } = oikos.getTarget({
           network,
           // Note: for contracts with proxies, events are always emitted on the Proxy,
           // so we need to use this address here
