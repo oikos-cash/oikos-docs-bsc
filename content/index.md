@@ -1,46 +1,31 @@
-![Oikos](img/logos/oikos-text-logo.svg)
+<img class="rounded-image" src="img/logos/oikos-text-logo.svg" class="oikos-logo" />
 
 # System Documentation
 
-[![npm version](https://badge.fury.io/js/oikos.svg)](https://badge.fury.io/js/oikos)
-[![Build Status](https://travis-ci.org/oikos-cash/oikos-bsc.svg?branch=master)](https://travis-ci.org/Oikosio/oikos)
-[![CircleCI](https://circleci.com/gh/oikos-cash/oikos-bsc.svg?style=svg)](https://circleci.com/gh/Oikosio/oikos)
-[![codecov](https://codecov.io/gh/oikos-cash/oikos-bsc/branch/develop/graph/badge.svg)](https://codecov.io/gh/Oikosio/oikos)
-[![Discord](https://img.shields.io/discord/413890591840272394.svg?color=768AD4&label=discord&logo=https%3A%2F%2Fdiscordapp.com%2Fassets%2F8c9701b98ad4372b58f13fd9f65f966e.svg)](https://discordapp.com/channels/413890591840272394/)
-[![Twitter Follow](https://img.shields.io/twitter/follow/oikos.cash.svg?label=oikos.cash&style=social)](https://twitter.com/oikos.cash)
+[![npm version](https://badge.fury.io/js/%40oikos%2Foikos.svg)](https://badge.fury.io/js/%40oikos%2Foikos)
+[![Twitter Follow](https://img.shields.io/twitter/follow/oikos_cash.svg?label=oikos_cash&style=social)](https://twitter.com/oikos_cash)
+[![Discord](https://img.shields.io/discord/696732796323889233?style=social)](https://discord.gg/7KVqe9)
 
 ## Introduction
 
-Welcome to the Oikos system documentation. These pages contain a description of how Synthetix operates; provided are high-level discussions of the system mechanics, as well as thorough technical specifications of the smart contract architecture and API. We hope this assists users and developers to understand the system, and to build on top of it.
-
-## Resources
-
-- **Litepaper:** The [Oikos Litepaper](https://www.oikos.cash/uploads/oikos_litepaper.pdf) has a detailed overview of how the Synthetix protocol functions.
-- **Community Page:** The online community has built an [excellent site](https://oikos.community/docs/resources) with a large backlog of resources, explanations, and links that is perfect for any newcomers.
-- **Official Blog:** Stay up-to-date with all official news from the team at the [Oikos blog](https://blog.oikos.cash).
-- **SIPs (Oikos Improvement Proposals):** The Synthetix ecosystem is managed by a core team, with suggestions and improvements from the community in the form of Synthetix Improvement Proposals (SIPs) and Synthetix Configuration Change Proposal (SCCPs). Past and present SIPs and SCCPs are hosted on https://sips.oikos.cash. To suggest a new SIPs, create an issue on the [SIPs repo](https://github.com/oikosio/SIPs/issues).
+Welcome to the Oikos system documentation. These pages contain a description of how Oikos operates; provided are high-level discussions of the system mechanics, as well as thorough technical specifications of the smart contract architecture and API. We hope this assists users and developers to understand the system, and to build on top of it.
 
 ## Developer Resources
 
-- **Code:** Open source repositories are available @oikosio; the main Oikos repo is @oikosio/oikos.
+- **Code:** Open source repositories are available @oikos-cash; the main Oikos repo is @oikos-cash/oikos.
 - **Smart Contracts:** The latest list of deployed addresses and ABIs can be found via [addresses](addresses)
 - **Smart Contract API:** Descriptions of all Oikos smart contracts, their APIs, and a listing of deployed instances can be found [here](contracts).
 - **Libraries:** For various methods to connect to Oikos to read the current state from, transact onto or query for historical data, look at our [libraries section](libraries/index.md).
 
 ## dApps
 
-- **Oikos.Exchange:** [Synthetix Exchange](https://www.oikos.cash/products/exchange) allows users to trade synths, and to buy sUSD with ether. Synthetix.Exchange has also played host to [trading competitions](https://blog.oikos.cash/oikos-exchange-trading-competition-v3/) offering OKS prizes to the most successful participants. The source code for Synthetix.Exchange can be found at @oikosio/oikos-exchange. A twitter bot that reports statistics for the exchange posts daily at @twitter:SynthXBot.
-- **Mintr:** [Mintr](https://www.oikos.cash/products/mintr) is a dApp for OKS holders to participate in the Oikos Network. Using Mintr, users can mint and burn Synths, monitor their collateralisation levels, buy and sell sUSD through the [Depot](contracts/Depot.md), claim their staking rewards, and vest any OKS they have accrued from the token sale or by staking.
-- **Oikos Dashboard:** Provides an overview of the status of the Synthetix system including price, token supply, exchange volume, fee pool size, open interest, and current collateralisation levels. The dashboard also provides listings of exchanges where [OKS](https://dashboard.oikos.cash/buy-snx) and [sUSD](https://dashboard.oikos.cash/buy-susd) are traded. The dashboard is available at [https://dashboard.oikos.cash](https://dashboard.oikos.cash).
+- **Oikos.Exchange:** [Oikos Exchange](https://bsc.oikos.exchange) allows users to trade synths, and to buy oUSD with BNB.The source code for Oikos.Exchange can be found at @oikos-cash/exchange.
+- **Minter:** [Minter](https://bsc.oikos.cash) is a dApp for OKS holders to participate in the Oikos Network. Using Minter, users can mint and burn Synths, monitor their collateralisation levels, claim their staking rewards, and vest any OKS they have accrued by staking.
 
-## Integrations
-
-- **The Graph**: [The Graph](http://thegraph.com/) is a decentralised indexer and GraphQL query engine of blockchain events and function calls. Oikos has a number of subgraphs tracking a number of events and key metrics within the system historically. For more information on how to query or subscribe to events in real time see [Historical Data](historical-data.md).
-- **UniSwap:** [Uniswap](https://uniswap.io/) is a decentralised exchange for exchanging BNB and ERC20 tokens. Oikos integrates with it to deepen the Synthetix ecosystem's liquidity, and it acts as an on-ramp/off-ramp for the Synth market. Users who provide liquidity to the [ETH/sETH pool](https://uniswap.exchange/swap/0x42456D7084eacF4083f1140d3229471bbA2949A8) are provided with staking rewards as [part of the Synthetix protocol](https://sips.oikos.cash/sips/sip-8). This is discussed further [here](https://blog.oikos.cash/uniswap-sbnb-pool-incentives/), [here](https://blog.oikos.cash/snx-arbitrage-pool/), and [here](https://blog.oikos.cash/new-uniswap-seth-lp-reward-system/).
-- **KyberSwap:** Liquidity is further deepened by the integration of OKS and sUSD with [KyberSwap](https://kyberswap.com/swap/eth-snx), which is built on the [Kyber Network Protocol](https://kyber.network/). An example use case is described [here](https://blog.oikos.cash/snx-liquidity-has-been-added-to-kyberswap/).
 
 ## Get In Touch
 
-- **Chat:** If you’re looking for somewhere to talk with the Oikos team or with other developers about Synthetix, please visit our [Discord](https://discordapp.com/invite/AEdUHzt) or [/r/oikos.cash](https://reddit.com/r/oikos.cash) on reddit.
-- **Read:** For updates, announcements, and information, check out our blog at [https://blog.oikos.cash/](https://blog.oikos.cash/), @twitter:oikos.cash on Twitter, or our [Telegram channel](https://t.me/havven_news).
-- **Email:** Otherwise you can [contact us by email](https://www.oikos.cash/contact-us).
+- **Chat:** If you’re looking for somewhere to talk with the Oikos team or with other developers about Oikos, please visit our [Discord](https://discordapp.com/invite/7KVqe9) or [/r/OikosCash](https://reddit.com/r/OikosCash) on reddit.
+- **Read:** For updates, announcements, and information, check out our blog at [https://blog.oikos.cash/](https://blog.oikos.cash/), @twitter:oikos_cash on Twitter, or our [Telegram channel](https://t.me/oikoscash).
+- **Email:** Otherwise you can [contact us by email](mailto:info@oikos.cash).
+
