@@ -27,7 +27,7 @@
     - [`Depot`](Depot.md): The depot trades OKS and therefore knows the Oikos address. \* [`ArbRewarder`](ArbRewarder.md): The ArbRewarder knows the Synthetix address because it exchanges OKS.
     - [`Exchanger`](Exchanger.md) The helper contract that performs the heavy lifting for `exchange()` and `settle()`.
     - [`ExchangeRates`](ExchangeRates.md): The Oikos contract fetches prices from the exchange rates contract to facilitate synth exchange and to determine the value of various quantities of synths.
-    - [`FeePool`](FeePool.md): The Oikos contract remits exchange fees as sUSD to the fee pool, and also uses it to keep track of historical issuance records for each issuer.
+    - [`FeePool`](FeePool.md): The Oikos contract remits exchange fees as oUSD to the fee pool, and also uses it to keep track of historical issuance records for each issuer.
     - [`Issuer`](Issuer.md) The helper contract that performs the heavy lifting for `issueSynths()`, `issueMaxSynths()` and `burnSynths()`.
     - [`Proxy`](Proxy.md): The Oikos contract, which is [`Proxyable`](Proxyable.md), exists behind a `CALL`-style proxy for upgradeability.
     - [`RewardEscrow`](RewardEscrow.md): This is similar to the OikosEscrow contract, but it is where the OKS inflationary supply is kept before it is released to Synth issuers.
@@ -228,7 +228,7 @@ The maximum number of a given synth that is issuable against the issuer's collat
 
 ### `remainingIssuableSynths`
 
-The remaining sUSD synths this account can issue.
+The remaining oUSD synths this account can issue.
 
 If $\text{maxIssuable}$ is [`maxIssuableSynths(issuer)`](#maxissuablesynths) and $\text{debt}$ is [`debtBalanceOf(issuer, currencyKey)`](#debtbalanceof), then the result of this function is $max(0, \text{maxIssuable} - \text{debt})$.
 
@@ -336,7 +336,7 @@ Whether or not the waiting period is ongoing for the given synth. If so, no exch
 
 ### `burnSynths`
 
-[Burns](Synth.md#burn) a quantity of `sUSD` in the calling address, in order to free up its locked OKS supply.
+[Burns](Synth.md#burn) a quantity of `oUSD` in the calling address, in order to free up its locked OKS supply.
 
 If the caller attempts to burn more synths than their OKS debt is worth, this function will only burn sufficiently many tokens to cover the debt and leave the rest untouched.
 
@@ -407,7 +407,7 @@ See [`Exchanger`](Exchanger.md#exchange) for further details.
 
 ### `issueSynths`
 
-[Issues](Synth.md#issue) a new quantity of `sUSD` into the calling address. The new debt issuance is recorded with [`_addToDebtRegister`](#_addtodebtregister), and the account's issuance records are updated with [`_appendAccountIssuanceRecord`](#_appendaccountissuancerecord).
+[Issues](Synth.md#issue) a new quantity of `oUSD` into the calling address. The new debt issuance is recorded with [`_addToDebtRegister`](#_addtodebtregister), and the account's issuance records are updated with [`_appendAccountIssuanceRecord`](#_appendaccountissuancerecord).
 
 See [`Issuer`](Issuer.md#issueSynths) for further details.
 
@@ -429,7 +429,7 @@ See [`Issuer`](Issuer.md#issueSynths) for further details.
 
 ### `issueMaxSynths`
 
-Issues the [maximum quantity](#remainingissuablesynths) `sUSD` issuable by the caller of a particular synth flavour. Otherwise, this operates exactly as [`issueSynths`](#issuesynths) does.
+Issues the [maximum quantity](#remainingissuablesynths) `oUSD` issuable by the caller of a particular synth flavour. Otherwise, this operates exactly as [`issueSynths`](#issuesynths) does.
 
 See [`Issuer`](Issuer.md#issueSynths) for further details.
 
@@ -569,7 +569,7 @@ A Synth cannot be removed if it has outstanding issued tokens.
 
     * The synth's currency key must exist in the [`synths`](#synths) address mapping.
     * The synth's total supply must be zero.
-    * The sUSD synth cannot be removed.
+    * The oUSD synth cannot be removed.
 
 ---
 
@@ -596,7 +596,7 @@ Allows the owner to [disable synth exchanges](#exchangeenabled).
 ### `synthInitiatedExchange`
 
 Allows a synth to perform a free exchange into a different flavour.
-This is only used by [`PurgeableSynth.purge`](#PurgeableSynth.md#purge) in order to convert outstanding synths into sUSD. No exchange fee is charged on such liquidations.
+This is only used by [`PurgeableSynth.purge`](#PurgeableSynth.md#purge) in order to convert outstanding synths into oUSD. No exchange fee is charged on such liquidations.
 
 ??? example "Details"
 
@@ -620,7 +620,7 @@ This is only used by [`PurgeableSynth.purge`](#PurgeableSynth.md#purge) in order
 
 Implements synth exchanges for [`exchange`](#exchange) and [`synthInitiatedExchange`](#synthinitiatedexchange).
 
-Conversion is performed by burning the specified quantity of the source currency from the `from` address, and issuing an [equivalent value](#effectivevalue) of the destination currency into the destination address, minus a [fee](FeePool.md#amountreceivedfromexchange) if `chargeFee` is true. This fee is issued into the [fee address](FeePool.md#feeaddress) in sUSD, and the fee pool is [notified](FeePool.md#feepaid).
+Conversion is performed by burning the specified quantity of the source currency from the `from` address, and issuing an [equivalent value](#effectivevalue) of the destination currency into the destination address, minus a [fee](FeePool.md#amountreceivedfromexchange) if `chargeFee` is true. This fee is issued into the [fee address](FeePool.md#feeaddress) in oUSD, and the fee pool is [notified](FeePool.md#feepaid).
 
 This function can be [disabled](#setexchangeenabled) by the owner.
 
@@ -669,7 +669,7 @@ This function performs the same operation as [`_removeFromDebtRegister`](#_remov
     | Term             | Definition                                           | Description                                                                                                                                                                                                                                                                                                                                 |
     | ---------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | $\Delta$         | See the **Ledger Updates** section below.            | The [debt ledger](OikosState.md#debtledger): an array of debt movement factors, indicating the size of the issued system debt over time. $\Delta_n$ is the $n^{th}$ entry in the ledger.                                                                                                                                                |
-    | $X$              | $\frac{1}{\pi_\text{sUSD}}\sum_{c}{\pi_c \sigma_c}$  | The sUSD value of all issued synths ([`totalIssuedSynths`](#totalissuedsynths)) at current prices.                                                                                                                                                                                                                                          |
+    | $X$              | $\frac{1}{\pi_\text{oUSD}}\sum_{c}{\pi_c \sigma_c}$  | The oUSD value of all issued synths ([`totalIssuedSynths`](#totalissuedsynths)) at current prices.                                                                                                                                                                                                                                          |
     | $\widehat{\chi}$ | $\omega \frac{\Delta_\text{last}}{\Delta_{entry}} X$ | The XDR value of the account's existing issuance debt at current prices ([`debtBalanceOf`](#debtbalanceof)). $\omega$ is the calling account's last recorded owership fraction of the total system debt. We will also refer to the adjusted current ownership fraction $\check{\omega} = \omega \frac{\Delta_\text{last}}{\Delta_{entry}}$. |
     | $\chi$           |                                                      | The XDR value of the newly-issued synth debt; the new total debt will be $X + \chi$.                                                                                                                                                                                                                                                        |
     | $\omega'$        | $\frac{\chi}{X + \chi}$                              | The fraction of the new total debt accounted for by $\chi$.                                                                                                                                                                                                                                                                                 |

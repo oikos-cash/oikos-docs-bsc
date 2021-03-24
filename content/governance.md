@@ -1,10 +1,10 @@
 # Governance
 
-Ownership of tokens within the Oikos ecosystem is determined by a public network of Ethereum smart contracts. However the basic protocol design, incentive parameter settings, and system development are presently governed by the Synthetix foundation. Although the foundation initially made this tradeoff between centralisation and speed of development, it is committed to further decentralising key decision-making processes in the system. Steps in this direction are being taken by the development of community-driven governance and development methodologies.
+Ownership of tokens within the Oikos ecosystem is determined by a public network of BNB smart contracts. However the basic protocol design, incentive parameter settings, and system development are presently governed by the Synthetix foundation. Although the foundation initially made this tradeoff between centralisation and speed of development, it is committed to further decentralising key decision-making processes in the system. Steps in this direction are being taken by the development of community-driven governance and development methodologies.
 
 ## Oikos Improvement Proposals (SIPs)
 
-The SIP format describes protocol standards and proposed updates. They provide a central forum for the submission, discussion, and acceptance of rigorous definitions of various components of the core Oikos system, and documentation of the rationale behind design decisions. SIPs are enumerated at their [official site](https://sips.oikos.cash/). The SIP format is based on EIPs (Ethereum Improvement Proposals).
+The SIP format describes protocol standards and proposed updates. They provide a central forum for the submission, discussion, and acceptance of rigorous definitions of various components of the core Oikos system, and documentation of the rationale behind design decisions. SIPs are enumerated at their [official site](https://sips.oikos.cash/). The SIP format is based on EIPs (BNB Improvement Proposals).
 
 Historically, SIPs have been used to modify the fee/reward structure, allow the liquidation of unused synths, introduce new synths, and implement various exchange rate front-running protections. They are an appropriate mechanism for a broad range of fundamental alterations to the Oikos platform and as such require an organised process for community consultation and iteration.
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a [Synth](Synth.md) where all the holders can be force-[exchanged](Oikos.md#exchange) back to `sUSD` at current rates so that the contract can be removed from the system or otherwise repurposed. In order to be liquidated, a Synth must either be frozen (if it is an inverse synth) or have its total outstanding supply worth less than $100\,000$ USD. Hence it is mainly useful for eliminating Synths which are unused or at the end of their useful life. The value of the token is read from the system's central [ExchangeRates](ExchangeRates.md) contract.
+This is a [Synth](Synth.md) where all the holders can be force-[exchanged](Oikos.md#exchange) back to `oUSD` at current rates so that the contract can be removed from the system or otherwise repurposed. In order to be liquidated, a Synth must either be frozen (if it is an inverse synth) or have its total outstanding supply worth less than $100\,000$ USD. Hence it is mainly useful for eliminating Synths which are unused or at the end of their useful life. The value of the token is read from the system's central [ExchangeRates](ExchangeRates.md) contract.
 
 Purgeable synths were introduced by [SIP-3](https://github.com/oikos-cash/SIPs/blob/master/SIPS/sip-3.md) in response to increasing gas costs associated with minting, and to allow faster reconfiguration of inverse synths.
 
@@ -76,9 +76,9 @@ Initialises the [`exchangeRates`](#exchangerates) address, and the inherited [`S
 
 ### `purge`
 
-Allows the owner to liquidate all holders of this token back to `sUSD` if the total value of this Synth is worth less than [`maxSupplyToPurgeInUSD`](#maxsupplytopurgeinusd) US dollars at current prices, or if the token is an inverse synth whose price is frozen.
+Allows the owner to liquidate all holders of this token back to `oUSD` if the total value of this Synth is worth less than [`maxSupplyToPurgeInUSD`](#maxsupplytopurgeinusd) US dollars at current prices, or if the token is an inverse synth whose price is frozen.
 
-If this is successfully invoked, balances in the provided list of addresses will be deleted, and an equivalent value of sUSD credited to their account.
+If this is successfully invoked, balances in the provided list of addresses will be deleted, and an equivalent value of oUSD credited to their account.
 
 ??? example "Details"
 
@@ -129,7 +129,7 @@ Allows the owner to set the address of the [exchange rates contract](ExchangeRat
 
 ### `Purged`
 
-Records that a balance of this currency was liquidated back to `sUSD` for a particular account.
+Records that a balance of this currency was liquidated back to `oUSD` for a particular account.
 
 This event is emitted from the Synth's [proxy](Proxy.md#_emit) with the `emitPurged` function.
 

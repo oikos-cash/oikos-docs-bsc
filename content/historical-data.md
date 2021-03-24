@@ -63,7 +63,7 @@ Instead of using the subgraphs provided, you could directly query the EVM via mo
 
 ### Using an Archive Node
 
-You can also use an Ethereum node with full historical state (an archive node) to read the blockchain state at some block in the past.
+You can also use an BNB node with full historical state (an archive node) to read the blockchain state at some block in the past.
 
 Query using the `{ blockTag: <Number> }` option to get state at a previous block (note the call will fail if the contract was not deployed at the block). Note: usage of this feature of `ethers` and `web3` requires a provider that is a full archive node. [Infura](https://infura.io) and [QuikNode](https://quicknode.io) both provide access to archive nodes for monthly costs. This is supported in [OikosJs](libraries/oikos-js.md) via the underlying `.contract` property in every contract target.
 
@@ -109,4 +109,4 @@ There are a number of third parties services that provide queryable datasources 
 
 - [Altheio](https://aleth.io/)
 - [Dune Analytics](https://www.duneanalytics.com)
-- [Google BigQuery](https://medium.com/google-cloud/live-ethereum-and-bitcoin-data-in-google-bigquery-and-pub-sub-765b71cd57b5)
+- [Google BigQuery](https://medium.com/google-cloud/live-BNB-and-bitcoin-data-in-google-bigquery-and-pub-sub-765b71cd57b5)

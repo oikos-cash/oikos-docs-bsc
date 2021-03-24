@@ -7,7 +7,7 @@
 
 ## Description
 
-This contract does all the heavy lifting of issuing and burning `sUSD`. It's used primarily to reduce the size of the `Oikos` contract
+This contract does all the heavy lifting of issuing and burning `oUSD`. It's used primarily to reduce the size of the `Oikos` contract
 
 **Source:** [Issuer.sol](https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Issuer.sol)
 
@@ -31,7 +31,7 @@ This contract does all the heavy lifting of issuing and burning `sUSD`. It's use
 
 ??? example "Details"
 
-    - [`FeePool`](FeePool.md): The Oikos contract remits exchange fees as sUSD to the fee pool, and also uses it to keep track of historical issuance records for each issuer.
+    - [`FeePool`](FeePool.md): The Oikos contract remits exchange fees as oUSD to the fee pool, and also uses it to keep track of historical issuance records for each issuer.
     - [`OikosState`](SynthetixState.md): This state contract stores the debt ledger and the current issuance information for synth issuers.
 
 ---
@@ -128,7 +128,7 @@ Returns the [currency key](Synth.md#currencykey) for each synth in [`availableSy
 
 ### `burnSynths`
 
-[Burns](Synth.md#burn) a quantity of `sUSD` in the calling address, in order to free up its locked OKS supply.
+[Burns](Synth.md#burn) a quantity of `oUSD` in the calling address, in order to free up its locked OKS supply.
 
 If the caller attempts to burn more synths than their OKS debt is worth, this function will only burn sufficiently many tokens to cover the debt and leave the rest untouched.
 

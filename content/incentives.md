@@ -20,11 +20,11 @@ OKS staking rewards are generated through the inflationary monetary policy imple
 
 ### OKS Stakers
 
-OKS stakers stake their OKS and receive two kinds of rewards: exchange fees and OKS staking rewards. But by staking, they also take on the risk of 'debt.' When someone stakes their OKS, to then immediately unstake it they need to burn as much sUSD as they just minted — this sUSD figure is their debt, and all OKS stakers' debt is pooled together (with each staker holding a proportion of it). But this pooled debt is also where profits and losses from people trading on Oikos.Exchange is represented, so a staker's debt can change over time depending on traders' overall profits and losses. This is the risk they assume when staking their OKS.
+OKS stakers stake their OKS and receive two kinds of rewards: exchange fees and OKS staking rewards. But by staking, they also take on the risk of 'debt.' When someone stakes their OKS, to then immediately unstake it they need to burn as much oUSD as they just minted — this oUSD figure is their debt, and all OKS stakers' debt is pooled together (with each staker holding a proportion of it). But this pooled debt is also where profits and losses from people trading on Oikos.Exchange is represented, so a staker's debt can change over time depending on traders' overall profits and losses. This is the risk they assume when staking their OKS.
 
 ### BNB stakers
 
-It is also possible to mint Synths by staking BNB. However, BNB stakers' debt is denominated in BNB rather than sUSD. It does not get added to the system's pooled debt, and thus does not fluctuate depending on traders' outcomes. However, there is a 5% APR to stake BNB, as well as a small minting fee.
+It is also possible to mint Synths by staking BNB. However, BNB stakers' debt is denominated in BNB rather than oUSD. It does not get added to the system's pooled debt, and thus does not fluctuate depending on traders' outcomes. However, there is a 5% APR to stake BNB, as well as a small minting fee.
 
 ### Traders
 
@@ -36,7 +36,7 @@ Liquidity providers are providing depth to the [sBNB/BNB Uniswap liquidity pool]
 
 ### Arbitrageurs
 
-The primary opportunity for arbitrage in Oikos is taking advantage of underpriced assets on the secondary market. If sBNB or sUSD are ever trading below the price of BNB or USD respectively, then stakers can profit by purchasing them cheaply and using them within the Synthetix system, where their values do not take the market rate into consideration.
+The primary opportunity for arbitrage in Oikos is taking advantage of underpriced assets on the secondary market. If sBNB or oUSD are ever trading below the price of BNB or USD respectively, then stakers can profit by purchasing them cheaply and using them within the Synthetix system, where their values do not take the market rate into consideration.
 
 ## Additional Crypto-economic Discussions
 

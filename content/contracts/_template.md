@@ -113,7 +113,7 @@ Returns the [currency key](Synth.md#currencykey) for each synth in [`availableSy
 
 ### `burnSynths`
 
-[Burns](Synth.md#burn) a quantity of `sUSD` in the calling address, in order to free up its locked OKS supply.
+[Burns](Synth.md#burn) a quantity of `oUSD` in the calling address, in order to free up its locked OKS supply.
 
 If the caller attempts to burn more synths than their OKS debt is worth, this function will only burn sufficiently many tokens to cover the debt and leave the rest untouched.
 

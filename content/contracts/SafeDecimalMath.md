@@ -6,7 +6,7 @@ This is a library contract that provides the ability to manipulate fractional nu
 
 The decimals this library provides can operate at either of two different precision levels. Standard precision operations act on numbers with 18 decimal places. High precision numbers possess 27 decimal places, and have their own corresponding set of functions.[^1]
 
-[^1]: SafeDecimalMath provides two different precision levels because the Ethereum virtual machine encodes integers in 256 bits. Given a finite integer size, an increase in precision implies a decrease in the maximum representable number, since more bits are dedicated to representing the fractional part, and fewer to the integer part.
+[^1]: SafeDecimalMath provides two different precision levels because the BNB virtual machine encodes integers in 256 bits. Given a finite integer size, an increase in precision implies a decrease in the maximum representable number, since more bits are dedicated to representing the fractional part, and fewer to the integer part.
 
 Several functions are included for converting between precision levels, and operations which round to the nearest increment to remove truncation bias. In SafeDecimalMath, a half-increment rounds up.
 

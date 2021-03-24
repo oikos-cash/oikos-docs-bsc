@@ -6,9 +6,9 @@
 
 ## Description
 
-**Old:** Depot.sol: Allows users to exchange BNB for sUSD and OKS (has not yet been updated for multicurrency).
+**Old:** Depot.sol: Allows users to exchange BNB for oUSD and OKS (has not yet been updated for multicurrency).
 
-Throughout, the contract assumes that sUSD is always worth exactly US\$1. So: a) this will only work with `sUSD`. b) there's a profit opportunity if the `sUSD` is off its peg.
+Throughout, the contract assumes that oUSD is always worth exactly US\$1. So: a) this will only work with `oUSD`. b) there's a profit opportunity if the `oUSD` is off its peg.
 
 !!! note
 
@@ -58,7 +58,7 @@ Stores an individual Synth deposit on sale.
 | Field  | Type      | Description                     |
 | ------ | --------- | ------------------------------- |
 | user   | `address` | The depositor.                  |
-| amount | `uint`    | The quantity of sUSD deposited. |
+| amount | `uint`    | The quantity of oUSD deposited. |
 
 ---
 
@@ -76,7 +76,7 @@ The address of the main [`Oikos`](Synthetix.md) contract; the depot contains OKS
 
 ### `synth`
 
-The address of the sUSD [`Synth`](Synth.md), which are the synth held in the depot.
+The address of the oUSD [`Synth`](Synth.md), which are the synth held in the depot.
 
 **Type:** `Synth public`
 
@@ -152,7 +152,7 @@ The price of BNB in USD.
 
 ### `deposits`
 
-Users can deposit sUSD to be sold on the depot. This variable holds the queue of open deposits, which are sold in the order they were deposited.
+Users can deposit oUSD to be sold on the depot. This variable holds the queue of open deposits, which are sold in the order they were deposited.
 
 This queue is stored as an "array" within a mapping: the keys are array indices. Deposits are stored by a contiguous block of keys between [`depositStartIndex`](#depositstartindex) (inclusive) and [`depositEndIndex`](#depositendindex) (exclusive).
 
@@ -180,7 +180,7 @@ The index one past the last deposit in the [`deposits`](#deposits) queue.
 
 ### `totalSellableDeposits`
 
-The total quantity of sUSD currently in the [`deposits`](#deposits) queue to be purchased.
+The total quantity of oUSD currently in the [`deposits`](#deposits) queue to be purchased.
 
 **Type:** `uint public` ([18 decimals](SafeDecimalMath.md))
 
@@ -188,7 +188,7 @@ The total quantity of sUSD currently in the [`deposits`](#deposits) queue to be 
 
 ### `minimumDepositAmount`
 
-The minimum sUSD quantity required for a deposit to be added to the queue. Initialised to 50.0.
+The minimum oUSD quantity required for a deposit to be added to the queue. Initialised to 50.0.
 
 **Type:** `uint public` ([18 decimals](SafeDecimalMath.md))
 
@@ -196,7 +196,7 @@ The minimum sUSD quantity required for a deposit to be added to the queue. Initi
 
 ### `smallDeposits`
 
-Deposits of less than [`minimumDepositAmount`](#minimumdepositamount) sUSD are not placed on the [`deposits`](#deposits) queue. Instead, they are kept here so that the depositor can withdraw them.
+Deposits of less than [`minimumDepositAmount`](#minimumdepositamount) oUSD are not placed on the [`deposits`](#deposits) queue. Instead, they are kept here so that the depositor can withdraw them.
 
 **Type:** `mapping(address => uint) public` ([18 decimals](SafeDecimalMath.md))
 
@@ -388,7 +388,7 @@ This simply calls [`exchangeEtherForSynths`](#exchangeetherforsynths.) so that i
 
 ### `exchangeEtherForSynths`
 
-Sells sUSD to callers who send ether. The synths are sold from the [`deposits`](#deposits) queue in the order they were deposited.
+Sells oUSD to callers who send ether. The synths are sold from the [`deposits`](#deposits) queue in the order they were deposited.
 
 Purchased quantity: msg.value \* usdToEthPrice
 
@@ -397,7 +397,7 @@ This function if invoked with a
 
 Requires that the contract is not paused, and that the prices are not stale.
 
-Returns the number of sUSD exchanged. Converts any ether sent to the contract to a quantity of synths at current prices. Fulfils this quantity by iterating through the deposit queue until the entire quantity is found. If a given deposit is insufficient to cover the entire requested amount, it is exhausted and removed from the queue. For each deposit found, the proper quantity of ether is sent to the depositor. If the quantity could not be sent because the target is a non-payable contract, then it is remitted to `fundsWallet`. Then send the Synths to the recipient. If the whole quantity could not be fulfilled, then the remaining ether is refunded to the purchaser.
+Returns the number of oUSD exchanged. Converts any ether sent to the contract to a quantity of synths at current prices. Fulfils this quantity by iterating through the deposit queue until the entire quantity is found. If a given deposit is insufficient to cover the entire requested amount, it is exhausted and removed from the queue. For each deposit found, the proper quantity of ether is sent to the depositor. If the quantity could not be sent because the target is a non-payable contract, then it is remitted to `fundsWallet`. Then send the Synths to the recipient. If the whole quantity could not be fulfilled, then the remaining ether is refunded to the purchaser.
 
 - `exchangeEtherForSynths() returns (uint)`:
 
@@ -423,7 +423,7 @@ Returns the number of sUSD exchanged. Converts any ether sent to the contract to
 
 ### `exchangeSynthsForOikos`
 
-- `exchangeSynthsForOikos(uint synthAmount) returns (uint)`: Identical to `exchangeEtherForSynthetix`, but perform the price conversion with `oikosReceivedForSynths`. The amount of synths to send is provided as a function argument, and then transferred to `fundsWallet` with `transferFrom`, so this function requires the caller to have approved the depot contract to make such a withdrawal. Note that this assumes that sUSD is worth exactly one dollar.
+- `exchangeSynthsForOikos(uint synthAmount) returns (uint)`: Identical to `exchangeEtherForSynthetix`, but perform the price conversion with `oikosReceivedForSynths`. The amount of synths to send is provided as a function argument, and then transferred to `fundsWallet` with `transferFrom`, so this function requires the caller to have approved the depot contract to make such a withdrawal. Note that this assumes that oUSD is worth exactly one dollar.
 
 ---
 
@@ -475,10 +475,10 @@ If prices are stale, then the depot's exchange functionality is disabled. This i
 
 ### `oikosReceivedForSynths`
 
-Computes the quantity of OKS received in exchange for a given quantity of sUSD at current prices, assuming sUSD are worth \$1. This is equivalent to:
+Computes the quantity of OKS received in exchange for a given quantity of oUSD at current prices, assuming oUSD are worth \$1. This is equivalent to:
 
 $$
-Q_\text{OKS} = Q_\text{sUSD} \times \frac{1}{\pi_\text{OKS}}
+Q_\text{OKS} = Q_\text{oUSD} \times \frac{1}{\pi_\text{OKS}}
 $$
 
 ??? example "Details"
@@ -507,10 +507,10 @@ $$
 
 ### `synthsReceivedForEther`
 
-Computes the quantity of sUSD received in exchange for a given quantity of BNB at current prices. This is equivalent to:
+Computes the quantity of oUSD received in exchange for a given quantity of BNB at current prices. This is equivalent to:
 
 $$
-Q_\text{sUSD} = Q_\text{BNB} \times \pi_\text{OKS}
+Q_\text{oUSD} = Q_\text{BNB} \times \pi_\text{OKS}
 $$
 
 ??? example "Details"

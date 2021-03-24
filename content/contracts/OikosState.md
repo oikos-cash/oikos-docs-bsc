@@ -85,7 +85,7 @@ A list of factors indicating, for each [debt-modifying event](#appenddebtledgerv
 
 ### `importedXDRAmount`
 
-The XDR-equivalent debt of `sUSD` imported which was outstanding immediately before the multicurrency transition.
+The XDR-equivalent debt of `oUSD` imported which was outstanding immediately before the multicurrency transition.
 
 **Type:** `uint public`
 
@@ -313,13 +313,13 @@ Allows the owner to set the Synth [issuance ratio](#issuanceratio), but disallow
 
     This function only operated during the one week [setup period](LimitedSetup.md).
 
-This function allowed the owner to migrate sUSD issuance data during the launch of multiple Synth flavours. It simply calls [`_addToDebtRegister`](#_addtodebtregister) in a loop.
+This function allowed the owner to migrate oUSD issuance data during the launch of multiple Synth flavours. It simply calls [`_addToDebtRegister`](#_addtodebtregister) in a loop.
 
 ??? example "Details"
 
     **Signature**
 
-    `importIssuerData(address[] accounts, uint[] sUSDAmounts) external`
+    `importIssuerData(address[] accounts, uint[] oUSDAmounts) external`
 
     **Modifiers**
 

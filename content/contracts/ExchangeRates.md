@@ -1,7 +1,7 @@
 # ExchangeRates
 
 This contract stores the latest Synth exchange rates. These rates are set by an oracle, which updates this contract every three minutes with any prices that have moved sufficiently. Once set, these prices are available for any contract in the Oikos system to query.
-Prices which have not been updated recently enough are considered stale; Oikos functionality using stale prices does not operate. All rates are denominated in terms of sUSD, so the price of sUSD is always \$1.00, and is never stale.
+Prices which have not been updated recently enough are considered stale; Oikos functionality using stale prices does not operate. All rates are denominated in terms of oUSD, so the price of oUSD is always \$1.00, and is never stale.
 
 The ExchangeRates contract is also responsible for computing the prices of various derived synths.
 In particular, the behaviour of [inverse synths](#rateorinverted) is defined here. These are derivative synths whose price varies inversely with the price of an underlying asset.
@@ -154,7 +154,7 @@ Initialises the oracle address and initial currency prices, along with the inher
     **Preconditions**
 
     * `_currencyKeys` and `_newRates` must be the same length.
-    * `"sUSD"` must not appear in `_currencyKeys`.
+    * `"oUSD"` must not appear in `_currencyKeys`.
     * $0$ must not appear in `_newRates`.
 
 ---
@@ -165,7 +165,7 @@ Initialises the oracle address and initial currency prices, along with the inher
 
 ### `anyRateIsStale`
 
-Loop over the given array of currencies and return true if any of them [is stale](#rateisstale). `sUSD`'s rate is never stale. Rates for nonexistent currencies are always stale.
+Loop over the given array of currencies and return true if any of them [is stale](#rateisstale). `oUSD`'s rate is never stale. Rates for nonexistent currencies are always stale.
 
 ??? example "Details"
 
@@ -268,7 +268,7 @@ Returns true if the inverse price for the given currency is frozen. This is simp
 
 The rate for a given currency is stale if its last update occurred more than [`rateStalePeriod`](#ratestaleperiod) seconds ago.
 
-`sUSD` is a special case; since its rate is fixed at $1.0$, it is never stale. The rates of nonexistent currencies are always stale.
+`oUSD` is a special case; since its rate is fixed at $1.0$, it is never stale. The rates of nonexistent currencies are always stale.
 
 ??? example "Details"
 
@@ -280,7 +280,7 @@ The rate for a given currency is stale if its last update occurred more than [`r
 
 ### `rates`
 
-Retrieves the exchange rate (`sUSD` per unit) for a given currency key (`sUSD`, `OKS`, et cetera). These prices are stored as [18 decimal place fixed point numbers](SafeDecimalMath.md).
+Retrieves the exchange rate (`oUSD` per unit) for a given currency key (`oUSD`, `OKS`, et cetera). These prices are stored as [18 decimal place fixed point numbers](SafeDecimalMath.md).
 
 ??? example "Details"
 
@@ -467,7 +467,7 @@ Returns true if no exception was thrown.
 
     * `currencyKeys` and `newRates` must be the same length.
     * `timeSent` must be less than [`ORACLE_FUTURE_LIMIT`](#oracle_future_limit) seconds in the future.
-    * `"sUSD"` must not appear in `currencyKeys`.
+    * `"oUSD"` must not appear in `currencyKeys`.
     * $0$ must not appear in `newRates`.
 
     **Emits**

@@ -42,7 +42,7 @@ To interact with Oikos in your dApps and scripts, you have a few options:
 
         (async () => {
             const totalIssuedSynths = await Oikos.totalIssuedSynths(
-                oikos.toBytes32("sUSD")
+                oikos.toBytes32("oUSD")
             );
             console.log(ethers.utils.formatEther(totalIssuedSynths));
         })();
@@ -87,7 +87,7 @@ To query data historically, a few options are available:
 
         (async () => {
           const totalIssuedSynths = await Oikos.totalIssuedSynths(
-            oikos.toBytes32('sUSD'),
+            oikos.toBytes32('oUSD'),
             {
               blockTag: 9000000
             }

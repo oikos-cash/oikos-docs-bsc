@@ -67,7 +67,7 @@ snx.getSource({ network: 'rinkeby', contract: 'Proxy' });
 
 // retrieve the array of synths used
 snx.getSynths({ network: 'rinkeby' }).map(({ name }) => name);
-// ['sUSD', 'sEUR', ...]
+// ['oUSD', 'sEUR', ...]
 ```
 
 ### As an npm CLI tool
@@ -92,7 +92,7 @@ npx oikos source --network rinkeby --contract Proxy
 # }
 
 npx oikos synths --network rinkeby --key name
-# ["sUSD", "sEUR", ... ]
+# ["oUSD", "sEUR", ... ]
 ```
 
 ### For tests (in JavaScript)
@@ -115,7 +115,7 @@ Traditionally gold was used as a reserve store of value by various governments a
 
 As users exchange synths via `Exchanger.exchange()` or on [oikos.exchange](https://oikos.exchange), small fees are remitted, which get sent to OKS holders that enable the economy to exist.
 
-Users are able to withdraw their fees sUSD. Users are entitled to fees once they've issued synths (to help create the economy generating the fees) and waited for a complete fee period to elapse (currently 7 days). Issuers are incentivised to maintain the ratio of collateral (OKS) to Synths such that the Synths in circulation are generally only worth 20% of the value of the Oikos Network Tokens backing them up via a penalty for being over 20% collateralised. This allows pretty severe price shocks to OKS without threatening the value of the Synths.
+Users are able to withdraw their fees oUSD. Users are entitled to fees once they've issued synths (to help create the economy generating the fees) and waited for a complete fee period to elapse (currently 7 days). Issuers are incentivised to maintain the ratio of collateral (OKS) to Synths such that the Synths in circulation are generally only worth 20% of the value of the Oikos Network Tokens backing them up via a penalty for being over 20% collateralised. This allows pretty severe price shocks to OKS without threatening the value of the Synths.
 
 Also it's worth noting that there's a decimal library being used for "floating point" math with 10^18 as the base. Also many of the contracts are provided behind a proxy contract for easy upgradability.
 

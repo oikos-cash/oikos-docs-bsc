@@ -143,7 +143,7 @@ It is also used by some other contracts, such as the [`ArbRewarder`](ArbRewarder
 
 | Contract                            | Description                                                                                                                                                                                                                                                  |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Oracle                              | The oracle is responsible for collecting and updating all token prices known to the Oikos system. Although it is not a contract, it controls a known Ethereum address from which price updates are sent to the [`ExchangeRates`](ExchangeRates.md) contract. |
+| Oracle                              | The oracle is responsible for collecting and updating all token prices known to the Oikos system. Although it is not a contract, it controls a known BNB address from which price updates are sent to the [`ExchangeRates`](ExchangeRates.md) contract. |
 | [`ExchangeRates`](ExchangeRates.md) | The Oikos exchange rates contract which receives token prices from the oracle, and supplies them to all contracts that need it.                                                                                                                              |
 
 ---

@@ -7,7 +7,7 @@ Imported from https://github.com/oikos-cash/oikos-bsc-js
 [![Discord](https://img.shields.io/discord/413890591840272394.svg?color=768AD4&label=discord&logo=https%3A%2F%2Fdiscordapp.com%2Fassets%2F8c9701b98ad4372b58f13fd9f65f966e.svg)](https://discordapp.com/channels/413890591840272394/)
 [![Twitter Follow](https://img.shields.io/twitter/follow/oikos.cash.svg?label=oikos.cash&style=social)](https://twitter.com/oikos.cash)
 
-The Oikos-JS Library provides a simple pre-packaged API to communicate with [Synthetix](https://oikos.cash) on ethereum. You can use it to contribute to DeFi's growing synthetic asset ecosystem.
+The Oikos-JS Library provides a simple pre-packaged API to communicate with [Synthetix](https://oikos.cash) on BNB. You can use it to contribute to DeFi's growing synthetic asset ecosystem.
 
 This is particularly useful for hackathon teams to quickly `npm install @oikos/oikos-js-bsc` and start building in just a few minutes.
 
