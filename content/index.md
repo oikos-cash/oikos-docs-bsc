@@ -1,4 +1,4 @@
-![Oikos](img/logos/oikos_text_logo.png)
+![Oikos](img/logos/oikos-text-logo.svg)
 
 # System Documentation
 
