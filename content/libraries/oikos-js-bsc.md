@@ -28,7 +28,7 @@ const { OikosJs } = require('oikos-js-bsc');
 const oksjs = new OikosJs(); //uses default ContractSettings - ethers.js default provider, mainnet
 (async function() {
   const totalOUSD = await oksjs.oUSD.totalSupply();
-  const totalOUSDSupply = oksjs.utils.formatEther(totaloUSD);
+  const totalOUSDSupply = oksjs.utils.formatEther(totalSUSD);
   console.log('oUSDTotalSupply', totalOUSDSupply);
 })();
 ```
