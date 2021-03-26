@@ -1,6 +1,6 @@
 Here is the list of all contracts within the current Oikos system.
 
-**Version**: 0.2.14
+**Version**: 0.2.17
 
 **Docs Built**: Mar 26, 2021
 
@@ -84,7 +84,7 @@ Here is the list of all contracts within the current Oikos system.
                 <td>FeePool</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/FeePool.sol">FeePool.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/FeePool.json">FeePool.json</a></td>
-                <td><a target="_blank" href="https://bscscan.com/address/0xb4eEFb6884d8824846B5b26d9Ce188bF7c1F6bE6">0xb4eEFb6884d8824846B5b26d9Ce188bF7c1F6bE6</a>
+                <td><a target="_blank" href="https://bscscan.com/address/0x4a7644B4b3ae6E4e2c53D01a39E7C4afA25061aF">0x4a7644B4b3ae6E4e2c53D01a39E7C4afA25061aF</a>
                 </td>
               </tr>
               <tr>
