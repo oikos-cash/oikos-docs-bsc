@@ -25,6 +25,7 @@ nav:
       - Synopsis: synopsis.md
       - Incentives: incentives.md
       - Governance: governance.md
+      - Litepaper: litepaper.md
   - Addresses:
       - '': addresses.md
   - Releases:
