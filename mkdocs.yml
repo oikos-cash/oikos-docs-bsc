@@ -25,6 +25,7 @@ nav:
       - Synopsis: synopsis.md
       - Incentives: incentives.md
       - Governance: governance.md
+      - Litepaper: litepaper.md
   - Addresses:
       - '': addresses.md
   - Releases:
@@ -89,8 +90,6 @@ nav:
           - SelfDestructible: contracts/SelfDestructible.md
           - State: contracts/State.md
       - Audit History: contracts/audits.md
-      - Litepaper:
-          - '': litepaper.md
 
 # These social links will be rendered as icons in the footer, as long as the type corresponds to FontAwesome glyph.
 extra:
