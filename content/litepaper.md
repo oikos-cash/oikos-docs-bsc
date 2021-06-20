@@ -2,7 +2,9 @@
 
 **Version**: 1.4 (May 2020)
 
+<!---
 **Translations**: [中文 (Mandarin)](./litepaper-zh.pdf)
+--->
 
 ## Abstract
 
