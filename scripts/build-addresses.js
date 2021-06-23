@@ -26,10 +26,10 @@ const generateAddresses = () => {
 		'If the same source is used for multiple instances of contracts with different constructor arguments - such as `Synth.sol`, `TokenState.sol` and `ProxyERC20.sol`' +
 		" - then the convention is to suffix the name of the differing feature to the end - be it the proxy target e.g. `FeePool` for `ProxyFeePool` or the synth's currencyKey eg: `oBNB` for `SynthoBNB`";
 
-	headerContent +=
-		'\n\n!!! tip "Handy Contract Links"\n\tAll of the below contracts can be accessed by our [contract linker](https://github.com/oikos-cash/contract-linker) utility. Simply suffix the contract name to the end of' +
-		' https://contracts.oikos.cash to get a link that will always redirect to the latest version of the contract on Etherscan.\n\n\tFor example, try https://contracts.oikos.cash/Oikos to get linked to the latest Oikos underlying.' +
-		'\n\n\tFor testnets, insert the testnet name before the contract, as in https://contracts.oikos.cash/bsctestnet/ArbRewarder';
+	//headerContent +=
+	//	'\n\n!!! tip "Handy Contract Links"\n\tAll of the below contracts can be accessed by our [contract linker](https://github.com/oikos-cash/contract-linker) utility. Simply suffix the contract name to the end of' +
+	//	' https://contracts.oikos.cash to get a link that will always redirect to the latest version of the contract on Etherscan.\n\n\tFor example, try https://contracts.oikos.cash/Oikos to get linked to the latest Oikos underlying.' +
+	//	'\n\n\tFor testnets, insert the testnet name before the contract, as in https://contracts.oikos.cash/bsctestnet/ArbRewarder';
 
 	const contractContent = ['bsc' /*, 'bsctestnet'*/]
 		.map(network => {
