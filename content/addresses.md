@@ -1,8 +1,8 @@
 Here is the list of all contracts within the current Oikos system.
 
-**Version**: 0.2.28
+**Version**: 0.2.30
 
-**Docs Built**: Jun 23, 2021
+**Docs Built**: Jun 24, 2021
 
 !!! info "Naming Conventions"
 	Within the developer ecosystem, the names of Oikos contracts are referred to by their `source` Solidity file.If the same source is used for multiple instances of contracts with different constructor arguments - such as `Synth.sol`, `TokenState.sol` and `ProxyERC20.sol` - then the convention is to suffix the name of the differing feature to the end - be it the proxy target e.g. `FeePool` for `ProxyFeePool` or the synth's currencyKey eg: `oBNB` for `SynthoBNB`
@@ -70,7 +70,7 @@ Here is the list of all contracts within the current Oikos system.
                 <td>Exchanger</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Exchanger.sol">Exchanger.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/Exchanger.json">Exchanger.json</a></td>
-                <td><a target="_blank" href="https://bscscan.com/address/0x7dBDD3fa9468c886506fD6726Caa3F2D55074280">0x7dBDD3fa9468c886506fD6726Caa3F2D55074280</a>
+                <td><a target="_blank" href="https://bscscan.com/address/0x9E931A50EBCfe25E90f22F5118E32C08b86Bb9a4">0x9E931A50EBCfe25E90f22F5118E32C08b86Bb9a4</a>
                 </td>
               </tr>
               <tr>

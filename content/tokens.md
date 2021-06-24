@@ -71,9 +71,9 @@
 
 | Entry Point | Upper Limit | Lower Limit |
 | - | - | - |
-| $29 | $44 | $14.50000|
+| $322.89000 | $484.33000 | $215.26000|
 
->Inversely tracks the price of Binance Coin (BNB) through price feeds supplied by an oracle. The entry point is $29 (the approximate market price at time of creation). This Synth freezes when it reaches its upper limit of $44 (i.e. when Binance Coin's value reaches $14) or its lower limit of $14.5 (i.e. when Binance Coin’s value reaches $43.5). If it reaches either of its limits and gets frozen, it will no longer be able to be purchased on Oikos.Exchange, but can still be traded for other Synths at its frozen value. At some point after it has reached either of its limits, it will be substituted for another iBNB with different limits.
+>Inversely tracks the price of Binance Coin (BNB) through price feeds supplied by an oracle. The entry point is $322.89 (the approximate market price at time of creation). This Synth freezes when it reaches its upper limit of $484.33 (i.e. when Binance Coin's value reaches $161.45) or its lower limit of $215.26 (i.e. when Binance Coin’s value reaches $430.52). If it reaches either of its limits and gets frozen, it will no longer be able to be purchased on Oikos.Exchange, but can still be traded for other Synths at its frozen value. At some point after it has reached either of its limits, it will be substituted for another iBNB with different limits.
 
 ## Inverted Bitcoin (iBTC)
 
@@ -90,9 +90,9 @@
 
 | Entry Point | Upper Limit | Lower Limit |
 | - | - | - |
-| $10,600 | $15,900 | $5,300|
+| $34,360.10000 | $51,540.15000 | $22,906.73000|
 
->Inversely tracks the price of Bitcoin (BTC) through price feeds supplied by an oracle. The entry point is $10600 (the approximate market price at time of creation). This Synth freezes when it reaches its upper limit of $15900 (i.e. when Bitcoin's value reaches $5300) or its lower limit of $5300 (i.e. when Bitcoin’s value reaches $15900). If it reaches either of its limits and gets frozen, it will no longer be able to be purchased on Oikos.Exchange, but can still be traded for other Synths at its frozen value. At some point after it has reached either of its limits, it will be substituted for another iBTC with different limits.
+>Inversely tracks the price of Bitcoin (BTC) through price feeds supplied by an oracle. The entry point is $34360.1 (the approximate market price at time of creation). This Synth freezes when it reaches its upper limit of $51540.15 (i.e. when Bitcoin's value reaches $17180.05) or its lower limit of $22906.73 (i.e. when Bitcoin’s value reaches $45813.47). If it reaches either of its limits and gets frozen, it will no longer be able to be purchased on Oikos.Exchange, but can still be traded for other Synths at its frozen value. At some point after it has reached either of its limits, it will be substituted for another iBTC with different limits.
 
 ## Inverted Ether (iETH)
 
@@ -109,9 +109,9 @@
 
 | Entry Point | Upper Limit | Lower Limit |
 | - | - | - |
-| $220 | $330 | $110|
+| $2,111.65000 | $3,167.47000 | $1,407.76000|
 
->Inversely tracks the price of Ether (ETH) through price feeds supplied by an oracle. The entry point is $220 (the approximate market price at time of creation). This Synth freezes when it reaches its upper limit of $330 (i.e. when Ether's value reaches $110) or its lower limit of $110 (i.e. when Ether’s value reaches $330). If it reaches either of its limits and gets frozen, it will no longer be able to be purchased on Oikos.Exchange, but can still be traded for other Synths at its frozen value. At some point after it has reached either of its limits, it will be substituted for another iETH with different limits.
+>Inversely tracks the price of Ether (ETH) through price feeds supplied by an oracle. The entry point is $2111.65 (the approximate market price at time of creation). This Synth freezes when it reaches its upper limit of $3167.47 (i.e. when Ether's value reaches $1055.83) or its lower limit of $1407.76 (i.e. when Ether’s value reaches $2815.54). If it reaches either of its limits and gets frozen, it will no longer be able to be purchased on Oikos.Exchange, but can still be traded for other Synths at its frozen value. At some point after it has reached either of its limits, it will be substituted for another iETH with different limits.
 
 ## Oikos (OKS)
 
