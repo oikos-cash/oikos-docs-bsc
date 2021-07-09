@@ -1,6 +1,6 @@
 Here is the list of all contracts within the current Oikos system.
 
-**Version**: 0.2.33
+**Version**: 0.2.34
 
 **Docs Built**: Jul 9, 2021
 
@@ -126,7 +126,7 @@ Here is the list of all contracts within the current Oikos system.
                 <td>Liquidations</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Liquidations.sol">Liquidations.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/Liquidations.json">Liquidations.json</a></td>
-                <td><a target="_blank" href="https://bscscan.com/address/0x32426A51A2a19258c04085B174cFdc40bF89f221">0x32426A51A2a19258c04085B174cFdc40bF89f221</a>
+                <td><a target="_blank" href="https://bscscan.com/address/0xfF2482ca474a170B0fe70Bed2267263040A4225B">0xfF2482ca474a170B0fe70Bed2267263040A4225B</a>
                 </td>
               </tr>
               <tr>
