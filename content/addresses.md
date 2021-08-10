@@ -1,8 +1,8 @@
 Here is the list of all contracts within the current Oikos system.
 
-**Version**: 0.2.48
+**Version**: 0.2.49
 
-**Docs Built**: Aug 2, 2021
+**Docs Built**: Aug 10, 2021
 
 !!! info "Naming Conventions"
 	Within the developer ecosystem, the names of Oikos contracts are referred to by their `source` Solidity file.If the same source is used for multiple instances of contracts with different constructor arguments - such as `Synth.sol`, `TokenState.sol` and `ProxyERC20.sol` - then the convention is to suffix the name of the differing feature to the end - be it the proxy target e.g. `FeePool` for `ProxyFeePool` or the synth's currencyKey eg: `oBNB` for `SynthoBNB`
@@ -35,7 +35,7 @@ Here is the list of all contracts within the current Oikos system.
                 <td>DelegateApprovals</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/DelegateApprovals.sol">DelegateApprovals.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/DelegateApprovals.json">DelegateApprovals.json</a></td>
-                <td><a target="_blank" href="https://bscscan.com/address/0xf718ebB2bA2587F8f146c85FF750CaB9238909C6">0xf718ebB2bA2587F8f146c85FF750CaB9238909C6</a>
+                <td><a target="_blank" href="https://bscscan.com/address/0xD01A5518136Fb2635d13010Eb824EC081Df741bf">0xD01A5518136Fb2635d13010Eb824EC081Df741bf</a>
                 </td>
               </tr>
               <tr>
@@ -147,7 +147,7 @@ Here is the list of all contracts within the current Oikos system.
                 <td>OikosEscrow</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/OikosEscrow.sol">OikosEscrow.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/OikosEscrow.json">OikosEscrow.json</a></td>
-                <td><a target="_blank" href="https://bscscan.com/address/0xb09280811Fb5b73D9e3e80C6CE37bC81B767013A">0xb09280811Fb5b73D9e3e80C6CE37bC81B767013A</a>
+                <td><a target="_blank" href="https://bscscan.com/address/0x94b8B68Ad4c673355378A575f203dCFdA21e16E1">0x94b8B68Ad4c673355378A575f203dCFdA21e16E1</a>
                 </td>
               </tr>
               <tr>
