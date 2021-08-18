@@ -1,8 +1,8 @@
 Here is the list of all contracts within the current Oikos system.
 
-**Version**: 0.2.49
+**Version**: 0.2.50
 
-**Docs Built**: Aug 10, 2021
+**Docs Built**: Aug 18, 2021
 
 !!! info "Naming Conventions"
 	Within the developer ecosystem, the names of Oikos contracts are referred to by their `source` Solidity file.If the same source is used for multiple instances of contracts with different constructor arguments - such as `Synth.sol`, `TokenState.sol` and `ProxyERC20.sol` - then the convention is to suffix the name of the differing feature to the end - be it the proxy target e.g. `FeePool` for `ProxyFeePool` or the synth's currencyKey eg: `oBNB` for `SynthoBNB`
@@ -119,7 +119,7 @@ Here is the list of all contracts within the current Oikos system.
                 <td>Issuer</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Issuer.sol">Issuer.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/Issuer.json">Issuer.json</a></td>
-                <td><a target="_blank" href="https://bscscan.com/address/0xBA302021b7694c7ffe7267B727F1eD509767c02B">0xBA302021b7694c7ffe7267B727F1eD509767c02B</a>
+                <td><a target="_blank" href="https://bscscan.com/address/0x37C714BB8944feC32c527615734E24fa2CAdcB5e">0x37C714BB8944feC32c527615734E24fa2CAdcB5e</a>
                 </td>
               </tr>
               <tr>
