@@ -1,8 +1,8 @@
 Here is the list of all contracts within the current Oikos system.
 
-**Version**: 0.2.50
+**Version**: 0.2.52
 
-**Docs Built**: Aug 18, 2021
+**Docs Built**: Dec 10, 2021
 
 !!! info "Naming Conventions"
 	Within the developer ecosystem, the names of Oikos contracts are referred to by their `source` Solidity file.If the same source is used for multiple instances of contracts with different constructor arguments - such as `Synth.sol`, `TokenState.sol` and `ProxyERC20.sol` - then the convention is to suffix the name of the differing feature to the end - be it the proxy target e.g. `FeePool` for `ProxyFeePool` or the synth's currencyKey eg: `oBNB` for `SynthoBNB`
@@ -67,6 +67,13 @@ Here is the list of all contracts within the current Oikos system.
                 </td>
               </tr>
               <tr>
+                <td>EtherCollateraloUSD</td>
+                <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/EtherCollateraloUSD.sol">EtherCollateraloUSD.sol</a></td>
+                <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/EtherCollateraloUSD.json">EtherCollateraloUSD.json</a></td>
+                <td><a target="_blank" href="https://bscscan.com/address/0x7042c05A1e30902575803210Ae0DA6fe2390A35a">0x7042c05A1e30902575803210Ae0DA6fe2390A35a</a>
+                </td>
+              </tr>
+              <tr>
                 <td>ExchangeRates</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/ExchangeRates.sol">ExchangeRates.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/ExchangeRates.json">ExchangeRates.json</a></td>
@@ -84,7 +91,7 @@ Here is the list of all contracts within the current Oikos system.
                 <td>Exchanger</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Exchanger.sol">Exchanger.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/Exchanger.json">Exchanger.json</a></td>
-                <td><a target="_blank" href="https://bscscan.com/address/0xF2306Bfe229e13768b0b433285445CC388707C6f">0xF2306Bfe229e13768b0b433285445CC388707C6f</a>
+                <td><a target="_blank" href="https://bscscan.com/address/0xdc3a305e1CE234A27F6B1E0B8Ef1a6C63eaEB633">0xdc3a305e1CE234A27F6B1E0B8Ef1a6C63eaEB633</a>
                 </td>
               </tr>
               <tr>
@@ -119,7 +126,7 @@ Here is the list of all contracts within the current Oikos system.
                 <td>Issuer</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Issuer.sol">Issuer.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/Issuer.json">Issuer.json</a></td>
-                <td><a target="_blank" href="https://bscscan.com/address/0x37C714BB8944feC32c527615734E24fa2CAdcB5e">0x37C714BB8944feC32c527615734E24fa2CAdcB5e</a>
+                <td><a target="_blank" href="https://bscscan.com/address/0x2f09C48b0D7CC01685B7Ff0bd0378e5eb1D710B6">0x2f09C48b0D7CC01685B7Ff0bd0378e5eb1D710B6</a>
                 </td>
               </tr>
               <tr>
@@ -376,9 +383,9 @@ Here is the list of all contracts within the current Oikos system.
               </tr>
               <tr>
                 <td>SynthoUSD</td>
-                <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Synth.sol">Synth.sol</a></td>
-                <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/Synth.json">Synth.json</a></td>
-                <td><a target="_blank" href="https://bscscan.com/address/0x58B9035e938c5E9aC659f944388cdE3e01D59F0F">0x58B9035e938c5E9aC659f944388cdE3e01D59F0F</a>
+                <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/MultiCollateralSynth.sol">MultiCollateralSynth.sol</a></td>
+                <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/MultiCollateralSynth.json">MultiCollateralSynth.json</a></td>
+                <td><a target="_blank" href="https://bscscan.com/address/0x483973e2c11ca9d6547f9f7D6487232967065457">0x483973e2c11ca9d6547f9f7D6487232967065457</a>
                 </td>
               </tr>
               <tr>
