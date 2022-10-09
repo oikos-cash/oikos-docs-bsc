@@ -92,18 +92,7 @@ nav:
       - Audit History: contracts/audits.md
 
 # These social links will be rendered as icons in the footer, as long as the type corresponds to FontAwesome glyph.
-extra:
-  social:
-    - icon: 'brands/github'
-      link: 'https://github.com/oikos-cash'
-    - icon: 'brands/twitter'
-      link: 'https://twitter.com/oikos_cash'
-    - icon: 'brands/discord'
-      link: 'https://discord.gg/VVDu6Er'
-    - icon: 'brands/reddit'
-      link: 'https://www.reddit.com/r/OikosCash/'
-    - icon: 'brands/medium'
-      link: 'https://oikoscash.medium.com'
+
 
 # This set of documentation uses the MkDocs Material theme by squidfunk: https://github.com/squidfunk/mkdocs-material
 theme:
