@@ -20,8 +20,8 @@
 	},
 	"homepage": "https://github.com/oikos-cash/oikos-docs-bsc#readme",
 	"dependencies": {
-		"@oikos/oikos-bsc": "^0.2.52",
-		"@oikos/oikos-js-bsc": "^0.2.52",
+		"@oikos/oikos-bsc": "^0.2.60",
+		"@oikos/oikos-js-bsc": "^0.2.67",
 		"axios": "~0.19.2",
 		"moment": "~2.24.0",
 		"numbro": "2.1.2"
