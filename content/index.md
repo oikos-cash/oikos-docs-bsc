@@ -1,4 +1,4 @@
-<img class="rounded-image" src="img/logos/oikos-text-logo.svg" class="oikos-logo" />
+<img class="rounded-image" src="img/logos/oikos-type-dark.svg" width="50%" class="oikos-logo" />
 
 # System Documentation
 
