@@ -1,8 +1,8 @@
 Here is the list of all contracts within the current Oikos system.
 
-**Version**: 0.2.60
+**Version**: 0.2.68
 
-**Docs Built**: Oct 8, 2022
+**Docs Built**: Nov 25, 2022
 
 !!! info "Naming Conventions"
 	Within the developer ecosystem, the names of Oikos contracts are referred to by their `source` Solidity file.If the same source is used for multiple instances of contracts with different constructor arguments - such as `Synth.sol`, `TokenState.sol` and `ProxyERC20.sol` - then the convention is to suffix the name of the differing feature to the end - be it the proxy target e.g. `FeePool` for `ProxyFeePool` or the synth's currencyKey eg: `oBNB` for `SynthoBNB`
@@ -29,6 +29,13 @@ Here is the list of all contracts within the current Oikos system.
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/BNBCollateral.sol">BNBCollateral.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/BNBCollateral.json">BNBCollateral.json</a></td>
                 <td><a target="_blank" href="https://bscscan.com/address/0x7F110C0e1256705cf87E660f2a01889A647189bd">0x7F110C0e1256705cf87E660f2a01889A647189bd</a>
+                </td>
+              </tr>
+              <tr>
+                <td>DebtCache</td>
+                <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/DebtCache.sol">DebtCache.sol</a></td>
+                <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/DebtCache.json">DebtCache.json</a></td>
+                <td><a target="_blank" href="https://bscscan.com/address/0x1a7a15B6F557CeFc9Bd91cC550479D291cA98235">0x1a7a15B6F557CeFc9Bd91cC550479D291cA98235</a>
                 </td>
               </tr>
               <tr>
@@ -126,7 +133,7 @@ Here is the list of all contracts within the current Oikos system.
                 <td>Issuer</td>
                 <td><a target="_blank" href="https://github.com/oikos-cash/oikos-bsc/blob/master/contracts/Issuer.sol">Issuer.sol</a></td>
                 <td><a target="_blank" href="https://raw.githubusercontent.com/oikos-cash/oikos-js-bsc/master/lib/abis/bsc/Issuer.json">Issuer.json</a></td>
-                <td><a target="_blank" href="https://bscscan.com/address/0x2e6a182FEC76C7D9a37b38C814F6759c59fDed16">0x2e6a182FEC76C7D9a37b38C814F6759c59fDed16</a>
+                <td><a target="_blank" href="https://bscscan.com/address/0xe04abC18d6f72d2f4970dB27546960bC2012316B">0xe04abC18d6f72d2f4970dB27546960bC2012316B</a>
                 </td>
               </tr>
               <tr>
